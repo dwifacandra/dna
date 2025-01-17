@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    @apply scroll-smooth;
+    &::-webkit-scrollbar {@apply w-2;}
+    &::-webkit-scrollbar-track {@apply bg-gray-200;}
+    &::-webkit-scrollbar-thumb {@apply bg-gray-500 bg-opacity-90;}
+}
+.light {
+    @apply
+    bg-slate-200;
+
+}
+.dark {
+    @apply
+    bg-slate-950
+    text-white/90;
+}
+.core-icon path { @apply fill-current transform-gpu; }
+.core-bg-gradient {
+	@apply bg-gradient-to-r from-slate-950 via-slate-800 to-slate-950;
+}
+.core-divider {
+    @apply py-8;
+}
+.core-header {
+    @apply
+    sticky top-0 z-10
+    flex flex-wrap w-full
+    py-3 text-sm
+    bg-slate-800
+    sm:justify-start
+    sm:flex-nowrap;
+}
+.core-top-navbar {
+    @apply
+    max-w-screen-2xl w-full
+    mx-auto px-4
+    sm:flex
+    sm:items-center
+    sm:justify-between;
+}
+.core-top-navbar .core-navbar-start {
+    @apply
+    flex items-center
+    justify-between;
+}
+.core-top-navbar .core-navbar-brand {
+    @apply
+    flex-none
+    text-xl font-semibold text-slate-50
+    bg-slate-500 bg-opacity-50
+    px-4 py-1
+    focus:outline-none
+    focus:opacity-90
+    hover:opacity-90;
+}
+.core-top-navbar .core-toggle-navbar {
+    @apply
+    relative flex items-center justify-center
+    text-slate-50
+    bg-transparent
+    border border-slate-500
+    rounded-sm shadow-sm
+    size-8 gap-x-2;
+}
+.core-top-navbar .core-navbar-end {
+    @apply
+    overflow-hidden
+    transition-all duration-300
+    basis-full grow md:block;
+}
+.core-top-navbar .core-navbar-menu {
+    @apply
+    flex flex-col-reverse md:flex-row
+    gap-x-1 py-4 md:py-0
+    sm:items-center sm:justify-end;
+}
+.core-top-navbar .core-navbar-menu-icon {
+    @apply
+    relative flex flex-wrap
+    items-center
+    gap-x-1 md:ps-2.5 mb-4 md:my-0
+    before:block before:absolute
+    before:top-1/2 before:-start-px
+    before:w-px before:h-7
+    before:bg-slate-500
+    before:-translate-y-1/2;
+}
+.core-top-navbar .core-navbar-menu-item {
+    @apply
+    text-slate-50 font-medium
+    hover:bg-slate-500 hover:bg-opacity-50
+    px-2 py-1;
+}
+.core-top-navbar .core-navbar-menu-item-icon {
+    @apply
+    text-slate-50 font-medium
+    bg-slate-500 bg-opacity-50
+    hover:bg-opacity-40
+    px-2 py-[0.4rem];
+}
+.core-resume {
+    @apply container px-4 mx-auto scroll-my-[5.5rem];
+}
+.core-resume-card {
+    @apply
+    transition duration-200 ease-in delay-75
+    bg-white h-auto
+    shadow-lg hover:shadow-2xl
+    border-slate-200
+    sm:rounded-sm
+    hover:scale-105;
+}
+.core-resume-title {
+    @apply px-4 py-2 text-xl font-bold text-white core-bg-gradient w-full;
+}
+.core-resume-content-scroll {
+    @apply overflow-hidden h-[50vh] md:h-[80vh] md:overflow-auto cursor-all-scroll select-none;
+    scrollbar-width: none;
+}
+.core-resume-content {
+    @apply p-4 space-y-2;
+}
+.skill-item {
+	@apply mb-2 px-4 py-1;
+}
+.skill-item-title {
+	@apply flex justify-between;
+}
+.skill-item-title-name {
+	@apply flex-grow leading-6 text-pretty dark:text-gray-400;
+}
+.skill-item-title-percentage {
+	@apply text-sm leading-6 dark:text-gray-400 after:content-['%'];
+}
+.skill-item-icon {
+	@apply object-cover w-6 h-6 mb-1 mr-2 bg-transparent;
+}
