@@ -15,11 +15,13 @@ class ResumeSkill extends Model
 
     protected $fillable = [
         'user_id',
+        'category_id',
         'name',
         'rate',
         'icon',
         'icon_color',
     ];
+
     protected $casts = [
         'rate' => Rate::class,
     ];
@@ -31,20 +33,15 @@ class ResumeSkill extends Model
         });
     }
 
-    // public function getLogoAttribute()
-    // {
-    //     $cacheKey = 'logo_' . $this->id;
-    //     return Cache::remember($cacheKey, 60 * 24, function () {
-    //         $cleanedName = preg_replace('/[^a-zA-Z0-9\s]/', '', $this->name);
-    //         $firstWord = Str::lower(explode(' ', $cleanedName)[0]);
-    //         $secondWord = Str::lower(explode(' ', $cleanedName)[1] ?? '');
-    //         $icon = IconSVG::get($firstWord);
-    //         if (!str_contains($icon, '<x-icon-checklist/>')) {
-    //             $icon = IconSVG::get($firstWord . $secondWord);
-    //         }
-    //         return $icon;
-    //     });
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ResumeSkillCategory::class);
+    }
 
     public function setRateAttribute($value)
     {
@@ -59,10 +56,5 @@ class ResumeSkill extends Model
     public function getPercentageAttribute()
     {
         return ($this->rateInt / 10) * 100;
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }

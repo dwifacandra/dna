@@ -34,6 +34,16 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
         ];
     }
 
+    public function accounts()
+    {
+        return $this->hasMany(UserAccount::class);
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(ResumeSkill::class);
+    }
+
     public function getFilamentAvatarUrl(): ?string
     {
         $prefix = urlencode(Str::substr($this->name, 0, 2));
@@ -44,10 +54,5 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
-    }
-
-    public function accounts()
-    {
-        return $this->hasMany(UserAccount::class);
     }
 }
