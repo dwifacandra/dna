@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -18,6 +15,17 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('user_accounts', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->string('name', 50)->nullable();
+            $table->string('url', 100)->nullable();
             $table->timestamps();
         });
 
@@ -37,12 +45,10 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('user_accounts');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
