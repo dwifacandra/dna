@@ -8,18 +8,15 @@ use App\Core\Traits\Navigations;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\MaxWidth;
 use Filament\Http\Middleware\Authenticate;
-use Filament\Navigation\NavigationBuilder;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Filament\Http\Middleware\AuthenticateSession;
-use Awcodes\FilamentStickyHeader\StickyHeaderPlugin;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use CodeWithDennis\FilamentThemeInspector\FilamentThemeInspectorPlugin;
 
 class CorePanelProvider extends PanelProvider
 {
@@ -37,6 +34,7 @@ class CorePanelProvider extends PanelProvider
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->navigation(Navigations::getNavigations())
             ->databaseTransactions()
+            ->databaseNotifications()
             ->viteTheme('resources/css/filament/core/theme.css')
             ->colors([
                 'primary' => Color::Slate,

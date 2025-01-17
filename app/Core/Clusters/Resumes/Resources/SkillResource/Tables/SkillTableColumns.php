@@ -11,6 +11,8 @@ class SkillTableColumns
     public static function getOptions(): array
     {
         return [
+            TextColumn::make('category.name')
+                ->alignment(Alignment::Left),
             TextColumn::make('name')
                 ->alignment(Alignment::Left),
             IconColumn::make('icon')
@@ -19,7 +21,8 @@ class SkillTableColumns
             TextColumn::make('rate')
                 ->badge()
                 ->icon('icon-core.outline.star'),
-            TextColumn::make('user.name'),
+            TextColumn::make('user.name')
+                ->alignment(Alignment::Left),
             TextColumn::make('created_at')
                 ->dateTime('d/m/Y H:i:s'),
             TextColumn::make('updated_at')

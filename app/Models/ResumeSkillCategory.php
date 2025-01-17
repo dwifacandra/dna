@@ -11,6 +11,10 @@ class ResumeSkillCategory extends Model
         'description',
     ];
 
+    protected $casts = [
+        'name' => 'string',
+    ];
+
     public function skills()
     {
         return $this->hasMany(ResumeSkill::class);

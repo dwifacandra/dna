@@ -3,7 +3,6 @@
 
 /* General */
 * {scrollbar-width: thin; @apply antialiased;}
-.core-bg-gradient {@apply bg-gradient-to-l from-slate-700 via-slate-800 to-slate-900;}
 .fi-main {@apply px-4;}
 .fi-sidebar *,.fi-ta *,.fi-page *,.fi-simple-layout *,
 .fi-wi-widget *,.fi-dropdown *,.fi-btn,.fi-tabs,
@@ -22,11 +21,11 @@
 .fi-page-sub-navigation-tabs {@apply shadow-md;}
 
 /* Topbar */
-.fi-topbar > nav {@apply core-bg-gradient text-white h-[45px] leading-[45px] md:pl-0 px-4;}
+.fi-topbar > nav {@apply bg-slate-800 text-white h-[45px] leading-[45px] md:pl-0 px-4;}
 .fi-topbar > nav .fi-icon-btn {@apply text-white;}
 .fi-topbar > nav a {@apply text-white;}
 .fi-topbar > nav [x-persist="topbar.end"] {@apply gap-x-2;}
-.fi-topbar > nav .fi-user-avatar {@apply ring-1 shadow-sm ring-white/90;}
+.fi-topbar > nav .fi-user-avatar {@apply rounded-full;}
 .fi-topbar > nav .fi-topbar-item {@apply px-4 cursor-pointer hover:bg-slate-600;}
 .fi-topbar > nav .fi-topbar-item-active {@apply bg-slate-500;}
 
@@ -42,6 +41,7 @@
 
 /* Header */
 .fi-header {@apply p-0 sm:-mb-6 flex-row justify-between;}
+.fi-header div + div .fi-ac {@apply gap-2 flex-row-reverse;}
 
 /* Breadcrumb */
 .fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-10;}
@@ -56,7 +56,7 @@
 .fi-page section > div > div {@apply gap-4 relative;}
 
 /* Subnavigation Top */
-.fi-page-sub-navigation-tabs {@apply mx-0 p-0 gap-x-0 sticky top-20 z-10;}
+.fi-page-sub-navigation-tabs {@apply mx-0 p-0 gap-x-0;}
 
 /* Subnavigation Sidebar*/
 .fi-page-sub-navigation-sidebar-ctn * {@apply gap-y-0;}

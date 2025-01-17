@@ -4,7 +4,13 @@ namespace App\Core\Clusters\Resumes\Resources;
 
 use App\Models\ResumeSkill;
 use App\Core\{Clusters\Resumes, Traits\DefaultOptions};
-use Filament\{Forms\Form, Tables\Table, Tables\Enums\RecordCheckboxPosition, Resources\Resource, Pages\SubNavigationPosition,};
+use Filament\{
+    Forms\Form,
+    Tables\Table,
+    Tables\Enums\RecordCheckboxPosition,
+    Resources\Resource,
+    Pages\SubNavigationPosition,
+};
 use App\Core\Clusters\Resumes\Resources\SkillResource\{Pages, Forms, Tables};
 
 class SkillResource extends Resource
@@ -16,15 +22,21 @@ class SkillResource extends Resource
     protected static ?string $activeNavigationIcon = 'icon-core.fill.trophy';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ManageSkills::route('/'),
+        ];
+    }
+
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema(Forms\SkillFormSchemes::getOptions());
+        return $form->schema(Forms\SkillFormSchemes::getOptions());
     }
 
     public static function table(Table $table): Table
     {
-        DefaultOptions::getColumnConfigs();
+        DefaultOptions::getColumnConfigs(['alignment' => 'center']);
         return $table
             ->deferLoading()
             ->extremePaginationLinks()
@@ -37,12 +49,5 @@ class SkillResource extends Resource
             ->filters(Tables\SkillTableFilters::getOptions())
             ->actions(Tables\SkillTableActions::getOptions())
             ->bulkActions(Tables\SkillTableBulkActions::getOptions());
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ManageSkills::route('/'),
-        ];
     }
 }

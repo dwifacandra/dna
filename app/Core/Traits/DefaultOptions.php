@@ -26,7 +26,7 @@ trait DefaultOptions
         });
     }
 
-    public static function getDefaultHeaderActions($slideOver = false): array
+    public static function getDefaultHeaderActions($slideOver = false, $moreActions = []): array
     {
         return [
             CreateAction::make()
@@ -36,6 +36,7 @@ trait DefaultOptions
                 ->stickyModalHeader()
                 ->stickyModalFooter()
                 ->createAnother(false),
+            ...$moreActions,
         ];
     }
 

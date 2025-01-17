@@ -16,6 +16,20 @@ class UserResource extends Resource
     protected static ?int $navigationSort = 1;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ManageUsers::route('/'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\AccountsRelationManager::class,
+        ];
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,19 +49,5 @@ class UserResource extends Resource
             ->filters(Tables\UserTableFilters::getOptions())
             ->actions(Tables\UserTableActions::getOptions())
             ->bulkActions(Tables\UserTableBulkActions::getOptions());
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ManageUsers::route('/'),
-        ];
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            RelationManagers\AccountsRelationManager::class,
-        ];
     }
 }

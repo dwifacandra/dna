@@ -2,9 +2,11 @@
 
 namespace App\Core\Clusters\Resumes\Resources\SkillResource\Pages;
 
+use App\Core\Clusters\Resumes\Resources\SkillCategoryResource;
+use Filament\Actions\Action;
 use App\Core\Traits\DefaultOptions;
-use App\Core\Clusters\Resumes\Resources\SkillResource;
 use Filament\{Resources\Pages\ManageRecords};
+use App\Core\Clusters\Resumes\Resources\SkillResource;
 
 class ManageSkills extends ManageRecords
 {
@@ -22,6 +24,12 @@ class ManageSkills extends ManageRecords
 
     protected function getHeaderActions(): array
     {
-        return DefaultOptions::getDefaultHeaderActions();
+        return DefaultOptions::getDefaultHeaderActions(false, [
+            Action::make('Category')
+                ->icon('fa.solid.hashtag')
+                ->iconSize('sm')
+                ->color('gray')
+                ->url(SkillCategoryResource::getUrl())
+        ]);
     }
 }
