@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
 
         $user = User::firstOrCreate(
             [
-                'email' => 'admin@dna.test',
+                'email' => 'aditya@dna.test',
             ],
             [
-                'name' => 'Administrator',
+                'name' => 'Aditya Dwifacandra Nugraha',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
