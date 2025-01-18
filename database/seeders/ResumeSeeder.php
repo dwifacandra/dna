@@ -18,12 +18,6 @@ class ResumeSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create('id_ID');
-        // Create the Administrator user if it does not exist
-        User::firstOrCreate([
-            'email' => 'admin@dna.test',
-        ], [
-            'name' => 'Administrator',
-        ]);
 
         // ResumeCompany Seeder
         $companies = [

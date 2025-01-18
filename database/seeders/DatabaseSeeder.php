@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
         $user = User::firstOrCreate(
             [
                 'email' => 'aditya@dna.test',
-            ],
-            [
                 'name' => 'Aditya Dwifacandra Nugraha',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
