@@ -11,6 +11,7 @@ use App\Models\ResumeCompany;
 use Illuminate\Database\Seeder;
 use App\Core\Enums\LocationType;
 use App\Models\ResumeExperience;
+use App\Models\ResumeSkillCategory;
 
 class ResumeSeeder extends Seeder
 {
@@ -408,6 +409,7 @@ class ResumeSeeder extends Seeder
 
             ResumeSkill::firstOrCreate([
                 'user_id' => 1,
+                'category_id' => ResumeSkillCategory::inRandomOrder()->first()->id,
                 'name' => ucfirst($skillName),
                 'rate' => $faker->randomElement(Rate::cases()),
                 'icon' => 'dev.' . $skillName,
