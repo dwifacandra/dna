@@ -2,13 +2,23 @@
 
 namespace App\Core\Traits;
 
-use Filament\Navigation\NavigationItem;
+use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationBuilder;
 use App\Core\Clusters\{Projects, Peoples, Resumes, Developments};
-use Filament\Pages\Auth\EditProfile;
 
 trait Navigations
 {
+    public static function getTopNavigations(): Collection
+    {
+        return collect([
+            [
+                'url' => route('landing-page'),
+                'icon' => 'core.fill.home',
+                'active' => true,
+            ],
+        ]);
+    }
+
     public static function getNavigations()
     {
         return function (NavigationBuilder $builder): NavigationBuilder {

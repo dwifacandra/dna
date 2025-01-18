@@ -26,8 +26,17 @@
 .fi-topbar > nav a {@apply text-white;}
 .fi-topbar > nav [x-persist="topbar.end"] {@apply gap-x-2;}
 .fi-topbar > nav .fi-user-avatar {@apply rounded-full;}
-.fi-topbar > nav .fi-topbar-item {@apply px-4 cursor-pointer hover:bg-slate-600;}
-.fi-topbar > nav .fi-topbar-item-active {@apply bg-slate-500;}
+.fi-topbar > nav .fi-topbar-item {@apply cursor-pointer hover:bg-slate-600 leading-[45px];}
+.fi-topbar > nav .fi-topbar-item-label {
+    @apply
+    text-sm font-medium
+    flex justify-between items-center
+    gap-x-3 px-3 py-3
+    capitalize;
+}
+.fi-topbar > nav .fi-topbar-item-label-icon {@apply size-5 text-white/95;}
+.fi-topbar > nav .fi-topbar-item-label-icon path {@apply fill-current;}
+.fi-topbar > nav .fi-topbar-item-active {@apply bg-slate-700;}
 
 /* Sidebar */
 .fi-sidebar-nav {@apply bg-white;}

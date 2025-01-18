@@ -6,6 +6,7 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Support\ServiceProvider;
 use Filament\Support\Facades\FilamentIcon;
 use Filament\Support\Facades\FilamentView;
+use App\Core\Components\Layouts\Navbar\PanelNavigation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         ]);
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_START,
-            fn() => view('core.components.layouts.navbar.panel-navigation')
+            fn() => \Livewire\Livewire::mount(PanelNavigation::class)
         );
     }
 

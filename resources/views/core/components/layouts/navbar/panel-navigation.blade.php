@@ -1,8 +1,16 @@
 <ul class="items-center hidden lg:flex fi-topbar">
-    <li class="fi-topbar-item fi-topbar-item-active">
-        <a href="" class="text-sm font-medium fi-topbar-item-label">Landing</a>
+    @foreach($navigations as $navigation)
+    <li
+        class="fi-topbar-item {{ isset($navigation['active']) && $navigation['active'] ? 'fi-topbar-item-active' : '' }}">
+        <a class="fi-topbar-item-label {{ isset($navigation['icon-position']) && $navigation['icon-position'] ? 'flex-row-reverse' : '' }}"
+            href="{{ $navigation['url'] }}">
+            @if(isset($navigation['icon']))
+            <x-icon class="fi-topbar-item-label-icon" name="{{ $navigation['icon'] }}" />
+            @endif
+            @if(isset($navigation['label']))
+            {{ $navigation['label'] }}
+            @endif
+        </a>
     </li>
-    <li class="fi-topbar-item">
-        <a href="" class="text-sm font-medium fi-topbar-item-label">Finances</a>
-    </li>
+    @endforeach
 </ul>
