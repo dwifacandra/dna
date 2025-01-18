@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectCategory extends Model
+class Category extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
+        'scope',
     ];
 
     public function projects()
@@ -16,8 +20,8 @@ class ProjectCategory extends Model
         return $this->hasMany(Project::class, 'category_id');
     }
 
-    public function getTotalAttribute()
+    public function skills()
     {
-        return $this->projects()->count();
+        return $this->hasMany(ResumeSkill::class);
     }
 }

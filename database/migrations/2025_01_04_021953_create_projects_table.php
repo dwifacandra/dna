@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('thumbnail', 255)->nullable();
             $table->foreignId('category_id')
                 ->nullable()
-                ->constrained('project_categories')
+                ->constrained('categories')
                 ->onDelete('set null')
                 ->onUpdate('cascade');
             $table->foreignId('user_id')
@@ -38,18 +38,10 @@ return new class extends Migration
                 ->onUpdate('cascade');
             $table->timestamps();
         });
-
-        Schema::create('project_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100);
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
     }
 
     public function down(): void
     {
         Schema::dropIfExists('projects');
-        Schema::dropIfExists('project_categories');
     }
 };

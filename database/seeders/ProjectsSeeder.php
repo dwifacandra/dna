@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Core\Enums\ProjectPriority;
+use App\Models\Category;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Storage;
 use App\Core\Enums\ProjectStatus;
+use App\Core\Enums\ProjectPriority;
+use Illuminate\Support\Facades\Storage;
 use App\Models\{Customer, Project, ProjectCategory};
 
 class ProjectsSeeder extends Seeder
@@ -24,20 +25,8 @@ class ProjectsSeeder extends Seeder
             ]);
         }
 
-        $categories = [
-            ['name' => 'Development'],
-            ['name' => 'Design'],
-            ['name' => 'Marketing'],
-            ['name' => 'Research'],
-            ['name' => 'Management'],
-        ];
-
-        foreach ($categories as $category) {
-            ProjectCategory::firstOrCreate($category);
-        }
-
         $customers = Customer::all();
-        $categoryIds = ProjectCategory::pluck('id');
+        $categories = Category::where('scope', 'project')->get();
         $thumbnailPath = public_path('storage/projects/thumbnail');
         $thumbnails = array_diff(scandir($thumbnailPath), ['..', '.']);
 
@@ -55,7 +44,7 @@ class ProjectsSeeder extends Seeder
                 'priority' => $this->getRandomProjectPriority(),
                 'user_id' => 1,
                 'customer_id' => $customers->random()->id,
-                'category_id' => $categoryIds->random(),
+                'category_id' => $categories->random()->id,
                 'budget' => $faker->numberBetween(100000, 10000000),
                 'publish_to_portfolio' => $faker->boolean,
                 'thumbnail' => asset("storage/projects/thumbnail/{$randomThumbnail}"),

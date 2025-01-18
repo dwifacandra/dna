@@ -47,7 +47,7 @@ class Project extends Model
 
     public function category()
     {
-        return $this->belongsTo(ProjectCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function scopeCountByStatus(Builder $query, $statuses)

@@ -4,6 +4,7 @@ namespace App\Core\Clusters\Projects\Resources\ProjectResource\Forms;
 
 use Filament\Support\RawJs;
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
+use App\Core\Clusters\Projects\Resources\ProjectCategoryResource\Forms\ProjectCategoryFormSchemes;
 use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, FileUpload, Toggle, MarkdownEditor, Select};
 
 class ProjectFormSchemes
@@ -28,6 +29,7 @@ class ProjectFormSchemes
                 ->schema([
                     Select::make('category_id')
                         ->relationship('category', 'name')
+                        ->manageOptionForm(ProjectCategoryFormSchemes::getOptions())
                         ->required()
                         ->native(false),
                     Select::make('priority')

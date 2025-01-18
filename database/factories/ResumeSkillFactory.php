@@ -1,0 +1,295 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Core\Enums\Rate;
+use App\Models\{Category, ResumeSkill};
+use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ResumeSkillFactory extends Factory
+{
+    protected $model = ResumeSkill::class;
+
+    public function definition()
+    {
+        $faker = app(Faker::class);
+
+        $skillName = strtolower($faker->randomElement($this->getSkillNames()));
+        $iconPathDev = resource_path("svg/dev/{$skillName}.svg");
+        $iconPathCore = resource_path("svg/core/{$skillName}.svg");
+
+        return [
+            'user_id' => 1,
+            'category_id' => Category::where('scope', 'resume_skill')->inRandomOrder()->first()->id,
+            'name' => ucfirst($skillName),
+            'rate' => $faker->randomElement(Rate::cases()),
+            'icon' => $this->getIcon($iconPathDev, $iconPathCore, $skillName),
+            'icon_color' => $this->getIconColor($skillName),
+        ];
+    }
+
+    public function createSampleSkills($count = 20)
+    {
+        for ($i = 0; $i < $count; $i++) {
+            ResumeSkill::firstOrCreate($this->definition());
+        }
+    }
+
+    protected function getSkillNames()
+    {
+        return [
+            'aarch64',
+            'aftereffects',
+            'android',
+            'androidstudio',
+            'angularjs',
+            'ansible',
+            'apache',
+            'appwrite',
+            'arduino',
+            'argocd',
+            'azure',
+            'babel',
+            'backbonejs',
+            'bash',
+            'behance',
+            'bootstrap',
+            'bower',
+            'bulma',
+            'c',
+            'cakephp',
+            'centos',
+            'ceylon',
+            'chrome',
+            'circleci',
+            'clojurescript',
+            'cmake',
+            'codecov',
+            'codeigniter',
+            'codepen',
+            'couchdb',
+            'cplusplus',
+            'csharp',
+            'css3',
+            'cucumber',
+            'd3js',
+            'dart',
+            'debian',
+            'devicon',
+            'digitalocean',
+            'discordjs',
+            'django',
+            'docker',
+            'doctrine',
+            'dot-net',
+            'dotnetcore',
+            'dropwizard',
+            'drupal',
+            'eleventy',
+            'elixir',
+            'elm',
+            'embeddedc',
+            'erlang',
+            'facebook',
+            'fastapi',
+            'fedora',
+            'figma',
+            'filezilla',
+            'firebase',
+            'firefox',
+            'flutter',
+            'foundation',
+            'fsharp',
+            'gatling',
+            'gatsby',
+            'gcc',
+            'gentoo',
+            'gimp',
+            'git',
+            'gitlab',
+            'gitter',
+            'go',
+            'godot',
+            'google',
+            'googlecloud',
+            'gradle',
+            'grails',
+            'graphql',
+            'groovy',
+            'grunt',
+            'gulp',
+            'haskell',
+            'haxe',
+            'heroku',
+            'html5',
+            'hugo',
+            'illustrator',
+            'inkscape',
+            'intellij',
+            'jasmine',
+            'java',
+            'javascript',
+            'jeet',
+            'jenkins',
+            'jest',
+            'jetbrains',
+            'jira',
+            'jquery',
+            'julia',
+            'jupyter',
+            'karma',
+            'kotlin',
+            'krakenjs',
+            'kubernetes',
+            'labview',
+            'laravel',
+            'linkedin',
+            'linux',
+            'lua',
+            'materialui',
+            'matlab',
+            'maya',
+            'meteor',
+            'microsoftsqlserver',
+            'minitab',
+            'mocha',
+            'modx',
+            'mongodb',
+            'moodle',
+            'msdos',
+            'mysql',
+            'neo4j',
+            'nestjs',
+            'nixos',
+            'nodejs',
+            'nodewebkit',
+            'nuxtjs',
+            'objectivec',
+            'ocaml',
+            'openal',
+            'opencv',
+            'opengl',
+            'opensuse',
+            'opera',
+            'perl',
+            'phalcon',
+            'phoenix',
+            'photoshop',
+            'php',
+            'phpstorm',
+            'podman',
+            'polygon',
+            'postgresql',
+            'premierepro',
+            'processing',
+            'protractor',
+            'putty',
+            'pycharm',
+            'pytest',
+            'python',
+            'r',
+            'rails',
+            'rect',
+            'redhat',
+            'redis',
+            'rocksdb',
+            'rstudio',
+            'ruby',
+            'rubymine',
+            'rust',
+            'safari',
+            'salesforce',
+            'scala',
+            'sdl',
+            'sequelize',
+            'shotgrid',
+            'slack',
+            'solidity',
+            'spring',
+            'spss',
+            'sqlalchemy',
+            'sqlite',
+            'storybook',
+            'svelte',
+            'swift',
+            'tailwindcss',
+            'terraform',
+            'thealgorithms',
+            'tortoisegit',
+            'towergit',
+            'travis',
+            'trello',
+            'typescript',
+            'typo3',
+            'ubuntu',
+            'uwsgi',
+            'vagrant',
+            'vim',
+            'visualstudio',
+            'vscode',
+            'vuejs',
+            'vuestorefront',
+            'vuetify',
+            'weblate',
+            'webpack',
+            'webstorm',
+            'woocommerce',
+            'wordpress',
+            'xcode',
+            'xd',
+            'yii'
+        ];
+    }
+
+    protected function getIcon($iconPathDev, $iconPathCore, $skillName)
+    {
+        if (file_exists($iconPathDev)) {
+            return 'dev.' . $skillName;
+        } elseif (file_exists($iconPathCore)) {
+            return 'core.' . $skillName;
+        } else {
+            return 'core.color.git';
+        }
+    }
+
+    protected function getIconColor($skillName)
+    {
+        $iconColors = [
+            'android' => '#3DDC84',
+            'angularjs' => '#DD0031',
+            'apache' => '#D22128',
+            'apple' => '#000000',
+            'aws' => '#FF9900',
+            'bootstrap' => '#7952B3',
+            'css3' => '#1572B6',
+            'docker' => '#2496ED',
+            'facebook' => '#1877F2',
+            'firebase' => '#FFCA28',
+            'git' => '#F05032',
+            'github' => '#181717',
+            'gitlab' => '#FC6D26',
+            'google' => '#4285F4',
+            'html5' => '#E34F26',
+            'java' => '#007396',
+            'javascript' => '#F7DF1E',
+            'laravel' => '#FF2D20',
+            'linux' => '#FCC624',
+            'mongodb' => '#47A248',
+            'mysql' => '#4479A1',
+            'nodejs' => '#339933',
+            'php' => '#777BB4',
+            'postgresql' => '#336791',
+            'python' => '#3776AB',
+            'react' => '#61DAFB',
+            'redis' => '#DC382D',
+            'ruby' => '#CC342D',
+            'spring' => '#6DB33F',
+            'tailwindcss' => '#06B6D4',
+            'typescript' => '#3178C6',
+            'vuejs' => '#4FC08D',
+        ];
+
+        return $iconColors[strtolower($skillName)] ?? '#000000';
+    }
+}

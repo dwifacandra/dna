@@ -26,7 +26,7 @@ class ManageSkills extends ManageRecords
     {
         return DefaultOptions::getDefaultHeaderActions(false, [
             Action::make('Category')
-                ->icon('fa.solid.hashtag')
+                ->icon('core.outline.page_info')
                 ->iconSize('sm')
                 ->color('gray')
                 ->url(SkillCategoryResource::getUrl())

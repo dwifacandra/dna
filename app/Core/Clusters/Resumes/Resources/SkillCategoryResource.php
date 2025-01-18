@@ -2,8 +2,9 @@
 
 namespace App\Core\Clusters\Resumes\Resources;
 
-use App\Models\ResumeSkillCategory;
+use App\Models\Category;
 use App\Core\{Clusters\Resumes, Traits\DefaultOptions};
+use Illuminate\Database\Eloquent\Builder;
 use Filament\{
     Forms\Form,
     Tables\Table,
@@ -16,7 +17,7 @@ use App\Core\Clusters\Resumes\Resources\SkillCategoryResource\{Pages, Forms, Tab
 class SkillCategoryResource extends Resource
 {
     protected static ?string $cluster = Resumes::class;
-    protected static ?string $model = ResumeSkillCategory::class;
+    protected static ?string $model = Category::class;
     protected static ?string $modelLabel = 'Skill Category';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationLabel = 'Categories';
@@ -24,6 +25,10 @@ class SkillCategoryResource extends Resource
     protected static bool $shouldRegisterNavigation = false;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('scope', 'resume_skill');
+    }
 
     public static function getPages(): array
     {

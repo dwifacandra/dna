@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Core\Enums\Rate;
-use App\Helpers\IconSVG;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,7 +38,7 @@ class ResumeSkill extends Model
 
     public function category()
     {
-        return $this->belongsTo(ResumeSkillCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function setRateAttribute($value)

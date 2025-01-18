@@ -39,13 +39,6 @@ class CreateResumeTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('resume_skill_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('resume_skills', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
@@ -53,7 +46,7 @@ class CreateResumeTables extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreignId('category_id')
-                ->constrained('resume_skill_categories')
+                ->constrained('categories')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('name', 50);
@@ -68,7 +61,6 @@ class CreateResumeTables extends Migration
     {
         Schema::dropIfExists('resume_companies');
         Schema::dropIfExists('resume_experiences');
-        Schema::dropIfExists('resume_skill_categories');
         Schema::dropIfExists('resume_skills');
     }
 }
