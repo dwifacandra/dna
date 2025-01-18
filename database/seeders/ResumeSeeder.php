@@ -194,6 +194,24 @@ class ResumeSeeder extends Seeder
                 'end_date' => ($endDate = $faker->optional(0.7)->dateTimeBetween('-1 year', 'now')) ? $endDate->format('Y-m-d') : null,
             ]);
         }
+
+        $categories = [
+            ['name' => 'Programming'],
+            ['name' => 'Design'],
+            ['name' => 'Marketing'],
+            ['name' => 'Data Analysis'],
+            ['name' => 'Project Management'],
+            ['name' => 'Writing'],
+            ['name' => 'Sales'],
+            ['name' => 'Customer Service'],
+            ['name' => 'Finance'],
+            ['name' => 'Human Resources'],
+        ];
+
+        foreach ($categories as $category) {
+            ResumeSkillCategory::create($category);
+        }
+
         // ResumeSkill Seeder
         $skillNames = [
             'aarch64',
