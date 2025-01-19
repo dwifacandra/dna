@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\{File, Cache};
 
 class CoreIcon
 {
-    public function getIcons()
+    public static function getIcons()
     {
         return Cache::remember('core_icon', 60, function () {
             $path = resource_path('svg');

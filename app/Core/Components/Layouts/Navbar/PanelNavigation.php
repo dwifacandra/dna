@@ -13,6 +13,7 @@ class PanelNavigation extends Component
     {
         $this->navigations = Navigations::getTopNavigations();
     }
+
     public function render()
     {
         return view('core.components.layouts.navbar.panel-navigation');

@@ -2,17 +2,17 @@
 
 namespace App\Core\Clusters\Resumes\Resources\SkillResource\Forms;
 
-use Filament\Forms\Get;
 use Illuminate\Support\Facades\Auth;
-use App\Core\Components\Forms\{PreviewIcon, RangeSlider};
+use Filament\Forms\Get;
 use Filament\Forms\Components\{TextInput, Hidden, Select, ColorPicker,  Grid};
+use App\Core\Components\Forms\{PreviewIcon, RangeSlider};
+use App\Core\{Enums\Rate, Helpers\CoreIcon};
 use App\Core\Clusters\Resumes\Resources\SkillCategoryResource\Forms\SkillCategoryFormSchemes;
 
 class SkillFormSchemes
 {
     public static function getOptions(): array
     {
-        $icons = app()->make('App\Core\Helpers\CoreIcon')->getIcons();
         return [
             Hidden::make('user_id')->default(Auth::user()->id),
             TextInput::make('name')->required(),
@@ -26,7 +26,7 @@ class SkillFormSchemes
             RangeSlider::make('rate')
                 ->default(5)
                 ->afterStateUpdated(function ($state, $set) {
-                    $rateEnum = \App\Core\Enums\Rate::from($state);
+                    $rateEnum = Rate::from($state);
                     $set('rate_color', $rateEnum->getColorHex());
                 }),
             Grid::make([
@@ -38,7 +38,7 @@ class SkillFormSchemes
                     ->searchable()
                     ->reactive()
                     ->required()
-                    ->options(array_combine($icons, $icons))
+                    ->options(CoreIcon::getIcons())
                     ->afterStateUpdated(function ($set, $state, $get) {
                         $set('icon_preview', $state . ':' . $get('icon_color'));
                     }),

@@ -15,7 +15,6 @@ class IconResource extends Resource
     protected static ?string $recordTitleAttribute = 'name';
     protected static ?string $navigationIcon = 'icon-core.outline.fonticons';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.fonticons';
-    protected static ?string $navigationParentItem = 'Developments';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
 

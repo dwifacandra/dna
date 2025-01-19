@@ -2,21 +2,16 @@
 
 namespace App\Core\Traits;
 
+use App\Models\Navigation;
 use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationBuilder;
-use App\Core\Clusters\{Projects, Peoples, Resumes, Developments};
+use App\Core\Clusters\{Projects, Peoples, Resumes, Developments, Settings};
 
 trait Navigations
 {
     public static function getTopNavigations(): Collection
     {
-        return collect([
-            [
-                'url' => route('landing-page'),
-                'icon' => 'core.fill.home',
-                'active' => true,
-            ],
-        ]);
+        return Navigation::TopNavigations()->get();
     }
 
     public static function getNavigations()
@@ -35,6 +30,7 @@ trait Navigations
             Peoples::NavigationItems(),
             Resumes::NavigationItems(),
             Developments::NavigationItems(),
+            Settings::NavigationItems(),
         ];
     }
 
