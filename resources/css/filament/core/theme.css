@@ -53,7 +53,7 @@
 .fi-header div + div .fi-ac {@apply gap-2 flex-row-reverse;}
 
 /* Breadcrumb */
-.fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-10;}
+.fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-20;}
 .fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item *{ @apply text-black;}
 
 /* Heading */
@@ -76,15 +76,11 @@
 .fi-page-sub-navigation-sidebar-ctn + div { @apply max-h-max;}
 
 /* Table */
-.fi-ta thead {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
+.fi-ta thead {@apply sticky top-0 z-10;}
 .fi-ta-table thead tr {@apply bg-slate-800 shadow-md;}
 .fi-ta-header {@apply gap-2;}
 .fi-ta-header-toolbar {@apply py-2 px-4;}
-.fi-ta-header-cell {@apply p-0 hover:bg-slate-700;}
+.fi-ta-header-cell {@apply !px-0 !py-2 hover:bg-slate-700;}
 .fi-ta-header-cell button {@apply justify-between px-4}
 .fi-ta-header-cell-label {@apply text-white flex-1;}
 .fi-ta-header-cell-sort-icon {@apply group-hover:text-white/90 group-focus-visible:text-white/90 text-white;}
@@ -92,9 +88,11 @@
 .fi-ta-group-header {@apply shadow-md bg-gray-100}
 .fi-ta-group-selection-cell {@apply border-l-0 bg-gray-100}
 .fi-ta-selection-cell {@apply border-l-0}
-.fi-ta-selection-indicator {@apply absolute shadow-lg bg-white border p-3 min-w-96 top-0 right-0 z-10 gap-x-10 rounded-sm}
+.fi-ta-selection-cell > div {@apply py-0}
+.fi-ta-selection-indicator {@apply bg-white py-1 rounded-sm}
 .fi-table-header-group-cell div {@apply justify-center;}
-.fi-ta-content { @apply relative h-[60vh];}
+.fi-ta-content { @apply relative h-[70vh];}
+.fi-pagination {@apply p-2;}
 
 /* Modal */
 .fi-modal-footer-actions .fi-btn-color-secondary {@apply bg-success-700 hover:bg-success-600;}
@@ -121,7 +119,7 @@
 /* Media >768px */
 @media (min-width: 768px) {
 	.fi-sidebar {
-		@apply w-10 z-10;
+		@apply w-10 z-30;
 	}
 	.fi-sidebar-open {
 		@apply !w-1/6;
