@@ -46,7 +46,7 @@ class ProjectResource extends Resource
 
     public static function table(Table $table): Table
     {
-        DefaultOptions::getColumnConfigs();
+        DefaultOptions::getColumnConfigs(['alignment' => 'center']);
         return $table
             ->deferLoading()
             ->extremePaginationLinks()

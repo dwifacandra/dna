@@ -23,7 +23,9 @@
 /* Topbar */
 .fi-topbar > nav {@apply bg-slate-800 text-white h-[45px] leading-[45px] md:pl-0 px-4;}
 .fi-topbar > nav .fi-icon-btn {@apply text-white;}
-.fi-topbar > nav a {@apply text-white;}
+.fi-topbar > nav a {@apply text-white relative;}
+.fi-topbar > nav a .tooltip {@apply invisible bg-white fixed top-11 text-black shadow-xl font-light text-sm px-4 py-1.5 rounded-sm;}
+.fi-topbar > nav a:hover .tooltip {@apply visible;}
 .fi-topbar > nav [x-persist="topbar.end"] {@apply gap-x-2;}
 .fi-topbar > nav .fi-user-avatar {@apply rounded-full;}
 .fi-topbar > nav .fi-topbar-item {@apply cursor-pointer hover:bg-slate-600 leading-[45px];}
@@ -53,7 +55,7 @@
 .fi-header div + div .fi-ac {@apply gap-2 flex-row-reverse;}
 
 /* Breadcrumb */
-.fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-20;}
+.fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-10;}
 .fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item *{ @apply text-black;}
 
 /* Heading */
@@ -76,7 +78,7 @@
 .fi-page-sub-navigation-sidebar-ctn + div { @apply max-h-max;}
 
 /* Table */
-.fi-ta thead {@apply sticky top-0 z-10;}
+.fi-ta thead {@apply sticky top-0 z-[5];}
 .fi-ta-table thead tr {@apply bg-slate-800 shadow-md;}
 .fi-ta-header {@apply gap-2;}
 .fi-ta-header-toolbar {@apply py-2 px-4;}
@@ -119,7 +121,7 @@
 /* Media >768px */
 @media (min-width: 768px) {
 	.fi-sidebar {
-		@apply w-10 z-30;
+		@apply w-10 z-10;
 	}
 	.fi-sidebar-open {
 		@apply !w-1/6;
@@ -154,7 +156,5 @@
 	.fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {
 		@apply px-4;
 	}
-	.fi-dropdown-panel {
-		z-index: 40 !important;
-	}
+	.fi-dropdown-panel {@apply z-[11]}
 }

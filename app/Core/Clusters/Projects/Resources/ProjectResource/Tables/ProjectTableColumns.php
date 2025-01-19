@@ -3,7 +3,8 @@
 namespace App\Core\Clusters\Projects\Resources\ProjectResource\Tables;
 
 use Illuminate\Support\Str;
-use Filament\Tables\Columns\{Layout\Split, IconColumn, ImageColumn, TextColumn};
+use Filament\Support\Enums\Alignment;
+use Filament\Tables\Columns\{IconColumn, ImageColumn, TextColumn};
 
 class ProjectTableColumns
 {
@@ -14,6 +15,7 @@ class ProjectTableColumns
                 ->defaultImageUrl(url('/img/image.svg'))
                 ->size(64),
             TextColumn::make('name')
+                ->alignment(Alignment::Left)
                 ->description(
                     fn($record) => Str::limit(strip_tags(
                         $record->description
