@@ -5,12 +5,10 @@ namespace App\Core\Clusters\Projects\Resources\ProjectResource\Pages;
 use App\Core\Traits\DefaultOptions;
 use Filament\{Resources\Pages\ManageRecords};
 use App\Core\Clusters\Projects\Resources\ProjectResource;
-use AymanAlhattami\FilamentContextMenu\Traits\PageHasContextMenu;
-use App\Core\Clusters\Projects\Resources\ProjectResource\Widgets\MonthlyBudgetChart;
+use App\Core\Clusters\Projects\Resources\ProjectResource\Widgets\TotalProjects;
 
 class ManageProjects extends ManageRecords
 {
-    use PageHasContextMenu;
     protected static string $resource = ProjectResource::class;
 
     public function getBreadcrumbs(): array
@@ -31,7 +29,7 @@ class ManageProjects extends ManageRecords
     protected function getHeaderWidgets(): array
     {
         return [
-            MonthlyBudgetChart::class,
+            TotalProjects::class,
         ];
     }
 }

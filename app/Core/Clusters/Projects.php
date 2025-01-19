@@ -4,7 +4,7 @@ namespace App\Core\Clusters;
 
 use Filament\Clusters\Cluster;
 use Filament\Navigation\NavigationGroup;
-use App\Core\Clusters\Projects\Resources\{ProjectResource};
+use App\Core\Clusters\Projects\Resources\{ProjectResource, PortfolioResource};
 
 class Projects extends Cluster
 {
@@ -18,6 +18,7 @@ class Projects extends Cluster
             ->collapsed()
             ->items([
                 ...ProjectResource::getNavigationItems(),
+                ...PortfolioResource::getNavigationItems(),
             ]);
     }
 }

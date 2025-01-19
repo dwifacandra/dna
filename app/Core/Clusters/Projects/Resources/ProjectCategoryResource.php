@@ -13,20 +13,26 @@ class ProjectCategoryResource extends Resource
     protected static ?string $cluster = Projects::class;
     protected static ?string $model = Category::class;
     protected static ?string $modelLabel = 'Category';
-    protected static ?string $navigationIcon = 'icon-core.outline.page_info';
+    protected static ?string $navigationIcon = 'icon-core.outline.category';
+    protected static ?string $activeNavigationIcon = 'icon-core.fill.category';
     protected static ?string $navigationLabel = 'Categories';
     protected static ?string $slug = 'categories';
     protected static ?int $navigationSort = 2;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->where('scope', 'project');
-    }
-
     public static function getPages(): array
     {
         return ['index' => Pages\ManageProjectCategories::route('/')];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('scope', 'project');
     }
 
     public static function form(Form $form): Form

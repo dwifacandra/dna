@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Core\Clusters\Projects\Resources\ProjectResource\Widgets;
+namespace App\Core\Clusters\Projects\Resources\PortfolioResource\Widgets;
 
 use App\Models\Project;
 use Filament\Widgets\ChartWidget;
 use Filament\Support\RawJs;
 
-class MonthlyBudgetChart extends ChartWidget
+class BudgetPortfolioChart extends ChartWidget
 {
-    protected static ?string $heading = 'Total Budget Per Bulan';
-    protected static bool $isLazy = true;
-    protected static ?string $maxHeight = '10rem';
+    protected static ?string $maxHeight = '15rem';
 
     protected function getData(): array
     {
         $data = Project::selectRaw("strftime('%Y-%m', start_date) as month_year, SUM(budget) as total_budget")
+            ->where('publish_to_portfolio', true)
             ->groupBy('month_year')
             ->orderBy('month_year', 'desc')
             ->get();
@@ -31,10 +30,10 @@ class MonthlyBudgetChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Total Budget',
+                    'label' => 'Budget Portfolio',
                     'data' => $totalBudgets,
-                    'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
-                    'borderColor' => 'rgba(54, 162, 235, 1)',
+                    'backgroundColor' => '#ecfdf5',
+                    'borderColor' => '#0d9488',
                     'borderWidth' => 2,
                     'fill' => true,
                 ],
