@@ -41,6 +41,7 @@
         "APP_ENV": "production",
         "APP_DEBUG": "false",
         "APP_URL": "https://dwifacandra.web.id",
+        "APP_KEY":"base64:KngXvDLkRZv6bqcBEFVT3eJnCV893LPi3D75Gx4f6gg=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
