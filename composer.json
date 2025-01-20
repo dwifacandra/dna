@@ -13,7 +13,8 @@
         "google/apiclient": "^2.14",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "outerweb/filament-image-library": "^2.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

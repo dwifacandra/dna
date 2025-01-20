@@ -5,9 +5,10 @@ namespace App\Core\Traits;
 use App\Models\Navigation;
 use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationItem;
-use Filament\Navigation\NavigationBuilder;
-use App\Core\Clusters\{Projects, Peoples, Resumes, Developments, Settings};
 use App\Core\Resources\{GalleryResource};
+use Filament\Navigation\NavigationBuilder;
+use Outerweb\FilamentImageLibrary\Filament\Pages\ImageLibrary;
+use App\Core\Clusters\{Projects, Peoples, Resumes, Developments, Settings};
 
 trait Navigations
 {
@@ -39,11 +40,11 @@ trait Navigations
     public static function getItems()
     {
         return [
-            // NavigationItem::make('Gallery')
-            //     ->icon('core.outline.photo_library')
-            //     ->sort(5)
-            //     ->isActiveWhen(fn(): bool => request()->routeIs('filament.core.resources.galleries.index'))
-            //     ->url(fn(): string => GalleryResource::getUrl()),
+            NavigationItem::make('Gallery')
+                ->icon('core.outline.photo_library')
+                ->sort(5)
+                ->isActiveWhen(fn(): bool => request()->routeIs('filament.core.pages.image-library'))
+                ->url(fn(): string => ImageLibrary::getUrl()),
         ];
     }
 }
