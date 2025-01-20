@@ -4,8 +4,10 @@ namespace App\Core\Traits;
 
 use App\Models\Navigation;
 use Illuminate\Support\Collection;
+use Filament\Navigation\NavigationItem;
 use Filament\Navigation\NavigationBuilder;
 use App\Core\Clusters\{Projects, Peoples, Resumes, Developments, Settings};
+use App\Core\Resources\{GalleryResource};
 
 trait Navigations
 {
@@ -37,10 +39,11 @@ trait Navigations
     public static function getItems()
     {
         return [
-            // NavigationItem::make('Dashboard')
-            //     ->icon('heroicon-o-home')
-            //     ->isActiveWhen(fn(): bool => request()->routeIs('filament.admin.pages.dashboard'))
-            //     ->url(fn(): string => EditProfile::getUrl()),
+            // NavigationItem::make('Gallery')
+            //     ->icon('core.outline.photo_library')
+            //     ->sort(5)
+            //     ->isActiveWhen(fn(): bool => request()->routeIs('filament.core.resources.galleries.index'))
+            //     ->url(fn(): string => GalleryResource::getUrl()),
         ];
     }
 }
