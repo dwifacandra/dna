@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         $user = User::firstOrCreate(
@@ -27,6 +24,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
 
         $this->call([
+            NavigationSeeder::class,
             CategorySeeder::class,
             ResumeSeeder::class,
             ProjectsSeeder::class,

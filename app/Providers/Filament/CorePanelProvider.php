@@ -17,7 +17,6 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Outerweb\FilamentImageLibrary\Filament\Plugins\FilamentImageLibraryPlugin;
 
 class CorePanelProvider extends PanelProvider
 {
@@ -50,13 +49,6 @@ class CorePanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Core/Resources'), for: 'App\\Core\\Resources')
             ->discoverPages(in: app_path('Core/Pages'), for: 'App\\Core\\Pages')
             ->discoverWidgets(in: app_path('Core/Widgets'), for: 'App\\Core\\Widgets')
-            ->plugins([
-                FilamentImageLibraryPlugin::make()
-                    ->allowedDisks([
-                        'public' => 'Public images',
-                        'private' => 'Private images',
-                    ]),
-            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

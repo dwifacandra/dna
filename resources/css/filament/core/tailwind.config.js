@@ -5,6 +5,7 @@ export default {
     content: [
         './app/Filament/D:\Servers\dna\app\Core/**/*.php',
         './resources/views/filament/d:\-servers\dna\app\-core/**/*.blade.php',
+        "./vendor/outerweb/filament-image-library/resources/views/**/*.blade.php",
         './vendor/filament/**/*.blade.php',
     ],
 }

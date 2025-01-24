@@ -10,11 +10,11 @@
         "aymanalhattami/filament-context-menu": "^1.0",
         "calebporzio/sushi": "^2.4",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-media-library-plugin": "^3.2",
         "google/apiclient": "^2.14",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9",
-        "outerweb/filament-image-library": "^2.6"
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

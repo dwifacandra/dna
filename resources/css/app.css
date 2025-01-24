@@ -10,8 +10,7 @@
 }
 .light {
     @apply
-    bg-slate-200;
-
+    bg-gray-100;
 }
 .dark {
     @apply

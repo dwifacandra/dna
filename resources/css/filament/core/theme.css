@@ -100,8 +100,9 @@
 .fi-modal-footer-actions .fi-btn-color-secondary {@apply bg-success-700 hover:bg-success-600;}
 
 /* Widgets */
-.fi-wi-stats-overview-stats-ctn {@apply grid-cols-4;}
-.fi-resource-all .fi-wi-stats-overview-stats-ctn {@apply grid-cols-6 cursor-default select-none;}
+.fi-wi-stats-overview-stats-ctn {@apply grid-cols-2 md:grid-cols-4;}
+.fi-resource-projects .fi-wi-stats-overview-stats-ctn,
+.fi-wi-stats-overview-stats-ctn {@apply grid-cols-2 md:grid-cols-6 cursor-default select-none;}
 
 /* Slider */
 .slider {

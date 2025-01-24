@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Pages\Basic;
 use App\Core\Pages\LandingPage;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;

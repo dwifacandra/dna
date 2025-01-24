@@ -7,8 +7,7 @@ use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use App\Core\Enums\ProjectStatus;
 use App\Core\Enums\ProjectPriority;
-use Illuminate\Support\Facades\Storage;
-use App\Models\{Customer, Project, ProjectCategory};
+use App\Models\{Customer, Project};
 
 class ProjectsSeeder extends Seeder
 {
@@ -25,13 +24,13 @@ class ProjectsSeeder extends Seeder
             ]);
         }
 
-        $customers = Customer::all();
         $categories = Category::where('scope', 'project')->get();
-        $thumbnailPath = public_path('storage/projects/thumbnail');
-        $thumbnails = array_diff(scandir($thumbnailPath), ['..', '.']);
 
         foreach (range(1, 50) as $index) {
-            $randomThumbnail = $thumbnails[array_rand($thumbnails)];
+            $release = $faker->boolean;
+            $status = $release ? ProjectStatus::Done : $this->getRandomProjectStatus();
+            $price = $release ? $faker->numberBetween(100000, 10000000) : 0;
+            $featured = $release ? $faker->boolean : 0;
 
             Project::firstOrCreate([
                 'name' => $faker->sentence(2),
@@ -40,14 +39,13 @@ class ProjectsSeeder extends Seeder
                 'repository' => $faker->url,
                 'start_date' => $faker->dateTimeBetween('-1 year', 'now'),
                 'end_date' => $faker->dateTimeBetween('now', '+1 year'),
-                'status' => $this->getRandomProjectStatus(),
+                'status' => $status,
                 'priority' => $this->getRandomProjectPriority(),
                 'user_id' => 1,
-                'customer_id' => $customers->random()->id,
                 'category_id' => $categories->random()->id,
-                'budget' => $faker->numberBetween(100000, 10000000),
-                'publish_to_portfolio' => $faker->boolean,
-                'thumbnail' => asset("storage/projects/thumbnail/{$randomThumbnail}"),
+                'price' => $price,
+                'release' => $release,
+                'featured' => $featured,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

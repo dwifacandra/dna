@@ -12,7 +12,11 @@ class LandingPage extends Component
 
     public function mount()
     {
-        $this->projects = Project::where('publish_to_portfolio', 1)->orderBy('end_date', 'desc')->take(8)->get();
+        $this->projects = Project::where('release', true)
+            ->orderBy('featured', 'desc')
+            ->orderBy('end_date', 'desc')
+            ->take(8)
+            ->get();
     }
 
     public function render()

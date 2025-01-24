@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Project extends Model
+class Project extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -21,28 +24,31 @@ class Project extends Model
         'end_date',
         'status',
         'priority',
-        'budget',
-        'publish_to_portfolio',
-        'thumbnail',
+        'price',
+        'release',
+        'featured',
         'user_id',
-        'customer_id',
         'category_id',
     ];
 
     protected $casts = [
         'status' => ProjectStatus::class,
         'priority' => ProjectPriority::class,
-        'budget' => CurrencyCast::class,
+        'price' => CurrencyCast::class,
     ];
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('projects')
+            ->useFallbackUrl('/img/image.svg')
+            ->useFallbackPath(public_path('/img/image.svg'))
+            ->useDisk('public')
+            ->singleFile();
+    }
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
     }
 
     public function category()
@@ -68,6 +74,6 @@ class Project extends Model
 
     public function scopeCountPortfolio(Builder $query)
     {
-        return $query->where('publish_to_portfolio', 1)->count();
+        return $query->where('release', 1)->count();
     }
 }

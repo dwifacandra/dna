@@ -18,9 +18,9 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->string('status', 10)->nullable();
             $table->string('priority', 10)->nullable();
-            $table->decimal('budget', 10, 2)->nullable();
-            $table->boolean('publish_to_portfolio')->default(false);
-            $table->string('thumbnail', 255)->nullable();
+            $table->decimal('price', 10, 2)->nullable();
+            $table->boolean('release')->default(false);
+            $table->boolean('featured')->default(false);
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('categories')
@@ -29,11 +29,6 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->foreignId('customer_id')
-                ->nullable()
-                ->constrained('customers')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->timestamps();
