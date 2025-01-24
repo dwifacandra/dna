@@ -1,0 +1,21 @@
+<?php
+
+namespace {{ namespace }};
+
+use Filament\Clusters\Cluster;
+
+class {{ class }} extends Cluster
+{
+    protected static ?string $navigationIcon = 'icon-core.fill.frame_person';
+    protected static ?string $navigationLabel = '{{ class }}';
+
+    public static function NavigationItems()
+    {
+        return NavigationGroup::make(self::$navigationLabel)
+            ->icon(self::$navigationIcon)
+            ->collapsed()
+            ->items([
+                ...{{ class }}::getNavigationItems(),
+            ]);
+    }
+}

@@ -24,4 +24,9 @@ class Category extends Model
     {
         return $this->hasMany(ResumeSkill::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -19,9 +19,12 @@ class IconTableColumns
                     ->size('2xl'),
                 TextColumn::make('name')
                     ->copyable()
+                    ->copyMessage(fn(string $state): string => "Copied {$state}")
                     ->formatStateUsing(function ($state) {
-                        return Str::afterLast($state, '.');
+                        $lastPart = Str::afterLast($state, '.');
+                        return str_replace('_', ' ', $lastPart);
                     })
+                    ->lineClamp(1)
                     ->extraAttributes(['class' => 'pt-2 gap-y-0']),
             ])
         ];

@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationItem;
 use Filament\Navigation\NavigationBuilder;
 // use App\Core\Resources\{GalleryResource};
-use App\Core\Clusters\{Products, Peoples, Resumes, Developments, Settings};
+use App\Core\Clusters\{Products, Peoples, Resumes, Developments, Finances, Settings};
 
 trait Navigations
 {
@@ -29,6 +29,7 @@ trait Navigations
     {
         return [
             Products::NavigationItems(),
+            Finances::NavigationItems(),
             Peoples::NavigationItems(),
             Resumes::NavigationItems(),
             Developments::NavigationItems(),
