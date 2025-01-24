@@ -2,9 +2,10 @@
 
 namespace App\Core\Clusters\Settings\Resources\NavigationResource\Pages;
 
-use App\Core\Clusters\Settings\Resources\NavigationResource;
 use Filament\Actions;
+use App\Core\Traits\DefaultOptions;
 use Filament\Resources\Pages\ManageRecords;
+use App\Core\Clusters\Settings\Resources\NavigationResource;
 
 class ManageNavigations extends ManageRecords
 {
@@ -22,8 +23,6 @@ class ManageNavigations extends ManageRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return DefaultOptions::getDefaultHeaderActions();
     }
 }
