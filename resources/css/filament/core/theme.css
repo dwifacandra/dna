@@ -16,7 +16,7 @@
 .fi-sidebar-nav,
 .fi-breadcrumbs,
 .fi-wi-stats-overview-stat,
-.fi-ta,
+.fi-ta, .fi-tabs,
 .fi-page-sub-navigation-sidebar,
 .fi-page-sub-navigation-tabs {@apply shadow-md;}
 
@@ -67,7 +67,7 @@
 .fi-page section > div > div {@apply gap-4 relative;}
 
 /* Subnavigation Top */
-.fi-page-sub-navigation-tabs {@apply mx-0 p-0 gap-x-0;}
+.fi-page-sub-navigation-tabs,.fi-tabs {@apply mx-0 p-0 gap-x-0;}
 
 /* Subnavigation Sidebar*/
 .fi-page-sub-navigation-sidebar-ctn * {@apply gap-y-0;}
@@ -87,13 +87,13 @@
 .fi-ta-header-cell-label {@apply text-white flex-1;}
 .fi-ta-header-cell-sort-icon {@apply group-hover:text-white/90 group-focus-visible:text-white/90 text-white;}
 .fi-ta-cell {@apply border-l first-of-type:border-l-0 first-of-type:ps-0 last-of-type:pe-0}
-.fi-ta-group-header {@apply shadow-md bg-gray-100}
+.fi-ta-group-header {@apply shadow-md bg-gray-100 py-1}
 .fi-ta-group-selection-cell {@apply border-l-0 bg-gray-100}
 .fi-ta-selection-cell {@apply border-l-0}
 .fi-ta-selection-cell > div {@apply py-0}
 .fi-ta-selection-indicator {@apply bg-white py-1 rounded-sm}
 .fi-table-header-group-cell div {@apply justify-center;}
-.fi-ta-content { @apply relative h-[70vh];}
+.fi-ta-content {@apply relative h-[70vh];}
 .fi-pagination {@apply p-2;}
 
 /* Modal */
@@ -125,12 +125,8 @@
 
 /* Media >768px */
 @media (min-width: 768px) {
-	.fi-sidebar {
-		@apply w-10 z-10;
-	}
-	.fi-sidebar-open {
-		@apply !w-1/6;
-	}
+	.fi-sidebar {@apply w-10 z-10;}
+	.fi-sidebar-open {@apply !w-1/6;}
     .fi-sidebar-nav {
 		@apply !gap-y-1 p-0;
 		scrollbar-gutter: unset;
@@ -138,28 +134,13 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
-	.fi-sidebar-open .fi-sidebar-nav {
-		@apply p-6;
-	}
-	.fi-sidebar-open .fi-sidebar-nav-groups {
-		@apply !gap-y-2;
-	}
-	.fi-sidebar .fi-dropdown-panel {
-		offset-position: 0;
-	}
-	.fi-sidebar-nav-groups {
-		@apply !gap-y-0;
-	}
-	.fi-sidebar-item {
-		@apply px-0 gap-y-0;
-	}.fi-page-sub-navigation-sidebar-ctn {
-		@apply w-2/12 bg-white rounded-sm;
-	}
-	.fi-page-sub-navigation-sidebar-ctn * {
-		@apply gap-y-0;
-	}
-	.fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {
-		@apply px-4;
-	}
+	.fi-sidebar-open .fi-sidebar-nav {@apply p-6;}
+	.fi-sidebar-open .fi-sidebar-nav-groups {@apply !gap-y-2;}
+	.fi-sidebar .fi-dropdown-panel {offset-position: 0;}
+	.fi-sidebar-nav-groups {@apply !gap-y-0;}
+	.fi-sidebar-item {@apply px-0 gap-y-0;}
+    .fi-page-sub-navigation-sidebar-ctn {@apply w-2/12 bg-white rounded-sm;}
+	.fi-page-sub-navigation-sidebar-ctn * {@apply gap-y-0;}
+	.fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {@apply px-4;}
 	.fi-dropdown-panel {@apply z-[11]}
 }

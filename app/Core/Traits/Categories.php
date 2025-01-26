@@ -23,9 +23,9 @@ trait Categories
                 TextColumn::make('name')
                     ->size('2xl')
                     ->description(
-                        fn($record) => Str::limit(strip_tags(
+                        fn($record) => Str::words(strip_tags(
                             $record->description
-                        ), 100)
+                        ), 10, '...')
                     ),
             ])
         ];

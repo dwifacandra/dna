@@ -31,13 +31,11 @@ class CategoryFormSchemes
                 ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
                 ->addActionAlignment(Alignment::Start)
                 ->createItemButtonLabel('New Subcategories')
-                ->reorderable(false)
-
                 ->collapsible()
                 ->collapsed()
                 ->cloneable()
                 ->relationship('child')
-                ->visible(fn($record) => $record !== null)
+                ->defaultItems(0)
                 ->schema(RelationSubcategoryFormSchemes::getOptions())
                 ->grid(2),
         ];

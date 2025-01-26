@@ -12,7 +12,9 @@ class Category extends Model
         'description',
         'scope',
         'type',
-        'parent_id'
+        'parent_id',
+        'icon',
+        'icon_color',
     ];
     public function child()
     {
