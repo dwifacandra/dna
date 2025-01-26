@@ -2,12 +2,12 @@
 
 namespace App\Core\Clusters\Products\Resources\ProjectResource\Forms;
 
-use App\Models\Project;
 use Filament\Support\RawJs;
+use App\Core\Traits\Categories;
+use Illuminate\Database\Eloquent\Builder;
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use App\Core\Clusters\Products\Resources\ProjectCategoryResource\Forms\ProjectCategoryFormSchemes;
-use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, FileUpload, Toggle, MarkdownEditor, Select};
+use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, Toggle, MarkdownEditor, Select};
 
 class ProjectFormSchemes
 {
@@ -30,8 +30,12 @@ class ProjectFormSchemes
             Fieldset::make()
                 ->schema([
                     Select::make('category_id')
-                        ->relationship('category', 'name')
-                        ->manageOptionForm(ProjectCategoryFormSchemes::getOptions())
+                        ->relationship(
+                            name: 'category',
+                            titleAttribute: 'name',
+                            modifyQueryUsing: fn(Builder $query) => $query->where('scope', 'project'),
+                        )
+                        ->manageOptionForm(Categories::getFormSchemes('project'))
                         ->required()
                         ->native(false),
                     Select::make('priority')

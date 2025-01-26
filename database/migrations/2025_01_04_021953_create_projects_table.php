@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignId('category_id')
                 ->nullable()
                 ->constrained('categories')
-                ->onDelete('set null')
+                ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreignId('user_id')
                 ->nullable()

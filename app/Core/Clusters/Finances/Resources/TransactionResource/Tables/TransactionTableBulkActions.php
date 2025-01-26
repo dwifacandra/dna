@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Core\Clusters\Resumes\Resources\SkillCategoryResource\Tables;
+namespace App\Core\Clusters\Finances\Resources\TransactionResource\Tables;
 
 use App\Core\Traits\DefaultOptions;
 
-class SkillCategoryTableBulkActions {
+class TransactionTableBulkActions {
     public static function getOptions(): array
     {
        return DefaultOptions::getBulkActionGroups();

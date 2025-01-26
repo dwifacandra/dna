@@ -2,12 +2,12 @@
 
 namespace App\Core\Clusters\Resumes\Resources\SkillResource\Forms;
 
-use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Get;
-use Filament\Forms\Components\{TextInput, Hidden, Select, ColorPicker,  Grid};
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
+use App\Core\{Enums\Rate, Helpers\CoreIcon, Traits\Categories};
 use App\Core\Components\Forms\{PreviewIcon, RangeSlider};
-use App\Core\{Enums\Rate, Helpers\CoreIcon};
-use App\Core\Clusters\Resumes\Resources\SkillCategoryResource\Forms\SkillCategoryFormSchemes;
+use Filament\Forms\Components\{TextInput, Hidden, Select, ColorPicker,  Grid};
 
 class SkillFormSchemes
 {
@@ -17,12 +17,16 @@ class SkillFormSchemes
             Hidden::make('user_id')->default(Auth::user()->id),
             TextInput::make('name')->required(),
             Select::make('category_id')
-                ->label('Category')
-                ->relationship('category', 'name')
-                ->native(false)->searchable()
+                ->relationship(
+                    name: 'category',
+                    titleAttribute: 'name',
+                    modifyQueryUsing: fn(Builder $query) => $query->where('scope', 'resume_skill'),
+                )
+                ->manageOptionForm(Categories::getFormSchemes('resume_skill'))
+                ->native(false)
+                ->searchable()
                 ->required()
-                ->preload()
-                ->manageOptionForm(SkillCategoryFormSchemes::getOptions()),
+                ->preload(),
             RangeSlider::make('rate')
                 ->default(5)
                 ->afterStateUpdated(function ($state, $set) {

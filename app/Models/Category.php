@@ -13,7 +13,19 @@ class Category extends Model
         'name',
         'description',
         'scope',
+        'type',
+        'parent_id'
     ];
+
+    public function child()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 
     public function projects()
     {
@@ -28,5 +40,10 @@ class Category extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function getIsParentAttribute()
+    {
+        return is_null($this->parent_id) ? 'Category' : 'Subcategory';
     }
 }

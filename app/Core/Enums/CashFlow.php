@@ -2,13 +2,13 @@
 
 namespace App\Core\Enums;
 
-use Filament\Support\Expenses\{HasLabel, HasColor};
+use Filament\Support\Contracts\{HasLabel, HasColor};
 
 enum CashFlow: string implements HasLabel, HasColor
 {
-    case Income = 'Income';
-    case Expense = 'Expense';
-    case Transfer = 'Transfer';
+    case Income = 'income';
+    case Expense = 'expense';
+    case Transfer = 'transfer';
 
     public function getLabel(): string
     {
@@ -23,8 +23,8 @@ enum CashFlow: string implements HasLabel, HasColor
     {
         return match ($this) {
             self::Income => 'success',
-            self::Expense => 'info',
-            self::Transfer => 'warning',
+            self::Expense => 'danger',
+            self::Transfer => 'info',
         };
     }
 }

@@ -22,6 +22,6 @@ class ManageTransactions extends ManageRecords
 
     protected function getHeaderActions(): array
     {
-        return DefaultOptions::getDefaultHeaderActions();
+        return DefaultOptions::getDefaultHeaderActions(true);
     }
 }
