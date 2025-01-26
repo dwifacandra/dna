@@ -38,7 +38,9 @@ class CategoryResource extends Resource
     }
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('scope', static::$scope);
+        return parent::getEloquentQuery()
+            ->where('scope', static::$scope)
+            ->whereNull('parent_id');
     }
     public static function form(Form $form): Form
     {
@@ -50,9 +52,6 @@ class CategoryResource extends Resource
     {
         DefaultOptions::getColumnConfigs();
         return $table
-            ->modifyQueryUsing(function (Builder $query) {
-                return $query->whereNull('parent_id');
-            })
             ->deferLoading()
             ->extremePaginationLinks()
             ->defaultPaginationPageOption(15)

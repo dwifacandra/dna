@@ -36,7 +36,10 @@ class SubcategoryResource extends Resource
     }
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->where('scope', static::$scope);
+        return parent::getEloquentQuery()
+            ->where('scope', static::$scope)
+            ->whereNotNull('parent_id')
+            ->orderBy('parent_id', 'asc');
     }
     public static function form(Form $form): Form
     {
@@ -48,9 +51,6 @@ class SubcategoryResource extends Resource
     {
         DefaultOptions::getColumnConfigs();
         return $table
-            ->modifyQueryUsing(function (Builder $query) {
-                return $query->whereNotNull('parent_id');
-            })
             ->deferLoading()
             ->extremePaginationLinks()
             ->defaultPaginationPageOption(15)

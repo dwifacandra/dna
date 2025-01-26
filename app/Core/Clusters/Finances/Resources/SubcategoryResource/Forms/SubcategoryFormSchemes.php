@@ -2,9 +2,10 @@
 
 namespace App\Core\Clusters\Finances\Resources\SubcategoryResource\Forms;
 
-use App\Core\Enums\CashFlow;
+use App\Core\{Enums\CashFlow, Helpers\CoreIcon, Components\Forms\PreviewIcon};
+use Filament\{Forms\Get, Support\Enums\Alignment};
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\{TextInput, Hidden, MarkdownEditor, ToggleButtons, Select, Section, Split};
+use Filament\Forms\Components\{TextInput, Hidden, MarkdownEditor, ToggleButtons, Select, Grid, Split, ColorPicker};
 
 class SubcategoryFormSchemes
 {
@@ -39,6 +40,31 @@ class SubcategoryFormSchemes
                     ->native(false),
                 TextInput::make('name')
                     ->required(),
+            ]),
+            Grid::make([
+                'default' => 2,
+            ])->schema([
+                Select::make('icon')
+                    ->label('Select Icon')
+                    ->native(false)
+                    ->searchable()
+                    ->reactive()
+                    ->required()
+                    ->options(CoreIcon::getIcons())
+                    ->afterStateUpdated(function ($set, $state, $get) {
+                        $set('icon_preview', $state . ':' . $get('icon_color'));
+                    }),
+                ColorPicker::make('icon_color')
+                    ->reactive()
+                    ->default('#171717')
+                    ->visible(fn(Get $get): bool => filled($get('icon')))
+                    ->afterStateUpdated(function ($set, $state, $get) {
+                        $set('icon_preview', $get('icon') . ':' . $state);
+                    }),
+                PreviewIcon::make('icon_preview')
+                    ->label('Preview Icon')
+                    ->columnSpanFull()
+                    ->visible(fn(Get $get): bool => filled($get('icon'))),
             ]),
             MarkdownEditor::make('description'),
         ];

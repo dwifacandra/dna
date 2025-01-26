@@ -15,6 +15,7 @@ class SkillTableColumns
             TextColumn::make('name')
                 ->alignment(Alignment::Left),
             IconColumn::make('icon')
+                ->size(IconColumn\IconColumnSize::Large)
                 ->icon(fn($record) => $record->icon)
                 ->color(fn($record) => Color::hex($record->icon_color)),
             TextColumn::make('rate')

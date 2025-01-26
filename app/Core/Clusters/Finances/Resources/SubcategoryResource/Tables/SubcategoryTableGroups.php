@@ -12,6 +12,7 @@ class SubcategoryTableGroups
     {
         return [
             Group::make('parent.name')
+                ->label('Categories')
                 ->titlePrefixedWithLabel(false)
                 ->collapsible()
                 ->getTitleFromRecordUsing(fn(Category $record): string => Str::upper($record->parent->name)),

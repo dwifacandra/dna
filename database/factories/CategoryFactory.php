@@ -85,80 +85,10 @@ class CategoryFactory extends Factory
                 'description' => 'Uang tunai kecil yang diterima untuk keperluan sehari-hari atau pengeluaran kecil, seperti pengembalian biaya atau sumbangan.'
             ],
             [
-                'name' => 'Minor Income',
-                'scope' => 'transaction',
-                'parent_id' => 12,
-                'type' => CashFlow::Income,
-                'description' => 'Mencakup semua pendapatan kecil yang diterima oleh perusahaan, seperti pengembalian biaya, sumbangan, atau pendapatan dari kegiatan promosi kecil.'
-            ],
-            [
                 'name' => 'Petty Cash',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
                 'description' => 'Pengeluaran kecil yang dilakukan untuk kebutuhan operasional sehari-hari, seperti pembelian alat tulis, makanan, atau biaya transportasi.'
-            ],
-            [
-                'name' => 'Daily Expenses',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Mencakup semua pengeluaran kecil yang dilakukan setiap hari, seperti pembelian alat tulis, snack, atau kebutuhan operasional lainnya yang tidak memerlukan proses pengadaan formal.'
-            ],
-            [
-                'name' => 'Transportation Costs',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Menyediakan dana untuk pengeluaran transportasi karyawan, seperti biaya parkir, tiket transportasi umum, atau penggantian biaya perjalanan dinas yang bersifat mendesak.'
-            ],
-            [
-                'name' => 'Food and Beverage Expenses',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Digunakan untuk membiayai konsumsi makanan dan minuman dalam acara-acara kecil, rapat, atau kegiatan internal perusahaan yang tidak memerlukan anggaran besar.'
-            ],
-            [
-                'name' => 'Minor Repairs',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Menangani pengeluaran untuk perbaikan kecil di kantor, seperti perbaikan peralatan, pemeliharaan fasilitas, atau penggantian barang yang rusak.'
-            ],
-            [
-                'name' => 'Employee Social and Welfare Activities',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Dana yang dialokasikan untuk kegiatan sosial, seperti perayaan ulang tahun karyawan, acara kebersamaan, atau kegiatan kesejahteraan lainnya yang mendukung moral dan semangat tim.'
-            ],
-            [
-                'name' => 'Unexpected Purchases',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Menyediakan dana untuk pembelian barang atau kebutuhan mendesak yang tidak terduga, seperti alat bantu kerja atau perlengkapan darurat.'
-            ],
-            [
-                'name' => 'Minor Administrative Costs',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Mencakup pengeluaran untuk biaya administrasi yang bersifat kecil, seperti biaya pengiriman dokumen, fotokopi, atau biaya layanan kecil lainnya.'
-            ],
-            [
-                'name' => 'Promotional Expenses',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Digunakan untuk biaya terkait kegiatan promosi kecil, seperti pembelian brosur, spanduk, atau materi pemasaran lainnya.'
-            ],
-            [
-                'name' => 'Health and Safety Expenses',
-                'scope' => 'transaction',
-                'parent_id' => 14,
-                'type' => CashFlow::Expense,
-                'description' => 'Dana yang digunakan untuk pengeluaran terkait kesehatan dan keselamatan di tempat kerja, seperti pembelian alat pertolongan pertama atau perlengkapan keselamatan.'
             ],
             [
                 'name' => 'Bonus',
@@ -224,22 +154,8 @@ class CategoryFactory extends Factory
                 'name' => 'Base Salary',
                 'scope' => 'transaction',
                 'parent_id' => 11,
-                'type' => CashFlow::Expense,
+                'type' => CashFlow::Income,
                 'description' => 'Gaji pokok yang diterima karyawan sebelum potongan pajak dan tunjangan lainnya.'
-            ],
-            [
-                'name' => 'Overtime Pay',
-                'scope' => 'transaction',
-                'parent_id' => 11,
-                'type' => CashFlow::Income,
-                'description' => 'Pembayaran tambahan untuk jam kerja yang melebihi jam kerja reguler.'
-            ],
-            [
-                'name' => 'Commission',
-                'scope' => 'transaction',
-                'parent_id' => 11,
-                'type' => CashFlow::Income,
-                'description' => 'Pendapatan yang diperoleh dari penjualan atau pencapaian target tertentu.'
             ],
             [
                 'name' => 'Allowances',
@@ -268,6 +184,90 @@ class CategoryFactory extends Factory
                 'parent_id' => 11,
                 'type' => CashFlow::Income,
                 'description' => 'Pembayaran yang diberikan kepada karyawan yang dipecat atau mengundurkan diri.'
+            ],
+            [
+                'name' => 'Overtime Pay',
+                'scope' => 'transaction',
+                'parent_id' => 11,
+                'type' => CashFlow::Income,
+                'description' => 'Pembayaran tambahan untuk jam kerja yang melebihi jam kerja reguler.'
+            ],
+            [
+                'name' => 'Commission',
+                'scope' => 'transaction',
+                'parent_id' => 11,
+                'type' => CashFlow::Income,
+                'description' => 'Pendapatan yang diperoleh dari penjualan atau pencapaian target tertentu.'
+            ],
+            [
+                'name' => 'Minor Income',
+                'scope' => 'transaction',
+                'parent_id' => 12,
+                'type' => CashFlow::Income,
+                'description' => 'Mencakup semua pendapatan kecil yang diterima oleh perusahaan, seperti pengembalian biaya, sumbangan, atau pendapatan dari kegiatan promosi kecil.'
+            ],
+            [
+                'name' => 'Daily Expenses',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Mencakup semua pengeluaran kecil yang dilakukan setiap hari, seperti pembelian alat tulis, snack, atau kebutuhan operasional lainnya yang tidak memerlukan proses pengadaan formal.'
+            ],
+            [
+                'name' => 'Transportation Costs',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Menyediakan dana untuk pengeluaran transportasi karyawan, seperti biaya parkir, tiket transportasi umum, atau penggantian biaya perjalanan dinas yang bersifat mendesak.'
+            ],
+            [
+                'name' => 'Food and Beverage Expenses',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Digunakan untuk membiayai konsumsi makanan dan minuman dalam acara-acara kecil, rapat, atau kegiatan internal perusahaan yang tidak memerlukan anggaran besar.'
+            ],
+            [
+                'name' => 'Minor Repairs',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Menangani pengeluaran untuk perbaikan kecil di kantor, seperti perbaikan peralatan, pemeliharaan fasilitas, atau penggantian barang yang rusak.'
+            ],
+            [
+                'name' => 'Employee Social and Welfare Activities',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Dana yang dialokasikan untuk kegiatan sosial, seperti perayaan ulang tahun karyawan, acara kebersamaan, atau kegiatan kesejahteraan lainnya yang mendukung moral dan semangat tim.'
+            ],
+            [
+                'name' => 'Unexpected Purchases',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Menyediakan dana untuk pembelian barang atau kebutuhan mendesak yang tidak terduga, seperti alat bantu kerja atau perlengkapan darurat.'
+            ],
+            [
+                'name' => 'Minor Administrative Costs',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Mencakup pengeluaran untuk biaya administrasi yang bersifat kecil, seperti biaya pengiriman dokumen, fotokopi, atau biaya layanan kecil lainnya.'
+            ],
+            [
+                'name' => 'Promotional Expenses',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Digunakan untuk biaya terkait kegiatan promosi kecil, seperti pembelian brosur, spanduk, atau materi pemasaran lainnya.'
+            ],
+            [
+                'name' => 'Health and Safety Expenses',
+                'scope' => 'transaction',
+                'parent_id' => 13,
+                'type' => CashFlow::Expense,
+                'description' => 'Dana yang digunakan untuk pengeluaran terkait kesehatan dan keselamatan di tempat kerja, seperti pembelian alat pertolongan pertama atau perlengkapan keselamatan.'
             ],
         ];
 
