@@ -8,7 +8,6 @@ use App\Core\Clusters\Developments\Resources\{IconResource, IconResource\Widgets
 class ManageIcons extends ManageRecords
 {
     protected static string $resource = IconResource::class;
-
     public function getBreadcrumbs(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -18,7 +17,6 @@ class ManageIcons extends ManageRecords
         }
         return [];
     }
-
     protected function getHeaderWidgets(): array
     {
         return [

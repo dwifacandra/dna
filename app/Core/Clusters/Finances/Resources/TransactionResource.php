@@ -2,14 +2,15 @@
 
 namespace App\Core\Clusters\Finances\Resources;
 
-use Filament\Forms\Form;
-use Filament\Tables\Table;
 use App\Models\Transaction;
-use App\Core\Clusters\Finances;
-use Filament\Resources\Resource;
-use App\Core\Traits\DefaultOptions;
-use Filament\Pages\SubNavigationPosition;
-use Filament\Tables\Enums\RecordCheckboxPosition;
+use App\Core\{Clusters\Finances, Traits\DefaultOptions};
+use Filament\{
+    Forms\Form,
+    Tables\Table,
+    Resources\Resource,
+    Pages\SubNavigationPosition,
+    Tables\Enums\RecordCheckboxPosition
+};
 use App\Core\Clusters\Finances\Resources\TransactionResource\{Pages, Forms, Tables};
 
 class TransactionResource extends Resource
@@ -19,12 +20,10 @@ class TransactionResource extends Resource
     protected static ?string $modelLabel = 'Transaction';
     protected static ?string $navigationIcon = 'icon-core.outline.currency_exchange';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function form(Form $form): Form
     {
         return $form->schema(Forms\TransactionFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs();
@@ -41,7 +40,6 @@ class TransactionResource extends Resource
             ->actions(Tables\TransactionTableActions::getOptions())
             ->bulkActions(Tables\TransactionTableBulkActions::getOptions());
     }
-
     public static function getPages(): array
     {
         return [

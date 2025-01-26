@@ -9,7 +9,6 @@ enum JobType: string implements HasLabel, HasColor
     case Permanent = 'Permanent';
     case Contract = 'Contract';
     case Freelance = 'Freelance';
-
     public function getLabel(): string
     {
         return match ($this) {
@@ -18,7 +17,6 @@ enum JobType: string implements HasLabel, HasColor
             self::Freelance => 'Freelance',
         };
     }
-
     public function getColor(): string
     {
         return match ($this) {

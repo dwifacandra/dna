@@ -20,34 +20,28 @@ class SkillCategoryResource extends Resource
     protected static ?string $slug = 'skills/categories';
     protected static ?int $navigationSort = 2;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function shouldRegisterNavigation(): bool
     {
         return request()->routeIs(static::getRouteBaseName() . '.*');
     }
-
     public static function getPages(): array
     {
         return ['index' => Pages\ManageSkillCategories::route('/')];
     }
-
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::where('scope', static::$scope)->count();
     }
-
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('scope', static::$scope);
     }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Categories::getFormSchemes(static::$scope))
             ->columns(1);
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs();

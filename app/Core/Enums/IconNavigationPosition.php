@@ -8,7 +8,6 @@ enum IconNavigationPosition: string implements HasLabel
 {
     case Start = 'start';
     case End = 'end';
-
     public function getLabel(): string
     {
         return match ($this) {

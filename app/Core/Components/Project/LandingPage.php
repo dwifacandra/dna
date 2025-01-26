@@ -9,7 +9,6 @@ use Livewire\Component;
 class LandingPage extends Component
 {
     public $projects;
-
     public function mount()
     {
         $this->projects = Project::where('release', true)
@@ -18,7 +17,6 @@ class LandingPage extends Component
             ->take(8)
             ->get();
     }
-
     public function render()
     {
         return view('core.components.project.landing-page');

@@ -9,7 +9,6 @@ use App\Core\Enums\ProjectStatus;
 class LandingPage extends Component
 {
     public $stats;
-
     public function mount()
     {
         $this->stats = [
@@ -35,7 +34,6 @@ class LandingPage extends Component
             ],
         ];
     }
-
     public function render()
     {
         return view('core.components.stats.landing-page');

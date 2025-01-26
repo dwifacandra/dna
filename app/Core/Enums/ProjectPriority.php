@@ -9,7 +9,6 @@ enum ProjectPriority: string implements HasLabel, HasColor
     case Low = 'low';
     case Medium = 'medium';
     case High = 'high';
-
     public function getLabel(): string
     {
         return match ($this) {
@@ -18,7 +17,6 @@ enum ProjectPriority: string implements HasLabel, HasColor
             self::High => 'High',
         };
     }
-
     public function getColor(): string
     {
         return match ($this) {

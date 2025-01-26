@@ -3,10 +3,7 @@
 namespace App\Core\Clusters\Developments\Resources\IconResource\Tables;
 
 use Illuminate\Support\Str;
-use App\Core\Components\Tables\Iconlist;
-use Filament\Tables\Columns\Layout\View;
-use Filament\Tables\Columns\Layout\{Stack};
-use Filament\Tables\Columns\{IconColumn, TextColumn, ViewColumn};
+use Filament\Tables\Columns\{IconColumn, TextColumn, Layout\Stack};
 
 class IconTableColumns
 {

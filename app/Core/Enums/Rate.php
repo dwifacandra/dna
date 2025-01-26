@@ -16,12 +16,10 @@ enum Rate: int implements HasLabel, HasColor
     case EIGHT = 8;
     case NINE = 9;
     case TEN = 10;
-
     public function getLabel(): string
     {
         return (string) $this->value;
     }
-
     public function getColor(): string
     {
         return match ($this) {
@@ -37,13 +35,12 @@ enum Rate: int implements HasLabel, HasColor
             self::TEN => 'success',
         };
     }
-
     public function getColorHex(): string
     {
         return match ($this) {
-            self::ONE, self::TWO, self::THREE => '#dc2626', // Merah (danger)
-            self::FOUR, self::FIVE, self::SIX, self::SEVEN => '#ea580c', // Oranye (warning)
-            self::EIGHT, self::NINE, self::TEN => '#16a34a', // Hijau (success)
+            self::ONE, self::TWO, self::THREE => '#dc2626',
+            self::FOUR, self::FIVE, self::SIX, self::SEVEN => '#ea580c',
+            self::EIGHT, self::NINE, self::TEN => '#16a34a',
         };
     }
 }

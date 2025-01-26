@@ -2,14 +2,12 @@
 
 namespace App\Providers\Google;
 
-use Google\Client;
-use Google\Service\Sheets;
+use Google\{Client, Service\Sheets,};
 
 class GoogleSheetService
 {
     protected $client;
     protected $service;
-
     public function __construct()
     {
         $this->client = new Client();
@@ -18,7 +16,6 @@ class GoogleSheetService
         $this->client->setAuthConfig(config('google.service.file'));
         $this->service = new Sheets($this->client);
     }
-
     protected function getA1(int $columnNumber)
     {
         $result = '';
@@ -29,7 +26,6 @@ class GoogleSheetService
         }
         return $result;
     }
-
     public function getSheets(string $spreadsheetId)
     {
         try {
@@ -51,7 +47,6 @@ class GoogleSheetService
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-
     public function getSheetIdByName(string $spreadsheetId, string $sheetName)
     {
         try {
@@ -70,7 +65,6 @@ class GoogleSheetService
             return response()->json(['error' => 'An error occurred: ' . $e->getMessage()], 500);
         }
     }
-
     public function getData($spreadsheetId, $sheetName, $range)
     {
         $data = $this->service->spreadsheets_values->get($spreadsheetId, $range)->getValues();

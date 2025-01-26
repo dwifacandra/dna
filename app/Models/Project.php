@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use App\Core\Casts\CurrencyCast;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\{Model, Builder, Factories\HasFactory};
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 
 class Project extends Model implements HasMedia
 {
@@ -30,13 +26,11 @@ class Project extends Model implements HasMedia
         'user_id',
         'category_id',
     ];
-
     protected $casts = [
         'status' => ProjectStatus::class,
         'priority' => ProjectPriority::class,
         'price' => CurrencyCast::class,
     ];
-
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('projects')
@@ -45,17 +39,14 @@ class Project extends Model implements HasMedia
             ->useDisk('public')
             ->singleFile();
     }
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
     public function scopeCountByStatus(Builder $query, $statuses)
     {
         if (is_string($statuses)) {
@@ -63,7 +54,6 @@ class Project extends Model implements HasMedia
         }
         return $query->whereIn('status', $statuses)->count();
     }
-
     public function scopePercentageByStatus(Builder $query, ProjectStatus $status)
     {
         $totalCount = $query->count();
@@ -71,7 +61,6 @@ class Project extends Model implements HasMedia
         $percentage = ($totalCount === 0) ? 0 : ($statusCount / $totalCount) * 100;
         return number_format($percentage, 2) . '%';
     }
-
     public function scopeCountPortfolio(Builder $query)
     {
         return $query->where('release', 1)->count();

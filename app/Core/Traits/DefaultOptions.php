@@ -9,7 +9,6 @@ use Filament\Tables\Actions\{EditAction, DeleteAction, DeleteBulkAction, ActionG
 
 trait DefaultOptions
 {
-
     public static function getColumnConfigs(array $option = []): void
     {
         $option = array_merge([
@@ -17,7 +16,6 @@ trait DefaultOptions
             'sortable' => true,
             'alignment' => Alignment::Left,
         ], $option);
-
         Column::configureUsing(function (Column $column) use ($option): void {
             $column
                 ->searchable($option['searchable'])
@@ -25,7 +23,6 @@ trait DefaultOptions
                 ->alignment($option['alignment']);
         });
     }
-
     public static function getDefaultHeaderActions($slideOver = false, $moreActions = []): array
     {
         return [
@@ -39,7 +36,6 @@ trait DefaultOptions
             ...$moreActions,
         ];
     }
-
     public static function getDefaultActions($slideOver = false): array
     {
         return [
@@ -50,7 +46,6 @@ trait DefaultOptions
             DeleteAction::make(),
         ];
     }
-
     public static function getActionGroups($slideOver = false, $moreActions = []): array
     {
         return [
@@ -64,7 +59,6 @@ trait DefaultOptions
             ])->icon('heroicon-o-list-bullet')
         ];
     }
-
     public static function getBulkActionGroups(): array
     {
         return [

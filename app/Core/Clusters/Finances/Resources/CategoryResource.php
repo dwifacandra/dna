@@ -4,8 +4,8 @@ namespace App\Core\Clusters\Finances\Resources;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
-use App\Core\Clusters\Finances\Resources\CategoryResource\{Pages, Forms, Tables, RelationManagers};
 use App\Core\{Clusters\Finances, Traits\DefaultOptions, Traits\Categories};
+use App\Core\Clusters\Finances\Resources\CategoryResource\{Pages, Forms, Tables, RelationManagers};
 use Filament\{Forms\Form, Tables\Table, Resources\Resource, Pages\SubNavigationPosition,};
 
 class CategoryResource extends Resource

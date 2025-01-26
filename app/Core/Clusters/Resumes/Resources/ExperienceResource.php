@@ -15,13 +15,11 @@ class ExperienceResource extends Resource
     protected static ?string $navigationIcon = 'icon-core.outline.work_history';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.work_history';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Forms\ExperienceFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs();
@@ -37,7 +35,6 @@ class ExperienceResource extends Resource
             ->actions(Tables\ExperienceTableActions::getOptions())
             ->bulkActions(Tables\ExperienceTableBulkActions::getOptions());
     }
-
     public static function getPages(): array
     {
         return [

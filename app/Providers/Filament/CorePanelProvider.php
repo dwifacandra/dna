@@ -2,21 +2,25 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Panel;
-use Filament\PanelProvider;
 use App\Core\Traits\Navigations;
-use Filament\Support\Colors\Color;
-use Filament\Support\Enums\MaxWidth;
-use Filament\Http\Middleware\Authenticate;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Filament\Http\Middleware\AuthenticateSession;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Filament\{
+    Panel,
+    PanelProvider,
+    Support\Colors\Color,
+    Support\Enums\MaxWidth,
+    Http\Middleware\Authenticate,
+    Http\Middleware\AuthenticateSession,
+    Http\Middleware\DisableBladeIconComponents,
+    Http\Middleware\DispatchServingFilamentEvent,
+};
+use Illuminate\{
+    Cookie\Middleware\EncryptCookies,
+    Cookie\Middleware\AddQueuedCookiesToResponse,
+    Foundation\Http\Middleware\VerifyCsrfToken,
+    Routing\Middleware\SubstituteBindings,
+    Session\Middleware\StartSession,
+    View\Middleware\ShareErrorsFromSession,
+};
 
 class CorePanelProvider extends PanelProvider
 {
@@ -28,7 +32,6 @@ class CorePanelProvider extends PanelProvider
             ->path('core')
             ->spa()
             ->login()
-            // ->topbar(false)
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])

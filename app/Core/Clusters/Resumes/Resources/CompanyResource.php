@@ -14,13 +14,11 @@ class CompanyResource extends Resource
     protected static ?string $cluster = Resumes::class;
     protected static ?string $navigationIcon = 'icon-core.outline.corporate_fare';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Forms\CompanyFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs();
@@ -35,7 +33,6 @@ class CompanyResource extends Resource
             ->actions(Tables\CompanyTableActions::getOptions())
             ->bulkActions(Tables\CompanyTableBulkActions::getOptions());
     }
-
     public static function getPages(): array
     {
         return [

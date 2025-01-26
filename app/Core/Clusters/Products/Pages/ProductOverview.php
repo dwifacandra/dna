@@ -2,12 +2,9 @@
 
 namespace App\Core\Clusters\Products\Pages;
 
-use Filament\Pages\Page;
 use App\Core\Clusters\Products;
-use App\Core\Clusters\Products\Resources\PortfolioResource\Widgets\BudgetPortfolioChart;
-use App\Core\Clusters\Products\Resources\PortfolioResource\Widgets\TotalPortfolioChart;
-use App\Core\Clusters\Products\Resources\ProjectResource\Widgets\TotalProjects;
-use Filament\Pages\SubNavigationPosition;
+use Filament\{Pages\Page, Pages\SubNavigationPosition};
+use App\Core\Clusters\Products\Resources\{PortfolioResource\Widgets, ProjectResource\Widgets as ProjectWidgets};
 
 class ProductOverview extends Page
 {
@@ -17,7 +14,6 @@ class ProductOverview extends Page
     protected static ?string $navigationLabel = 'Overviews';
     protected static ?string $slug = 'overviews';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public function getBreadcrumbs(): array
     {
         if (filled($cluster = static::getCluster())) {
@@ -27,13 +23,12 @@ class ProductOverview extends Page
         }
         return [];
     }
-
     protected function getHeaderWidgets(): array
     {
         return [
-            TotalProjects::class,
-            BudgetPortfolioChart::class,
-            TotalPortfolioChart::class,
+            ProjectWidgets\TotalProjects::class,
+            Widgets\BudgetPortfolioChart::class,
+            Widgets\TotalPortfolioChart::class,
         ];
     }
 }

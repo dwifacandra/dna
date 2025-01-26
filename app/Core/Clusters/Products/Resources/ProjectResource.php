@@ -18,37 +18,31 @@ class ProjectResource extends Resource
     protected static ?string $activeNavigationIcon = 'icon-core.fill.git';
     protected static ?string $navigationLabel = 'Projects';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageProjects::route('/'),
         ];
     }
-
     public static function getWidgets(): array
     {
         return [
             Widgets\TotalProjects::class,
         ];
     }
-
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::where('release', false)->count();
     }
-
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'category.name'];
     }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Forms\ProjectFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs(['alignment' => 'center']);

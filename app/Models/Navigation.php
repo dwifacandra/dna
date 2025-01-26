@@ -16,12 +16,10 @@ class Navigation extends Model
         'icon_only',
         'active',
     ];
-
     protected $casts = [
         'icon_position' => IconNavigationPosition::class,
         'position' => NavigationPosition::class,
     ];
-
     public function scopeTopNavigations($query)
     {
         return $query->where('position', 'topbar');

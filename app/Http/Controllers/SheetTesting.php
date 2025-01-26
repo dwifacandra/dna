@@ -7,12 +7,10 @@ use App\Providers\Google\GoogleSheetService;
 class SheetTesting extends Controller
 {
     private $googleSheetService;
-
     public function __construct(GoogleSheetService $googleSheetService)
     {
         $this->googleSheetService = $googleSheetService;
     }
-
     public function getSheets(string $spreadsheetId)
     {
         try {

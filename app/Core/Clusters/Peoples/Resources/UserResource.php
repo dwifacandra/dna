@@ -4,7 +4,13 @@ namespace App\Core\Clusters\Peoples\Resources;
 
 use App\Models\User;
 use App\Core\{Clusters\Peoples, Traits\DefaultOptions};
-use Filament\{Forms\Form, Tables\Table, Tables\Enums\RecordCheckboxPosition, Resources\Resource, Pages\SubNavigationPosition,};
+use Filament\{
+    Forms\Form,
+    Tables\Table,
+    Tables\Enums\RecordCheckboxPosition,
+    Resources\Resource,
+    Pages\SubNavigationPosition,
+};
 use App\Core\Clusters\Peoples\Resources\UserResource\{Pages, Forms, Tables, RelationManagers};
 
 class UserResource extends Resource
@@ -15,27 +21,23 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'icon-fa.solid.users';
     protected static ?int $navigationSort = 1;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageUsers::route('/'),
         ];
     }
-
     public static function getRelations(): array
     {
         return [
             RelationManagers\AccountsRelationManager::class,
         ];
     }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema(Forms\UserFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs();

@@ -9,7 +9,6 @@ enum CashFlow: string implements HasLabel, HasColor
     case Income = 'income';
     case Expense = 'expense';
     case Transfer = 'transfer';
-
     public function getLabel(): string
     {
         return match ($this) {
@@ -18,7 +17,6 @@ enum CashFlow: string implements HasLabel, HasColor
             self::Transfer => 'Transfer',
         };
     }
-
     public function getColor(): string
     {
         return match ($this) {

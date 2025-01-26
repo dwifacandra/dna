@@ -16,8 +16,6 @@ class IconResource extends Resource
     protected static ?string $navigationIcon = 'icon-core.outline.fonticons';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.fonticons';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs([
@@ -37,14 +35,12 @@ class IconResource extends Resource
             ->filters(Tables\IconTableFilters::getOptions())
         ;
     }
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageIcons::route('/'),
         ];
     }
-
     public static function getWidgets(): array
     {
         return [

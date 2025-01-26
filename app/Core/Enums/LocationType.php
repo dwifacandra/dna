@@ -9,7 +9,6 @@ enum LocationType: string implements HasLabel, HasColor
     case OnSite = 'On Site';
     case Remote = 'Remote';
     case Hybrid = 'Hybrid';
-
     public function getColor(): string
     {
         return match ($this) {
@@ -18,7 +17,6 @@ enum LocationType: string implements HasLabel, HasColor
             self::Hybrid => 'warning',
         };
     }
-
     public function getLabel(): string
     {
         return match ($this) {

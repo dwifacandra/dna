@@ -21,19 +21,16 @@ class SkillResource extends Resource
     protected static ?string $navigationIcon = 'icon-core.outline.trophy';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.trophy';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ManageSkills::route('/'),
         ];
     }
-
     public static function form(Form $form): Form
     {
         return $form->schema(Forms\SkillFormSchemes::getOptions());
     }
-
     public static function table(Table $table): Table
     {
         DefaultOptions::getColumnConfigs(['alignment' => 'center']);

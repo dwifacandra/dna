@@ -8,7 +8,6 @@ use Livewire\Component;
 class Personal extends Component
 {
     public $messages;
-
     public function mount()
     {
         $this->messages = [
@@ -22,7 +21,6 @@ class Personal extends Component
             $this->messages[] = $skill->name;
         }
     }
-
     public function render()
     {
         return view('core.components.jumbotron.personal');

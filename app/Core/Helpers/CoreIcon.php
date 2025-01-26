@@ -11,7 +11,6 @@ class CoreIcon
         return Cache::remember('core_icon', 60, function () {
             $path = resource_path('svg');
             $icons = [];
-
             if (File::exists($path)) {
                 $files = File::allFiles($path);
                 foreach ($files as $file) {

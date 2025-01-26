@@ -2,8 +2,7 @@
 
 namespace App\Core\Clusters;
 
-use Filament\Clusters\Cluster;
-use Filament\Navigation\NavigationGroup;
+use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 use App\Core\Clusters\Settings\Resources\{NavigationResource};
 
 class Settings extends Cluster

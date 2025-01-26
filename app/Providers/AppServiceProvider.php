@@ -2,17 +2,13 @@
 
 namespace App\Providers;
 
-use Filament\View\PanelsRenderHook;
-use Illuminate\Support\ServiceProvider;
-use Filament\Support\Facades\FilamentIcon;
-use Filament\Support\Facades\FilamentView;
+use Filament\View\{PanelsRenderHook};
+use Illuminate\Support\{ServiceProvider};
+use Filament\Support\Facades\{FilamentIcon, FilamentView,};
 use App\Core\Components\Layouts\Navbar\PanelNavigation;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         FilamentIcon::register([
@@ -24,12 +20,5 @@ class AppServiceProvider extends ServiceProvider
             fn() => \Livewire\Livewire::mount(PanelNavigation::class)
         );
     }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
-    }
+    public function boot(): void {}
 }

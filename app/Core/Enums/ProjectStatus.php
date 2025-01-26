@@ -12,7 +12,6 @@ enum ProjectStatus: string implements HasLabel, HasColor
     case InProgress = 'in_progress';
     case Ready = 'ready';
     case Done = 'done';
-
     public function getLabel(): string
     {
         return match ($this) {
@@ -24,7 +23,6 @@ enum ProjectStatus: string implements HasLabel, HasColor
             self::Done => 'Done',
         };
     }
-
     public function getColor(): string
     {
         return match ($this) {

@@ -10,7 +10,6 @@ class CoreRoute
     {
         $routes = Route::getRoutes();
         $options = [];
-
         foreach ($routes as $route) {
             $name = $route->getName();
             $methods = $route->methods();
@@ -20,7 +19,6 @@ class CoreRoute
                 $options[$name] = $name;
             }
         }
-
         return $options;
     }
 }

@@ -4,20 +4,22 @@ namespace App\Models;
 
 use Sushi\Sushi;
 use App\Core\Helpers\CoreIcon;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\{Database\Eloquent\Model, Support\Facades\Cache};
 
 class Icon extends Model
 {
     use Sushi;
-    protected $fillable = ['preview', 'name', 'folder', 'path'];
-
+    protected $fillable = [
+        'preview',
+        'name',
+        'folder',
+        'path'
+    ];
     public function getRows()
     {
         return Cache::remember('core_icons', 60 * 60 * 24, function () {
             $coreIcon = new CoreIcon();
             $icons = $coreIcon->getIcons();
-
             return array_map(function ($iconKey) {
                 $parts = explode('.', $iconKey);
                 $folderName = count($parts) > 1 ? $parts[0] : 'root';

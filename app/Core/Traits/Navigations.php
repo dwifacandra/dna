@@ -2,11 +2,9 @@
 
 namespace App\Core\Traits;
 
-use App\Models\Navigation;
+use App\Models\{Navigation,};
 use Illuminate\Support\Collection;
-use Filament\Navigation\NavigationItem;
-use Filament\Navigation\NavigationBuilder;
-// use App\Core\Resources\{GalleryResource};
+use Filament\Navigation\{NavigationBuilder, NavigationItem,};
 use App\Core\Clusters\{Products, Peoples, Resumes, Developments, Finances, Settings};
 
 trait Navigations
@@ -15,7 +13,6 @@ trait Navigations
     {
         return Navigation::TopNavigations()->get();
     }
-
     public static function getNavigations()
     {
         return function (NavigationBuilder $builder): NavigationBuilder {
@@ -24,7 +21,6 @@ trait Navigations
             return $builder;
         };
     }
-
     public static function getGroups(): array
     {
         return [
@@ -36,7 +32,6 @@ trait Navigations
             Settings::NavigationItems(),
         ];
     }
-
     public static function getItems()
     {
         return [
