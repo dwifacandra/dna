@@ -76,18 +76,21 @@ class CategoryFactory extends Factory
                 'name' => 'Salary',
                 'scope' => 'transaction',
                 'type' => CashFlow::Income,
+                'icon' => 'core.outline.currency_exchange',
                 'description' => 'Pendapatan tetap yang diterima secara berkala dari pekerjaan atau jabatan yang dijalani.'
             ],
             [
                 'name' => 'Petty Cash',
                 'scope' => 'transaction',
                 'type' => CashFlow::Income,
+                'icon' => 'core.outline.money_bag',
                 'description' => 'Uang tunai kecil yang diterima untuk keperluan sehari-hari atau pengeluaran kecil, seperti pengembalian biaya atau sumbangan.'
             ],
             [
                 'name' => 'Petty Cash',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.money_bag',
                 'description' => 'Pengeluaran kecil yang dilakukan untuk kebutuhan operasional sehari-hari, seperti pembelian alat tulis, makanan, atau biaya transportasi.'
             ],
             [
@@ -99,6 +102,7 @@ class CategoryFactory extends Factory
             [
                 'name' => 'Other',
                 'scope' => 'transaction',
+                'icon' => 'core.outline.category',
                 'type' => CashFlow::Income,
                 'description' => 'Sumber pendapatan lain yang tidak termasuk dalam kategori.'
             ],
@@ -106,12 +110,14 @@ class CategoryFactory extends Factory
                 'name' => 'Food & Drink',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.fastfood',
                 'description' => 'Pengeluaran untuk makanan dan minuman, baik untuk konsumsi sehari-hari maupun acara khusus.'
             ],
             [
                 'name' => 'Transportation',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.commute',
                 'description' => 'Pengeluaran terkait biaya transportasi, termasuk perjalanan dengan kendaraan pribadi, transportasi umum (bus, kereta, taksi), bahan bakar, parkir, dan pemeliharaan kendaraan, baik untuk keperluan pribadi maupun bisnis.'
             ],
             [
@@ -124,30 +130,35 @@ class CategoryFactory extends Factory
                 'name' => 'Clothes',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.apparel',
                 'description' => 'Pengeluaran untuk pakaian dan aksesori, baik untuk kebutuhan sehari-hari maupun acara tertentu.'
             ],
             [
                 'name' => 'Health',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.medication_liquid',
                 'description' => 'Pengeluaran untuk kesehatan, termasuk biaya obat-obatan, pemeriksaan medis, dan asuransi kesehatan.'
             ],
             [
                 'name' => 'Education',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.school',
                 'description' => 'Pengeluaran untuk pendidikan, seperti biaya sekolah, buku, dan kursus tambahan.'
             ],
             [
                 'name' => 'Gift',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.gifts',
                 'description' => 'Pengeluaran untuk hadiah yang diberikan kepada orang lain dalam berbagai kesempatan.'
             ],
             [
                 'name' => 'Other',
                 'scope' => 'transaction',
                 'type' => CashFlow::Expense,
+                'icon' => 'core.outline.category',
                 'description' => 'Pengeluaran lain yang tidak termasuk dalam kategori.'
             ],
             [

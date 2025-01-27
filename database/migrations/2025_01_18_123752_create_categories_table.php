@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
             $table->string('scope');
             $table->string('type')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->string('icon', 20)->nullable()->default('core.color.image');
+            $table->string('icon', 20)->nullable()->default('core.outline.category');
             $table->string('icon_color', 8)->nullable()->default('#171717');
             $table->timestamps();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');

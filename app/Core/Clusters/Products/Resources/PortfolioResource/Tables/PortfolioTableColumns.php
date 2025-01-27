@@ -5,8 +5,9 @@ namespace App\Core\Clusters\Products\Resources\PortfolioResource\Tables;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Filament\Support\Enums\Alignment;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use App\Core\Components\Tables\Columns\CoreTextColumn;
 use Filament\Tables\Columns\{IconColumn,  TextColumn};
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class PortfolioTableColumns
 {
@@ -32,7 +33,9 @@ class PortfolioTableColumns
                 ->label('Release Date')
                 ->date('d F Y'),
             TextColumn::make('category.name')
-                ->badge(),
+                ->badge()
+                ->grow(false)
+                ->icon(fn($record) => $record->category->icon),
             TextColumn::make('url')
                 ->wrap()
                 ->label('Demo Url')

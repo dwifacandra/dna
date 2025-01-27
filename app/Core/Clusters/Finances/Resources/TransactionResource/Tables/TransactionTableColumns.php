@@ -20,7 +20,10 @@ class TransactionTableColumns
             TextColumn::make('cash_flow')
                 ->badge()
                 ->alignment(Alignment::Center),
-            TextColumn::make('category.name'),
+            TextColumn::make('category.name')
+                ->badge()
+                ->grow(false)
+                ->icon(fn($record) => $record->category->icon),
             TextColumn::make('subcategory.name'),
             TextColumn::make('created_at')
                 ->dateTime()

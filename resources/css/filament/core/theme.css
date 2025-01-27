@@ -94,6 +94,7 @@
 .fi-ta-selection-indicator {@apply bg-white py-1 rounded-sm}
 .fi-table-header-group-cell div {@apply justify-center;}
 .fi-ta-content {@apply relative h-[70vh];}
+.fi-ta-content .fi-badge {@apply py-1 px-3 gap-x-2 justify-between text-sm text-left}
 .fi-pagination {@apply p-2;}
 
 /* Modal */
