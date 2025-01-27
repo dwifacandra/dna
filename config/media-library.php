@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use App\Models\Transaction;
 
 return [
 
@@ -94,7 +95,8 @@ return [
      * Here you can specify which path generator should be used for the given class.
      */
     'custom_path_generators' => [
-        Project::class => App\Core\Clusters\Products\Resources\ProjectResource\Services\ProjectThumbnailPath::class
+        Project::class => App\Core\Clusters\Products\Resources\ProjectResource\Services\ProjectThumbnailPath::class,
+        Transaction::class => App\Core\Clusters\Finances\Resources\TransactionResource\Services\TransactionAttachmentPath::class
         // or
         // 'model_morph_alias' => PathGenerator::class
     ],
@@ -103,7 +105,8 @@ return [
      * When urls to files get generated, this class will be called. Use the default
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator::class,
+    // 'url_generator' => Spatie\MediaLibrary\Support\UrlGenerator\DefaultUrlGenerator::class,
+    'url_generator' => App\Providers\Media\MediaUrlGeneratorService::class,
 
     /*
      * Moves media on updating to keep path consistent. Enable it only with a custom

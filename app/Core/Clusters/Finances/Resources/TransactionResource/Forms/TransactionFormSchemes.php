@@ -4,8 +4,8 @@ namespace App\Core\Clusters\Finances\Resources\TransactionResource\Forms;
 
 use Filament\Support\RawJs;
 use App\Core\Enums\CashFlow;
-use App\Core\Traits\Categories;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Core\Clusters\Finances\Resources\CategoryResource\Forms\CategoryFormSchemes;
 use Filament\Forms\Components\{TextInput, DatePicker, Select, ToggleButtons, MarkdownEditor};
 
@@ -69,6 +69,15 @@ class TransactionFormSchemes
                 ->searchable()
                 ->preload()
                 ->native(false),
+            SpatieMediaLibraryFileUpload::make('attachment')
+                ->columnSpanFull()
+                ->collection('transactions')
+                ->visibility('private')
+                ->image()
+                ->imageEditor()
+                ->downloadable()
+                ->multiple()
+                ->nullable(),
             MarkdownEditor::make('description')->columnSpanFull(),
         ];
     }

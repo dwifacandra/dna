@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use App\Core\{Enums\CashFlow, Casts\CurrencyCast};
+use Illuminate\Support\Str;
 use App\Core\Traits\UUID as TraitsUUID;
+use App\Core\{Enums\CashFlow, Casts\CurrencyCast};
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 use Illuminate\Database\Eloquent\{Factories\HasFactory, Model};
 
-class Transaction extends Model
+class Transaction extends Model implements HasMedia
 {
-    use HasFactory, TraitsUUID;
+    use HasFactory, TraitsUUID, InteractsWithMedia;
     protected $table = 'transactions';
     protected $keyType = 'string';
     protected $fillable = [
@@ -22,9 +24,17 @@ class Transaction extends Model
         'payee_id',
     ];
     protected $casts = [
+        'date' => 'date',
         'cash_flow' => CashFlow::class,
         'amount' => CurrencyCast::class,
     ];
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('transactions')
+            ->useFallbackUrl('/img/image.svg')
+            ->useFallbackPath(public_path('/img/image.svg'))
+            ->useDisk('private');
+    }
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -35,6 +45,12 @@ class Transaction extends Model
     }
     public function payee()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'payee_id');
+    }
+    public function getTransactionIdAttribute()
+    {
+        $uuid = Str::before(Str::upper($this->id), '-');
+        $date = $this->date->format('ymd');
+        return "{$date}-{$uuid}";
     }
 }

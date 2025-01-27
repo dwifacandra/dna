@@ -96,6 +96,7 @@
 .fi-ta-content {@apply relative h-[70vh];}
 .fi-ta-content .fi-badge {@apply py-1 px-3 gap-x-2 justify-between text-sm text-left}
 .fi-pagination {@apply p-2;}
+.fi-ta-image .rounded-full {border-radius: 100%;}
 
 /* Modal */
 .fi-modal-footer-actions .fi-btn-color-secondary {@apply bg-success-700 hover:bg-success-600;}
