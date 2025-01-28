@@ -32,20 +32,46 @@ class CorePanelProvider extends PanelProvider
             ->path('core')
             ->spa()
             ->login()
+            ->profile()
+            ->authGuard('web')
+            ->authPasswordBroker('users')
             ->maxContentWidth(MaxWidth::Full)
             ->sidebarCollapsibleOnDesktop()
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->navigation(Navigations::getNavigations())
+            ->unsavedChangesAlerts()
             ->databaseTransactions()
             ->databaseNotifications()
+            ->databaseNotificationsPolling('30s')
             ->viteTheme('resources/css/filament/core/theme.css')
             ->colors([
                 'primary' => Color::Slate,
                 'danger' => Color::Rose,
-                'gray' => Color::Gray,
                 'info' => Color::Blue,
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
+                'slate' => Color::Slate,
+                'gray' => Color::Gray,
+                'zinc' => Color::Zinc,
+                'neutral' => Color::Neutral,
+                'stone' => Color::Stone,
+                'red' => Color::Red,
+                'orange' => Color::Orange,
+                'amber' => Color::Amber,
+                'yellow' => Color::Yellow,
+                'lime' => Color::Lime,
+                'green' => Color::Green,
+                'emerald' => Color::Emerald,
+                'teal' => Color::Teal,
+                'cyan' => Color::Cyan,
+                'sky' => Color::Sky,
+                'blue' => Color::Blue,
+                'indigo' => Color::Indigo,
+                'violet' => Color::Violet,
+                'purple' => Color::Purple,
+                'fuchsia' => Color::Fuchsia,
+                'pink' => Color::Pink,
+                'rose' => Color::Rose,
             ])
             ->font('Roboto')
             ->discoverClusters(in: app_path('Core/Clusters'), for: 'App\\Core\\Clusters')

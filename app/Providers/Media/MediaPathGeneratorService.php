@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Core\Clusters\Finances\Resources\TransactionResource\Services;
+namespace App\Providers\Media;
 
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator;
 
-class TransactionAttachmentPath implements PathGenerator
+class MediaPathGeneratorService implements PathGenerator
 {
     public function getPathForConversions(Media $media): string
     {

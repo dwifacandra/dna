@@ -2,7 +2,10 @@
 
 namespace App\Core\Clusters\Peoples\Resources\UserResource\Forms;
 
-use Filament\Forms\Components\{TextInput, DateTimePicker, Repeater, Tabs, Tabs\tab, Actions\Action};
+use App\Core\Enums\Gender;
+use Illuminate\Support\Facades\Hash;
+use Filament\Support\Enums\Alignment;
+use Filament\Forms\Components\{TextInput, DateTimePicker, Repeater, Tabs, Tabs\tab, Actions\Action, Section, SpatieMediaLibraryFileUpload, Split, ToggleButtons, DatePicker};
 
 class UserFormSchemes
 {
@@ -11,20 +14,44 @@ class UserFormSchemes
         return [
             Tabs::make('Tabs')
                 ->tabs([
-                    Tab::make('Generals')
+                    Tab::make('Personal Info')
                         ->schema([
-                            TextInput::make('name')
-                                ->required(),
+                            Split::make([
+                                Section::make([
+                                    SpatieMediaLibraryFileUpload::make('avatar')
+                                        ->collection('users_avatar')
+                                        ->visibility('private')
+                                        ->image()
+                                        ->imageEditor()
+                                        ->circleCropper()
+                                        ->avatar()
+                                        ->nullable()
+                                        ->alignCenter(),
+                                ]),
+                                Section::make([
+                                    TextInput::make('name')
+                                        ->required(),
+                                    DatePicker::make('birthday')
+                                        ->format('Y-m-d'),
+                                    ToggleButtons::make('gender')
+                                        ->options(Gender::class)
+                                        ->nullable()
+                                        ->inline()
+                                        ->grouped(),
+                                ]),
+                            ]),
+                        ]),
+                    Tab::make('Contact')
+                        ->schema([
+                            TextInput::make('phone')
+                                ->tel()
+                                ->telRegex('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/'),
                             TextInput::make('email')
                                 ->email()
                                 ->required(),
                             DateTimePicker::make('email_verified_at'),
-                            TextInput::make('password')
-                                ->password()
-                                ->required(),
-                        ])
-                        ->columns(2),
-                    Tab::make('Accounts')
+                        ]),
+                    Tab::make('Social Media')
                         ->schema([
                             Repeater::make('accounts')
                                 ->relationship('accounts')
@@ -35,9 +62,20 @@ class UserFormSchemes
                                 ->grid(2)
                                 ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
                                 ->schema(AccountFormSchemes::getOptions())
+                                ->addActionAlignment(Alignment::Start)
                                 ->addAction(
                                     fn(Action $action) => $action->label('New Acounts'),
                                 ),
+                        ]),
+                    Tab::make('Security')
+                        ->schema([
+                            TextInput::make('password')
+                                ->password()
+                                ->revealable()
+                                ->maxLength(255)
+                                ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
+                                ->dehydrated(fn(?string $state): bool => filled($state))
+                                ->required(fn(string $operation): bool => $operation === 'create'),
                         ]),
                 ])
                 ->columnSpanFull()

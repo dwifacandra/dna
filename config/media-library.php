@@ -84,7 +84,8 @@ return [
     /*
      * The class that contains the strategy for determining a media file's path.
      */
-    'path_generator' => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    // 'path_generator' => Spatie\MediaLibrary\Support\PathGenerator\DefaultPathGenerator::class,
+    'path_generator' => App\Providers\Media\MediaPathGeneratorService::class,
 
     /*
      * The class that contains the strategy for determining how to remove files.
@@ -95,10 +96,10 @@ return [
      * Here you can specify which path generator should be used for the given class.
      */
     'custom_path_generators' => [
-        Project::class => App\Core\Clusters\Products\Resources\ProjectResource\Services\ProjectThumbnailPath::class,
-        Transaction::class => App\Core\Clusters\Finances\Resources\TransactionResource\Services\TransactionAttachmentPath::class
-        // or
-        // 'model_morph_alias' => PathGenerator::class
+        // Project::class => App\Core\Clusters\Products\Resources\ProjectResource\Services\ProjectThumbnailPath::class,
+        // Transaction::class => App\Core\Clusters\Finances\Resources\TransactionResource\Services\TransactionAttachmentPath::class
+        // // or
+        // // 'model_morph_alias' => PathGenerator::class
     ],
 
     /*

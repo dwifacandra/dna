@@ -25,6 +25,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'birthday' => fake()->date('Y-m-d', 'now'),
+            'gender' => fake()->randomElement(['male', 'female']),
+            'phone' =>  $this->generatePhoneNumber(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -37,8 +40,15 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    private function generatePhoneNumber(): string
+    {
+        $countryCode = '+62';
+        $number = fake()->numerify('###########');
+        return $countryCode . $number;
     }
 }

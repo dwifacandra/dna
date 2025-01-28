@@ -14,24 +14,20 @@ class ProjectsSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create('id_ID');
-
         foreach (range(1, 50) as $index) {
             Customer::firstOrCreate([
                 'name' => $faker->name,
-                'phone' => $faker->phoneNumber,
+                'phone' => $this->generatePhoneNumber(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
-
         $categories = Category::where('scope', 'project')->get();
-
         foreach (range(1, 50) as $index) {
             $release = $faker->boolean;
             $status = $release ? ProjectStatus::Done : $this->getRandomProjectStatus();
             $price = $release ? $faker->numberBetween(100000, 10000000) : 0;
             $featured = $release ? $faker->boolean : 0;
-
             Project::firstOrCreate([
                 'name' => $faker->sentence(2),
                 'description' => $faker->paragraph,
@@ -51,16 +47,20 @@ class ProjectsSeeder extends Seeder
             ]);
         }
     }
-
     private function getRandomProjectStatus(): string
     {
         $statuses = ProjectStatus::cases();
         return $statuses[array_rand($statuses)]->value;
     }
-
     private function getRandomProjectPriority(): string
     {
         $statuses = ProjectPriority::cases();
         return $statuses[array_rand($statuses)]->value;
+    }
+    private function generatePhoneNumber(): string
+    {
+        $countryCode = '+62';
+        $number = fake()->numerify('###########');
+        return $countryCode . $number;
     }
 }
