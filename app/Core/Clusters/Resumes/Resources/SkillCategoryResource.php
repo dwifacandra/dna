@@ -51,7 +51,11 @@ class SkillCategoryResource extends Resource
             ->defaultPaginationPageOption(15)
             ->paginated([10, 15, 25, 50, 100, 'all'])
             ->columns(Categories::getTableColumns())
-            ->contentGrid(['default' => 2, 'xl' => 4,])
+            ->contentGrid([
+                'default' => 1,
+                'md' => 2,
+                'xl' => 4,
+            ])
             ->actions(Categories::getTableActions())
             ->bulkActions(Categories::getTableBulkActions());
     }
