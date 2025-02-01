@@ -15,6 +15,7 @@ class ManageNavigations extends ManageRecords
     {
         if (filled($cluster = static::getCluster())) {
             return $cluster::unshiftClusterBreadcrumbs([
+                'Panel',
                 static::getResource()::getNavigationLabel(),
             ]);
         }

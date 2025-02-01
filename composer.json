@@ -7,6 +7,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "althinect/filament-spatie-roles-permissions": "^2.2",
         "aymanalhattami/filament-context-menu": "^1.0",
         "calebporzio/sushi": "^2.4",
         "filament/filament": "^3.2",
@@ -14,7 +15,8 @@
         "google/apiclient": "^2.14",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "spatie/laravel-permission": "^6.10"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

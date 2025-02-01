@@ -26,6 +26,7 @@ class NavigationResource extends Resource
     protected static ?string $recordTitleAttribute = 'label';
     protected static ?string $navigationIcon = 'icon-core.outline.grid_view';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.grid_view';
+    protected static ?string $navigationGroup = 'Panel';
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function form(Form $form): Form

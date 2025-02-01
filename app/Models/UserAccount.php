@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\{Factories\HasFactory, Model};
 
 class UserAccount extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
     protected $fillable = [
         'user_id',
         'name',

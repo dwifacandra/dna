@@ -71,7 +71,7 @@ class ProjectFormSchemes
                         ->default(today()),
                     DatePicker::make('end_date'),
                 ]),
-            SpatieMediaLibraryFileUpload::make('thumbnail')
+            SpatieMediaLibraryFileUpload::make('attachment')
                 ->columnSpanFull()
                 ->disk('public')
                 ->collection('projects')
@@ -79,7 +79,8 @@ class ProjectFormSchemes
                 ->imageEditor()
                 ->openable()
                 ->downloadable()
-                ->nullable(),
+                ->nullable()
+                ->multiple(),
             MarkdownEditor::make('description')->columnSpanFull(),
         ];
     }

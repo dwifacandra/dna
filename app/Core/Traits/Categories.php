@@ -24,7 +24,7 @@ trait Categories
                     ->native(false)
                     ->searchable()
                     ->reactive()
-                    ->required()
+                    ->default('core.outline.category')
                     ->options(CoreIcon::getIcons())
                     ->afterStateUpdated(function ($set, $state, $get) {
                         $set('icon_preview', $state . ':' . $get('icon_color'));

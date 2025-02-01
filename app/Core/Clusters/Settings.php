@@ -4,6 +4,8 @@ namespace App\Core\Clusters;
 
 use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 use App\Core\Clusters\Settings\Resources\{NavigationResource};
+use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource;
+use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource;
 
 class Settings extends Cluster
 {
@@ -18,6 +20,8 @@ class Settings extends Cluster
             ->collapsed()
             ->items([
                 ...NavigationResource::getNavigationItems(),
+                ...RoleResource::getNavigationItems(),
+                ...PermissionResource::getNavigationItems(),
             ]);
     }
 }

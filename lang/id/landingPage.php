@@ -7,16 +7,16 @@ return [
             'description' => 'Total Layanan tersedia',
         ],
         'portfolio' => [
-            'title' => 'Portofolio',
-            'description' => 'Total portofolio yang dikelola.',
+            'title' => 'Produk',
+            'description' => 'Total Produk yang dikelola.',
         ],
         'projects' => [
             'title' => 'Proyek',
-            'description' => 'Total proyek yang telah selesai.',
+            'description' => 'Total Proyek yang telah selesai.',
         ],
         'customers' => [
             'title' => 'Pelanggan',
-            'description' => 'Total pelanggan yang terdaftar.',
+            'description' => 'Total Pelanggan yang terdaftar.',
         ],
     ],
     'resume' => [

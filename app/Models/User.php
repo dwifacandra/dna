@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Core\Enums\Gender;
 use Filament\Panel;
 use Filament\Models\Contracts\{HasAvatar, FilamentUser};
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\{
     Contracts\Auth\MustVerifyEmail,
     Database\Eloquent\Factories\HasFactory,
@@ -14,15 +16,16 @@ use Illuminate\{
     Support\Str,
 };
 
-class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia
+class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia, MustVerifyEmail
 {
-    use HasFactory, Notifiable, InteractsWithMedia;
+    use HasFactory, Notifiable, InteractsWithMedia, HasRoles, HasSuperAdmin;
     protected $fillable = [
         'name',
         'birthday',
         'gender',
         'phone',
         'email',
+        'password',
     ];
     protected $hidden = [
         'password',
@@ -58,7 +61,7 @@ class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return $this->hasRole('Adminstrator');
     }
     public function accounts()
     {

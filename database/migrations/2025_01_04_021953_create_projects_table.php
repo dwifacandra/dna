@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->text('description')->nullable();
+            $table->string('slug')->unique();
             $table->string('url', 255)->nullable();
             $table->string('repository', 255)->nullable();
             $table->date('start_date')->nullable();

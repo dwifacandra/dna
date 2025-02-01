@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\{User};
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -20,9 +21,9 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]
         );
-
+        Role::create(['name' => 'Adminstrator']);
+        $user->assignRole('Adminstrator');
         User::factory(10)->create();
-
         $this->call([
             NavigationSeeder::class,
             CategorySeeder::class,

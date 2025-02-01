@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use App\Core\Casts\CurrencyCast;
-use Illuminate\Database\Eloquent\{Model, Builder, Factories\HasFactory};
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
-use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia, MediaCollections\Models\Media};
+use Illuminate\Database\Eloquent\{Model, Builder, Factories\HasFactory};
 
 class Project extends Model implements HasMedia
 {
@@ -14,6 +15,7 @@ class Project extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'slug',
         'url',
         'repository',
         'start_date',
@@ -31,13 +33,26 @@ class Project extends Model implements HasMedia
         'priority' => ProjectPriority::class,
         'price' => CurrencyCast::class,
     ];
+    public function generateSlug()
+    {
+        $this->slug = Str::slug($this->name);
+    }
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($post) {
+            $post->generateSlug();
+        });
+        static::updating(function ($post) {
+            $post->generateSlug();
+        });
+    }
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('projects')
             ->useFallbackUrl('/img/image.svg')
             ->useFallbackPath(public_path('/img/image.svg'))
-            ->useDisk('public')
-            ->singleFile();
+            ->useDisk('public');
     }
     public function user()
     {

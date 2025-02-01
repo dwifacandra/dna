@@ -21,6 +21,7 @@ use Illuminate\{
     Session\Middleware\StartSession,
     View\Middleware\ShareErrorsFromSession,
 };
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 
 class CorePanelProvider extends PanelProvider
 {
@@ -32,6 +33,8 @@ class CorePanelProvider extends PanelProvider
             ->path('core')
             ->spa()
             ->login()
+            ->passwordReset()
+            ->emailVerification()
             ->profile()
             ->authGuard('web')
             ->authPasswordBroker('users')
@@ -44,6 +47,8 @@ class CorePanelProvider extends PanelProvider
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->viteTheme('resources/css/filament/core/theme.css')
+            ->favicon(asset('img/favicon.png'))
+            ->darkMode(false)
             ->colors([
                 'primary' => Color::Slate,
                 'danger' => Color::Rose,
@@ -78,6 +83,9 @@ class CorePanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Core/Resources'), for: 'App\\Core\\Resources')
             ->discoverPages(in: app_path('Core/Pages'), for: 'App\\Core\\Pages')
             ->discoverWidgets(in: app_path('Core/Widgets'), for: 'App\\Core\\Widgets')
+            ->plugin(
+                FilamentSpatieRolesPermissionsPlugin::make()
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

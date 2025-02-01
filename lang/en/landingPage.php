@@ -7,8 +7,8 @@ return [
             'description' => 'Total services available',
         ],
         'portfolio' => [
-            'title' => 'Portfolio',
-            'description' => 'Total portfolio managed.',
+            'title' => 'Products',
+            'description' => 'Total products managed.',
         ],
         'projects' => [
             'title' => 'Projects',
