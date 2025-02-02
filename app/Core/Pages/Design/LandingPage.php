@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Core\Components\Project;
+namespace App\Core\Pages\Design;
 
-use App\Core\Enums\ProjectStatus;
 use App\Models\Project;
 use Livewire\Component;
 
@@ -14,11 +13,11 @@ class LandingPage extends Component
         $this->projects = Project::where('release', true)
             ->orderBy('featured', 'desc')
             ->orderBy('end_date', 'desc')
-            ->take(5)
+            ->take(20)
             ->get();
     }
     public function render()
     {
-        return view('core.components.project.landing-page');
+        return view('core.pages.design.landing-page');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Pages\Project;
+namespace App\Core\Pages\Product;
 
 use App\Models\Project;
 use Livewire\Component;
@@ -16,6 +16,6 @@ class Detail extends Component
     }
     public function render()
     {
-        return view('core.pages.project.detail');
+        return view('core.pages.product.detail');
     }
 }

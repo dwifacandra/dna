@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Core\Pages\Product;
+
+use App\Models\Project;
+use Livewire\Component;
+
+class LandingPage extends Component
+{
+    public $projects;
+    public function mount()
+    {
+        $this->projects = Project::where('release', true)
+            ->orderBy('featured', 'desc')
+            ->orderBy('end_date', 'desc')
+            ->take(10)
+            ->get();
+    }
+    public function render()
+    {
+        return view('core.pages.product.landing-page');
+    }
+}

@@ -1,0 +1,37 @@
+<div class="container flex flex-col px-4 mx-auto gap-y-6">
+    <div class="flex items-center justify-between">
+        <h1 class="px-6 py-1 text-xl font-semibold text-white core-bg-gradient w-fit">Blog</h1>
+        <a href="/products" class="py-1">All Blog Post</a>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        @foreach ($projects as $project)
+        <a class="block overflow-hidden bg-white rounded-sm shadow-lg hover:shadow-2xl group focus:outline-none"
+            href="/blog/post">
+            <div class="grid justify-between grid-cols-2 gap-4">
+                <div class="relative w-full overflow-hidden rounded-sm shrink-0 size-40">
+                    <img class="absolute top-0 object-cover transition-transform duration-500 ease-in-out rounded-sm group-hover:scale-105 group-focus:scale-105 size-full start-0"
+                        src="{{ $project->getFirstMediaUrl('projects') }}" alt="{{ $project->name }}">
+                </div>
+                <div class="flex flex-col justify-center h-40">
+                    <h3
+                        class="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-neutral-300 dark:group-hover:text-white line-clamp-1">
+                        {{ $project->name }}
+                    </h3>
+                    <p class="mt-3 text-gray-600 line-clamp-2 text-balance dark:text-neutral-400">
+                        {{ $project->description }}
+                    </p>
+                    <p
+                        class="inline-flex items-center mt-4 text-sm font-medium text-blue-600 gap-x-1 decoration-2 group-hover:underline group-focus:underline dark:text-blue-500">
+                        Read more
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                    </p>
+                </div>
+            </div>
+        </a>
+        @endforeach
+    </div>
+</div>

@@ -151,7 +151,7 @@ class ResumeSkillFactory extends Factory
             'matlab',
             'maya',
             'meteor',
-            'microsoftsqlserver',
+            'microsoft Sql Server',
             'minitab',
             'mocha',
             'modx',
