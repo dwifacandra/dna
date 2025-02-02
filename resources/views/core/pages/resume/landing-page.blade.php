@@ -73,7 +73,7 @@
                             <div
                                 class="p-2 border border-gray-200 shadow-sm cursor-pointer select-none hs-accordion-active:bg-gray-100 hover:shadow-md">
                                 <img alt="{{ $company->name }} Logo" class="object-contain h-20 max-w-28"
-                                    src="{{ asset($company->logo) }}" />
+                                    src="{{ $company->logo }}" />
                             </div>
                             <div class="flex flex-col items-start justify-center">
                                 <h3 class="text-lg font-semibold">
