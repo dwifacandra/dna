@@ -1,13 +1,12 @@
-<div class="flex items-center justify-center bg-white border-b rounded-sm shadow-lg select-none border-slate-200">
-    <div class="w-full max-w-6xl overflow-hidden">
-        <div class="grid grid-cols-2 text-center md:grid-cols-4 ">
-            @foreach($stats as $stat)
-            <div class="flex-1 p-4 border-b border-slate-200 hover:bg-slate-50 md:border-b-0 md:border-r">
-                <h2 class="text-lg font-semibold uppercase text-slate-700">{{ $stat['title'] }}</h2>
-                <p class="text-4xl font-semibold text-slate-800">{{ $stat['count'] }}</p>
-                <p class="text-sm text-slate-600">{{ $stat['description'] }}</p>
-            </div>
-            @endforeach
+<div class="bg-white border-b rounded-sm shadow-lg select-none border-slate-200">
+    <div class="grid max-w-screen-xl grid-cols-2 mx-auto text-center md:grid-cols-4">
+        @foreach($stats as $stat)
+        <div
+            class="flex flex-col flex-1 py-4 border-b border-r gap-y-1 first:border-l border-slate-200 hover:bg-slate-50">
+            <h2 class="font-semibold uppercase md:text-lg text-slate-700">{{ $stat['title'] }}</h2>
+            <p class="text-3xl font-semibold md:text-4xl text-slate-800">{{ $stat['count'] }}</p>
+            <p class="hidden text-sm md:block text-slate-600">{{ $stat['description'] }}</p>
         </div>
+        @endforeach
     </div>
 </div>
