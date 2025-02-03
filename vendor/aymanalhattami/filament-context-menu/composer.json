@@ -1,0 +1,80 @@
+{
+    "name": "aymanalhattami/filament-context-menu",
+    "description": "context menu (right click menu) for filament",
+    "keywords": [
+        "ayman alhattami",
+        "laravel",
+        "filament",
+        "filament_context_menu",
+        "filament admin panel",
+        "filament context menu",
+        "context menu"
+    ],
+    "homepage": "https://github.com/aymanalhattami/filament-context-menu",
+    "support": {
+        "issues": "https://github.com/aymanalhattami/filament-context-menu/issues",
+        "source": "https://github.com/aymanalhattami/filament-context-menu"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ayman Alhattami",
+            "email": "ayman.m.alhattami@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^3.0",
+        "spatie/laravel-package-tools": "^1.15.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^8.0",
+        "larastan/larastan": "^2.0",
+        "orchestra/testbench": "^9.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-arch": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AymanAlhattami\\FilamentContextMenu\\": "src/",
+            "AymanAlhattami\\FilamentContextMenu\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AymanAlhattami\\FilamentContextMenu\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AymanAlhattami\\FilamentContextMenu\\FilamentContextMenuServiceProvider"
+            ],
+            "aliases": {
+                "Skeleton": "AymanAlhattami\\FilamentContextMenu\\Facades\\FilamentContextMenu"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
