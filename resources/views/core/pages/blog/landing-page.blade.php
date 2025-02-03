@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($projects as $project)
         <a class="block overflow-hidden bg-white rounded-sm shadow-lg hover:shadow-2xl group focus:outline-none"
-            href="/blog/post">
+            href="{{ route('blog.post.detail', $project->slug) }}">
             <div class="grid justify-between grid-cols-2 gap-4">
                 <div class="relative w-full overflow-hidden rounded-sm shrink-0 size-40">
                     <img class="absolute top-0 object-cover transition-transform duration-500 ease-in-out rounded-sm group-hover:scale-105 group-focus:scale-105 size-full start-0"

@@ -19,9 +19,26 @@ Route::middleware([SetLocale::class])->group(function () {
         })->name('about');
         Route::get('/whoami', WhoAmI::class)->name('about.whoami');
     });
+    // Group Route Blog
+    Route::prefix('blog')->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('landing-page');
+        })->name('product');
+        Route::get('/post/{slug}', ProductDetail::class)->name('blog.post.detail');
+    });
     // Group Route Product
     Route::prefix('product')->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('landing-page');
+        })->name('product');
         Route::get('/{slug}', ProductDetail::class)->name('product.detail');
+    });
+    // Group Route Design
+    Route::prefix('design')->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('landing-page');
+        })->name('design');
+        Route::get('/{slug}', ProductDetail::class)->name('design.detail');
     });
 });
 // Signed Media
@@ -51,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('dev.storage.unlink');
     Route::get('/optimize', function () {
         $exitCode = Artisan::call('optimize');
-        return redirect('/core');
+        return redirect()->route('filament.core.home');
     })->name('dev.optimizer');
 });
 Route::get('/sitemap', function () {
