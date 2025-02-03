@@ -41,6 +41,7 @@
                         </ul>
                     </div>
                 </div>
+                @if ($skillGroups->isNotEmpty())
                 <div class="flex flex-col gap-6 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
                     <div class="flex flex-col items-start justify-between gap-4">
                         <h2 class="px-6 text-lg font-semibold text-white core-bg-gradient w-fit">Skills</h2>
@@ -63,7 +64,9 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
+            @if ($companies->isNotEmpty())
             <div class="flex flex-col gap-4 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
                 <h2 class="px-6 text-lg font-semibold text-white core-bg-gradient w-fit">Experiences</h2>
                 <div class="flex flex-col gap-2 hs-accordion-group">
@@ -121,6 +124,7 @@
                     @endforeach
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>

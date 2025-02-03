@@ -12,7 +12,8 @@ class WhoAmI extends Component
     public $companies;
     public function mount()
     {
-        $this->skillGroups = Category::where('scope', 'resume_skill')
+        $this->skillGroups = Category::has('skills')
+            ->where('scope', 'resume_skill')
             ->with('skills')
             ->get()
             ->sortByDesc(function ($category) {

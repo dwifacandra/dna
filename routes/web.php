@@ -14,6 +14,9 @@ Route::middleware([SetLocale::class])->group(function () {
     Route::get('/', LandingPage::class)->name('landing-page');
     // Group Route About
     Route::prefix('about')->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('about.whoami');
+        })->name('about');
         Route::get('/whoami', WhoAmI::class)->name('about.whoami');
     });
     // Group Route Product

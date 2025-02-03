@@ -3,6 +3,9 @@
         <h1 class="px-6 py-1 text-xl font-semibold text-white core-bg-gradient w-fit">Blog</h1>
         <a href="/products" class="py-1">All Blog Post</a>
     </div>
+    @if ($projects->isEmpty())
+    <livewire:components.cards.empty-state />
+    @endif
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($projects as $project)
         <a class="block overflow-hidden bg-white rounded-sm shadow-lg hover:shadow-2xl group focus:outline-none"

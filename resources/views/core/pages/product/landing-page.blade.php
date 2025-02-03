@@ -3,6 +3,9 @@
         <h1 class="px-6 py-1 text-xl font-semibold text-white core-bg-gradient w-fit">Products</h1>
         <a href="/products" class="py-1">All Products</a>
     </div>
+    @if ($projects->isEmpty())
+    <livewire:components.cards.empty-state />
+    @endif
     <div class="grid grid-cols-1 gap-y-6 gap-x-4 md:grid-cols-2 lg:grid-cols-5">
         @foreach ($projects as $project)
         <div class="relative transition duration-200 ease-in delay-75 bg-white rounded-sm shadow-lg hover:scale-105 hover:shadow-2xl"
