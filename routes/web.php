@@ -23,7 +23,7 @@ Route::middleware([SetLocale::class])->group(function () {
     Route::prefix('blog')->group(function () {
         Route::get('/', function () {
             return redirect()->route('landing-page');
-        })->name('product');
+        })->name('blog');
         Route::get('/post/{slug}', ProductDetail::class)->name('blog.post.detail');
     });
     // Group Route Product
