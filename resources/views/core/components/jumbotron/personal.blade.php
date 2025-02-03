@@ -1,6 +1,6 @@
 <div class="text-white bg-center bg-no-repeat bg-cover select-none px-14 bg-slate-900 bg-blend-multiply bg-opacity-90"
     style="background-image: url('{{config('app.url')}}/img/background.png')">
-    <div class="flex flex-col justify-center md:h-[95vh] h-[50vh] mx-auto sm:max-h-svh max-w-screen-xl">
+    <div class="flex flex-col justify-center h-[95vh] mx-auto sm:max-h-svh max-w-screen-xl">
         <span class="flex-shrink text-lg w-fit text-white/80">
             Hi, My Name is<span class="animate-pulse">...</span>
         </span>
