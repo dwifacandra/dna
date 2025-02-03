@@ -73,10 +73,11 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-slate-700">
-            <div class="flex flex-wrap items-center gap-3">
+        <div
+            class="flex flex-col justify-between pt-6 border-t border-gray-200 md:items-center gap-y-4 md:flex-row dark:border-slate-700">
+            <div class="flex flex-row-reverse flex-wrap items-center justify-between gap-4 md:flex-row">
                 <livewire:components.toggle.locale-dropdown />
-                <div class="space-x-4 text-sm">
+                <div class="space-x-2 text-sm">
                     <a class="inline-flex text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-slate-400 dark:hover:text-slate-200 dark:focus:text-slate-200"
                         href="#">Terms</a>
                     <a class="inline-flex text-gray-600 gap-x-2 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-slate-400 dark:hover:text-slate-200 dark:focus:text-slate-200"
