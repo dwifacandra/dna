@@ -3,17 +3,23 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia, MediaCollections\Models\Media};
 use Illuminate\Database\Eloquent\{Factories\HasFactory, Model};
 
-class ResumeCompany extends Model
+class ResumeCompany extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
     protected $fillable = [
         'name',
         'description',
         'url',
-        'logo',
     ];
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('companies')
+            ->useFallbackUrl('/svg/core.color.image')
+            ->useDisk('public');
+    }
     public function experiences()
     {
         return $this->hasMany(ResumeExperience::class, 'company_id')->orderBy('start_date', 'desc');

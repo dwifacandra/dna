@@ -8,7 +8,7 @@
         <div class="relative transition duration-200 ease-in delay-75 bg-white shadow-lg hover:shadow-2xl"
             wire:key="projects-{{ $project->id }}">
             <a href="{{ route('product.detail', $project->slug) }}">
-                <img class="w-full h-[150px] object-cover" src="{{ $project->getFirstMediaUrl('projects') }}"
+                <img class="w-full h-[150px] object-cover" src="{{ $project->getFirstMediaUrl('projects','cover') }}"
                     alt="{{ $project->name }}" />
             </a>
         </div>

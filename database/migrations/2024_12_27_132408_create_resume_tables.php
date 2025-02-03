@@ -13,7 +13,6 @@ class CreateResumeTables extends Migration
             $table->string('name', 50);
             $table->string('description', 255)->nullable();
             $table->string('url', 100)->nullable();
-            $table->string('logo', 100)->nullable();
             $table->timestamps();
         });
 

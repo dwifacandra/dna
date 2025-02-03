@@ -3,19 +3,18 @@
 namespace App\Core\Clusters\Products\Resources\ProjectResource\Tables;
 
 use App\Models\Project;
-use Illuminate\Support\Str;
+use Illuminate\Support\{Str, Collection};
 use Filament\Support\Enums\Alignment;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\{IconColumn, TextColumn};
+use Filament\Tables\Columns\{IconColumn, TextColumn, SpatieMediaLibraryImageColumn};
 
 class ProjectTableColumns
 {
     public static function getOptions(): array
     {
         return [
-            SpatieMediaLibraryImageColumn::make('thumbnail')
-                ->defaultImageUrl(url('/img/image.svg'))
+            SpatieMediaLibraryImageColumn::make('Cover')
                 ->collection('projects')
+                ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
                 ->size(64),
             TextColumn::make('name')
                 ->alignment(Alignment::Left)

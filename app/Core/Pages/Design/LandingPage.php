@@ -11,6 +11,10 @@ class LandingPage extends Component
     public function mount()
     {
         $this->projects = Project::where('release', true)
+            ->with(['media' => function ($query) {
+                $query->where('collection_name', 'projects')
+                    ->where('custom_properties->scope', 'cover');
+            }])
             ->orderBy('featured', 'desc')
             ->orderBy('end_date', 'desc')
             ->take(20)

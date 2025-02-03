@@ -13,9 +13,9 @@
             <<span class="typing" x-data="typingEffect()" x-init="startTyping(messages)"></span>/>
         </h2>
         <div>
-            <a href="#resume"
+            <a href="{{route('about.whoami')}}"
                 class="inline-flex items-center justify-center px-5 py-2 mt-4 text-base font-medium text-center text-white rounded bg-gray-600/50 hover:bg-gray-700/80 w-fit gap-x-2">
-                About Me
+                Who Am I ?
                 <x-icon-core.outline.arrow_right class="size-6 core-icon" />
             </a>
         </div>

@@ -23,12 +23,18 @@ class DatabaseSeeder extends Seeder
         );
         Role::create(['name' => 'Adminstrator']);
         $user->assignRole('Adminstrator');
-        User::factory(10)->create();
-        $this->call([
-            NavigationSeeder::class,
-            CategorySeeder::class,
-            ResumeSeeder::class,
-            ProjectsSeeder::class,
-        ]);
+        if (config('app.env') === 'local') {
+            User::factory(10)->create();
+            $this->call([
+                NavigationSeeder::class,
+                CategorySeeder::class,
+                ResumeSeeder::class,
+                ProjectsSeeder::class,
+            ]);
+        } else {
+            $this->call([
+                NavigationSeeder::class,
+            ]);
+        }
     }
 }

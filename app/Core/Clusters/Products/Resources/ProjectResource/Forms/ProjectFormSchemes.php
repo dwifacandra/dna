@@ -4,10 +4,10 @@ namespace App\Core\Clusters\Products\Resources\ProjectResource\Forms;
 
 use Filament\Support\RawJs;
 use App\Core\Traits\Categories;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, Toggle, MarkdownEditor, Select};
+use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, Toggle, MarkdownEditor, Select, SpatieMediaLibraryFileUpload};
 
 class ProjectFormSchemes
 {
@@ -71,16 +71,30 @@ class ProjectFormSchemes
                         ->default(today()),
                     DatePicker::make('end_date'),
                 ]),
-            SpatieMediaLibraryFileUpload::make('attachment')
-                ->columnSpanFull()
-                ->disk('public')
-                ->collection('projects')
-                ->image()
-                ->imageEditor()
-                ->openable()
-                ->downloadable()
-                ->nullable()
-                ->multiple(),
+            Fieldset::make('Upload')
+                ->schema([
+                    SpatieMediaLibraryFileUpload::make('cover')
+                        ->disk('public')
+                        ->collection('projects')
+                        ->customProperties(['scope' => 'cover'])
+                        ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
+                        ->image()
+                        ->imageEditor()
+                        ->openable()
+                        ->downloadable()
+                        ->nullable(),
+                    SpatieMediaLibraryFileUpload::make('preview')
+                        ->disk('public')
+                        ->collection('projects')
+                        ->customProperties(['scope' => 'preview'])
+                        ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'preview'))
+                        ->image()
+                        ->imageEditor()
+                        ->openable()
+                        ->downloadable()
+                        ->nullable()
+                        ->multiple(),
+                ])->columns(2),
             MarkdownEditor::make('description')->columnSpanFull(),
         ];
     }

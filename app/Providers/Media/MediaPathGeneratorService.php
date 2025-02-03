@@ -14,7 +14,11 @@ class MediaPathGeneratorService implements PathGenerator
     }
     public function getPath(Media $media): string
     {
-        return "{$media->collection_name}/{$media->id}/";
+        if (is_null($media->custom_properties)) {
+            return "{$media->collection_name}/{$media->id}/";
+        } else {
+            return "{$media->collection_name}/" . array_values($media->custom_properties)[0] . "/{$media->id}/";
+        }
     }
     public function getPathForConversions(Media $media): string
     {

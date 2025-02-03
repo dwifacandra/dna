@@ -2,7 +2,7 @@
     @foreach($navigations as $navigation)
     <li class="fi-topbar-item {{ $navigation->active === 1 ? 'fi-topbar-item-active' : '' }}">
         <a class="fi-topbar-item-label {{ $navigation->icon_position === \App\Core\Enums\IconNavigationPosition::End ? 'flex-row-reverse' : '' }}"
-            href="{{ route($navigation->url) }}">
+            href="{{ route($navigation->url) }}" wire:navigate>
             @if(isset($navigation->icon))
             <x-icon class="fi-topbar-item-label-icon" name="{{ $navigation->icon }}" />
             @endif

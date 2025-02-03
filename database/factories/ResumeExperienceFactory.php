@@ -2,21 +2,21 @@
 
 namespace Database\Factories;
 
+use Faker\Generator as Faker;
 use App\Core\Enums\{JobType, LocationType};
 use App\Models\{ResumeCompany, ResumeExperience};
-use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ResumeExperienceFactory extends Factory
 {
     protected $model = ResumeExperience::class;
-
     public function definition()
     {
         $faker = app(Faker::class);
-
+        $startDate = $faker->dateTimeBetween('-5 years', '-1 year')->format('Y-m-d');
+        $endDate = (new \DateTime($startDate))->modify('+1 year')->format('Y-m-d');
         return [
-            'company_id' => ResumeCompany::inRandomOrder()->first()->id,
+            'company_id' => $faker->randomElement([1, 2]),
             'user_id' => 1,
             'job_title' => $faker->jobTitle,
             'description' => (function () use ($faker) {
@@ -28,15 +28,22 @@ class ResumeExperienceFactory extends Factory
             'regency' => $faker->city,
             'job_type' => $faker->randomElement(JobType::cases()),
             'location_type' => $faker->randomElement(LocationType::cases()),
-            'start_date' => $faker->dateTimeBetween('-5 years', '-1 year')->format('Y-m-d'),
-            'end_date' => ($endDate = $faker->optional(0.7)->dateTimeBetween('-1 year', 'now')) ? $endDate->format('Y-m-d') : null,
+            'start_date' => $startDate,
+            'end_date' => $endDate,
         ];
     }
-
-    public function createSampleExperiences($count = 50)
+    public function createSampleExperiences($count = 10)
     {
+        $experiences = [];
         for ($i = 0; $i < $count; $i++) {
-            ResumeExperience::firstOrCreate($this->definition());
+            $experiences[] = $this->definition();
+        }
+        usort($experiences, function ($a, $b) {
+            return strtotime($b['start_date']) - strtotime($a['start_date']);
+        });
+        $experiences[0]['end_date'] = null;
+        foreach ($experiences as $experience) {
+            ResumeExperience::firstOrCreate($experience);
         }
     }
 }

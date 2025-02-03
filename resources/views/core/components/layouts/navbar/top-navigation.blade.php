@@ -1,7 +1,7 @@
 <header class="core-header">
     <nav class="core-top-navbar">
         <div class="core-navbar-start">
-            <a class="core-navbar-brand" href="{{route('landing-page')}}" aria-label="Brand" wire:navigate>
+            <a class="core-navbar-brand" href="{{route('landing-page')}}" aria-label="Brand">
                 {{ config('app.name') }}
             </a>
             <div class="sm:hidden">

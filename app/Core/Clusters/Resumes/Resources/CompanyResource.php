@@ -30,8 +30,8 @@ class CompanyResource extends Resource
             ->columns(Tables\CompanyTableColumns::getOptions())
             ->contentGrid([
                 'default' => 1,
-                'md' => 2,
-                'xl' => 4,
+                'md' => 3,
+                'xl' => 6,
             ])
             ->filters(Tables\CompanyTableFilters::getOptions())
             ->actions(Tables\CompanyTableActions::getOptions())

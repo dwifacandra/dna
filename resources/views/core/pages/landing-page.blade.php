@@ -5,6 +5,5 @@
         <livewire:pages.blog.landing-page />
         <livewire:pages.product.landing-page />
         <livewire:pages.design.landing-page />
-        <livewire:pages.resume.landing-page />
     </div>
 </div>

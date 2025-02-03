@@ -3,9 +3,8 @@
 namespace App\Core\Clusters\Products\Resources\PortfolioResource\Tables;
 
 use App\Models\Project;
-use Illuminate\Support\Str;
+use Illuminate\Support\{Str, Collection};
 use Filament\Support\Enums\Alignment;
-use App\Core\Components\Tables\Columns\CoreTextColumn;
 use Filament\Tables\Columns\{IconColumn,  TextColumn};
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
@@ -14,9 +13,9 @@ class PortfolioTableColumns
     public static function getOptions(): array
     {
         return [
-            SpatieMediaLibraryImageColumn::make('thumbnail')
-                ->defaultImageUrl(url('/img/image.svg'))
+            SpatieMediaLibraryImageColumn::make('Cover')
                 ->collection('projects')
+                ->filterMediaUsing(fn(Collection $media): Collection => $media->where('custom_properties.scope', 'cover'))
                 ->size(64),
             TextColumn::make('name')
                 ->alignment(Alignment::Left)

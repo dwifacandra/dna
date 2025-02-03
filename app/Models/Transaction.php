@@ -31,8 +31,7 @@ class Transaction extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('transactions')
-            ->useFallbackUrl('/img/image.svg')
-            ->useFallbackPath(public_path('/img/image.svg'))
+            ->useFallbackUrl('/svg/core.outline.currency_exchange')
             ->useDisk('private');
     }
     public function category()

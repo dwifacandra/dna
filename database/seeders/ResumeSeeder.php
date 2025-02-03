@@ -10,7 +10,7 @@ class ResumeSeeder extends Seeder
     public function run(): void
     {
         ResumeCompany::factory()->createSampleCompanies();
-        ResumeExperience::factory()->createSampleExperiences(50);
+        ResumeExperience::factory()->createSampleExperiences(5);
         ResumeSkill::factory()->createSampleSkills(20);
     }
 }
