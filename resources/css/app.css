@@ -68,6 +68,10 @@
     @apply bg-repeat bg-fixed;
     background-image: url("/img/grid.svg");
 }
+.core-bg-grid-3 {
+    @apply bg-repeat bg-fixed;
+    background-image: url("/img/grid-2.svg");
+}
 .dark .core-bg-grid,
 .dark .core-bg-grid-2 {
     background-image: url("/img/grid-dark.svg");

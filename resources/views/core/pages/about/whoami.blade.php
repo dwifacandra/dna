@@ -56,7 +56,7 @@
                                 <div class="flex flex-row flex-wrap items-center justify-start gap-1">
                                     @foreach ($skillGroup->skills as $skill)
                                     <div
-                                        class="flex flex-col items-center justify-center gap-1 border shadow-sm cursor-pointer select-none border-neutral-300 dark:border-neutral-800 hover:shadow-md size-20">
+                                        class="flex flex-col items-center justify-center gap-1 border shadow-sm cursor-pointer select-none border-neutral-300 dark:border-neutral-800 hover:shadow-md size-20 hover:animate-pulse">
                                         <x-icon name="{{ $skill->icon }}"
                                             class="size-8 text-[{{ $skill->icon_color }}]" />
                                         <span class="text-xs">{{ $skill->name }}</span>
