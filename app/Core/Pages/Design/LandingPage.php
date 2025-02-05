@@ -17,7 +17,7 @@ class LandingPage extends Component
             }])
             ->orderBy('featured', 'desc')
             ->orderBy('end_date', 'desc')
-            ->take(20)
+            ->take(29)
             ->get();
     }
     public function render()

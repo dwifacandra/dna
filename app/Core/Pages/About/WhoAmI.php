@@ -40,7 +40,8 @@ class WhoAmI extends Component
         return view('core.pages.about.whoami', [
             'breadcrumbItems' => [
                 ['label' => 'Home', 'url' => route('landing-page')],
-                ['label' => 'About', 'url' => null],
+                ['label' => 'About', 'url' => route('about')],
+                ['label' => 'Who Am I', 'url' => null],
             ],
         ]);
     }

@@ -13,6 +13,7 @@
     <livewire:components.layouts.navbar.top-navigation />
     {{ $slot }}
     <livewire:components.layouts.navbar.bottom-navigation />
+    @stack('scripts')
 </body>
 
 </html>

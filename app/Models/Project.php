@@ -50,7 +50,7 @@ class Project extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('projects')
-            ->useFallbackUrl('/svg/core.color.image')
+            ->useFallbackUrl('/svg/core.color.no_image')
             ->useDisk('public');
     }
     public function user()

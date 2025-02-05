@@ -1,10 +1,12 @@
 <div class="w-full">
+    <livewire:components.jumbotron.personal />
     <livewire:components.breadcrumb :items="$breadcrumbItems" />
-    <div class="container flex flex-col px-4 py-8 mx-auto max-w-screen-2xl gap-y-6">
-        <h1 class="px-6 py-1 text-xl font-semibold text-white core-bg-gradient w-fit">About Me</h1>
+    <div class="container flex flex-col px-4 py-8 mx-auto max-w-screen-2xl gap-y-6" id="thisme">
+        <h1 class="page-title-primary">Who Am I</h1>
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div class="flex flex-col gap-4">
-                <div class="flex flex-col gap-6 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
+                <div
+                    class="flex flex-col gap-6 p-6 bg-white border rounded-sm shadow-lg dark:bg-white/10 border-neutral-300 dark:border-neutral-950 group hover:shadow-2xl">
                     <div class="flex items-center gap-x-3">
                         <div class="shrink-0">
                             <img class="object-contain rounded-full shrink-0 size-16"
@@ -23,9 +25,10 @@
                         {{ __("landingPage.resume.about") }}
                     </p>
                 </div>
-                <div class="flex flex-col gap-6 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
+                <div
+                    class="flex flex-col gap-6 p-6 bg-white border rounded-sm shadow-lg dark:bg-white/10 border-neutral-300 dark:border-neutral-950 group hover:shadow-2xl">
                     <div class="flex flex-col gap-4">
-                        <h2 class="px-6 text-lg font-semibold text-white core-bg-gradient w-fit">Contacts</h2>
+                        <h2 class="page-title-secondary">Contacts</h2>
                         <ul class="flex flex-col gap-y-2">
                             <li class="flex items-center gap-x-2.5">
                                 <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -42,9 +45,10 @@
                     </div>
                 </div>
                 @if ($skillGroups->isNotEmpty())
-                <div class="flex flex-col gap-6 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
+                <div
+                    class="flex flex-col gap-6 p-6 bg-white border rounded-sm shadow-lg dark:bg-white/10 border-neutral-300 dark:border-neutral-950 group hover:shadow-2xl">
                     <div class="flex flex-col items-start justify-between gap-4">
-                        <h2 class="px-6 text-lg font-semibold text-white core-bg-gradient w-fit">Skills</h2>
+                        <h2 class="page-title-secondary">Skills</h2>
                         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                             @foreach ($skillGroups as $skillGroup)
                             <div class="flex flex-col items-start justify-start text-sm">
@@ -52,7 +56,7 @@
                                 <div class="flex flex-row flex-wrap items-center justify-start gap-1">
                                     @foreach ($skillGroup->skills as $skill)
                                     <div
-                                        class="flex flex-col items-center justify-center gap-1 border border-gray-200 shadow-sm cursor-pointer select-none hover:shadow-md size-20">
+                                        class="flex flex-col items-center justify-center gap-1 border shadow-sm cursor-pointer select-none border-neutral-300 dark:border-neutral-800 hover:shadow-md size-20">
                                         <x-icon name="{{ $skill->icon }}"
                                             class="size-8 text-[{{ $skill->icon_color }}]" />
                                         <span class="text-xs">{{ $skill->name }}</span>
@@ -67,8 +71,9 @@
                 @endif
             </div>
             @if ($companies->isNotEmpty())
-            <div class="flex flex-col gap-4 p-6 bg-white rounded-sm shadow-lg hover:shadow-2xl">
-                <h2 class="px-6 text-lg font-semibold text-white core-bg-gradient w-fit">Experiences</h2>
+            <div
+                class="flex flex-col gap-4 p-6 bg-white border rounded-sm shadow-lg dark:bg-white/10 border-neutral-300 dark:border-neutral-950 group hover:shadow-2xl">
+                <h2 class="page-title-secondary">Experiences</h2>
                 <div class="flex flex-col gap-2 hs-accordion-group">
                     @foreach ($companies as $index => $company)
                     <div class="hs-accordion {{ $index === 0 ? 'active' : '' }}" id="company-{{ $company->name }}"
@@ -77,7 +82,7 @@
                             aria-controls="company-list-{{ $company->name }}">
                             <div class="flex flex-row items-start justify-start gap-4 text-left">
                                 <div
-                                    class="p-2 border border-gray-200 shadow-sm cursor-pointer select-none hs-accordion-active:bg-gray-100 hover:shadow-md">
+                                    class="p-2 border shadow-sm cursor-pointer select-none border-neutral-300 dark:border-neutral-800 hover:shadow-md">
                                     <img alt="{{ $company->name }} Logo"
                                         class="object-contain max-w-24 max-h-24 min-h-24 min-w-24"
                                         src="{{ $company->getFirstMediaUrl('companies') }}" />
@@ -103,7 +108,7 @@
                             <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
                                 @foreach($company->experiences as $experience)
                                 <div
-                                    class="flex flex-col gap-2 p-2 border border-gray-200 shadow-sm cursor-pointer select-none hover:shadow-md">
+                                    class="flex flex-col gap-2 p-2 border shadow-sm cursor-pointer select-none border-neutral-300 dark:border-neutral-800 hover:shadow-md">
                                     <h4 class="text-lg font-medium">
                                         {{ $experience->job_title }}
                                     </h4>

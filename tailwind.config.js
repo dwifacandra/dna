@@ -17,12 +17,12 @@ export default {
     ],
     theme: {
         fontFamily: {
-            sans: ['Graphik', 'sans-serif'],
-            serif: ['Merriweather', 'serif'],
+            sans: ['Roboto', 'sans-serif'],
+            mono: ['Roboto Mono', 'monospace'],
         },
         extend: {
             colors: {
-                primary: '#1e293b',
+                primary: '#E6130C',
                 secondary: '#262626',
                 info: '#1e40af',
                 success: '#047857',
