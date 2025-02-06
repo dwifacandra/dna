@@ -70,11 +70,11 @@ Route::middleware(['auth'])->group(function () {
         $exitCode = Artisan::call('optimize');
         return redirect()->route('filament.core.home');
     })->name('dev.optimizer');
+    // Route::get('/migrate', function () {
+    //     $exitCode = Artisan::call('migrate');
+    //     return redirect()->route('landing-page');
+    // })->name('dev.migrate');
 });
-// Route::get('/migrate', function () {
-//     $exitCode = Artisan::call('migrate');
-//     return redirect()->route('landing-page');
-// })->name('dev.migrate');
 Route::get('/sitemap', function () {
     $exitCode = Artisan::call('sitemap:generate');
     return redirect('/sitemap.xml');
