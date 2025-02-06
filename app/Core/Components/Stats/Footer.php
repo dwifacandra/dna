@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\{Project, Customer};
 use App\Core\Enums\ProjectStatus;
 
-class LandingPage extends Component
+class Footer extends Component
 {
     public $stats;
     public function mount()
@@ -36,6 +36,6 @@ class LandingPage extends Component
     }
     public function render()
     {
-        return view('core.components.stats.landing-page');
+        return view('core.components.stats.footer');
     }
 }

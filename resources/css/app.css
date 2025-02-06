@@ -3,24 +3,24 @@
 @tailwind utilities;
 
 * {
-    @apply scroll-smooth;
+    @apply scroll-smooth border-secondary-200 dark:border-secondary-900;
     &::-webkit-scrollbar {
         @apply w-2;
     }
     &::-webkit-scrollbar-track {
-        @apply bg-gray-200;
+        @apply bg-secondary-200;
     }
     &::-webkit-scrollbar-thumb {
-        @apply bg-gray-500 bg-opacity-90;
+        @apply bg-secondary-500;
     }
 }
 
 /* Theme */
 .light {
-    @apply bg-neutral-50 text-neutral-950;
+    @apply bg-secondary-50 text-secondary-950;
 }
 .dark {
-    @apply bg-neutral-800 text-white;
+    @apply bg-secondary-900 text-secondary-50;
 }
 
 /* Core Styles */
@@ -86,6 +86,15 @@
 }
 .page-title-secondary {
     @apply page-title text-lg text-white bg-neutral-900;
+}
+.page-subtitle {
+    @apply font-semibold uppercase w-fit;
+}
+.page-subtitle-primary {
+    @apply page-subtitle text-primary;
+}
+.page-subtitle-secondary {
+    @apply page-subtitle text-secondary-950 dark:text-secondary-50;
 }
 
 /* Jumbotron */

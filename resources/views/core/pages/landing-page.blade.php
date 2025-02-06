@@ -4,5 +4,4 @@
         <livewire:pages.blog.landing-page />
         <livewire:pages.product.landing-page />
     </div>
-    <livewire:components.stats.landing-page />
 </div>

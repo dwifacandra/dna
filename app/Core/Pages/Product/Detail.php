@@ -26,6 +26,6 @@ class Detail extends Component
                 ['label' => $this->project->category->name, 'url' => null],
                 ['label' => $this->project->name, 'url' => null],
             ],
-        ]);
+        ])->title($this->project->name);
     }
 }

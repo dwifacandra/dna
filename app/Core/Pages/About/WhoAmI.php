@@ -43,6 +43,6 @@ class WhoAmI extends Component
                 ['label' => 'About', 'url' => route('about')],
                 ['label' => 'Who Am I', 'url' => null],
             ],
-        ]);
+        ])->title('About');
     }
 }

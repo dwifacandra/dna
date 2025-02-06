@@ -2872,6 +2872,7 @@ namespace App\Models {
     /**
      * App\Models\Visitor
      *
+     * @property varchar|null $locale
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property varchar $page_visited
@@ -2884,6 +2885,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor wherePageVisited($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereLocale($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor query()
