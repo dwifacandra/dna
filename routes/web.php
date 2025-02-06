@@ -7,7 +7,7 @@ use App\Core\Pages\{
 };
 use Illuminate\Support\Facades\{Route, Artisan, Response};
 use App\Http\Middleware\SetLocale;
-use App\Http\Controllers\ServePrivateStorage;
+use App\Http\Controllers\{ServePrivateStorage, Dev\AutomationController};
 
 Route::middleware([SetLocale::class])->group(function () {
     // App Route
@@ -41,10 +41,6 @@ Route::middleware([SetLocale::class])->group(function () {
         Route::get('/{slug}', ProductDetail::class)->name('design.detail');
     });
 });
-// Signed Media
-Route::middleware('signed')->group(function () {
-    Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
-});
 // Fallback Resource
 Route::get('/svg/{svgname}', function ($svgname) {
     $svgPath = resource_path('svg/' . str_replace('.', '/', $svgname) . '.svg');
@@ -58,24 +54,32 @@ Route::get('/svg/{svgname}', function ($svgname) {
 });
 // Shared Hosting Tools
 Route::middleware(['auth'])->group(function () {
-    Route::get('/storage-link', function () {
-        $exitCode = Artisan::call('storage:link');
-        return 'Storage Linked';
-    })->name('dev.storage.link');
-    Route::get('/storage-unlink', function () {
-        $exitCode = Artisan::call('storage:unlink');
-        return 'Storage Unlinked';
-    })->name('dev.storage.unlink');
-    Route::get('/optimize', function () {
-        $exitCode = Artisan::call('optimize');
-        return redirect()->route('filament.core.home');
-    })->name('dev.optimizer');
-    // Route::get('/migrate', function () {
-    //     $exitCode = Artisan::call('migrate');
-    //     return redirect()->route('landing-page');
-    // })->name('dev.migrate');
+    // Route Only for Adminstrator
+    Route::group(['middleware' => ['role:Adminstrator']], function () {
+        Route::prefix('core/dev')->group(function () {
+            // Storage
+            Route::prefix('storage')->group(function () {
+                Route::get('link', [AutomationController::class, 'link'])->name('dev.storage.link');
+                Route::get('unlink', [AutomationController::class, 'unlink'])->name('dev.storage.unlink');
+            });
+            // Automation
+            Route::prefix('auto')->group(function () {
+                Route::get('migrate', [AutomationController::class, 'command'])
+                    ->defaults('command', 'migrate')
+                    ->name('dev.migrate');
+                Route::get('optimize', [AutomationController::class, 'command'])
+                    ->defaults('command', 'optimize')
+                    ->name('dev.optimizer');
+                Route::get('queue', [AutomationController::class, 'command'])
+                    ->defaults('command', 'queue:work')
+                    ->name('dev.queue');
+            });
+        });
+    });
 });
-Route::get('/sitemap', function () {
-    $exitCode = Artisan::call('sitemap:generate');
-    return redirect('/sitemap.xml');
-})->name('dev.sitemap');
+// Sitemap Generator
+Route::get('/sitemap', [AutomationController::class, 'sitemap'])->name('dev.sitemap');
+// Signed Media
+Route::middleware('signed')->group(function () {
+    Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
+});

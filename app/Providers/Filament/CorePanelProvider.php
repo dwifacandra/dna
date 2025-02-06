@@ -45,7 +45,7 @@ class CorePanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->databaseTransactions()
             ->databaseNotifications()
-            ->databaseNotificationsPolling('30s')
+            ->databaseNotificationsPolling('5s')
             ->viteTheme('resources/css/filament/core/theme.css')
             ->favicon(asset('img/favicon.png'))
             ->darkMode(false)

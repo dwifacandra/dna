@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        Role::create(['name' => 'Adminstrator']);
         $user = User::firstOrCreate(
             [
                 'email' => 'aditya@dna.test',
@@ -21,7 +22,6 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]
         );
-        Role::create(['name' => 'Adminstrator']);
         $user->assignRole('Adminstrator');
         if (config('app.env') === 'local') {
             User::factory(10)->create();
