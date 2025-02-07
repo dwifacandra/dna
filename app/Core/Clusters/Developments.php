@@ -21,6 +21,9 @@ class Developments extends Cluster
                 NavigationItem::make('Optimizer')
                     ->icon('core.outline.deployed_code')
                     ->url(route('dev.optimizer')),
+                NavigationItem::make('Panel Optimizer')
+                    ->icon('core.outline.deployed_code')
+                    ->url(route('dev.panel.optimizer')),
                 NavigationItem::make('Queue')
                     ->icon('core.outline.query_stats')
                     ->url(route('dev.queue')),

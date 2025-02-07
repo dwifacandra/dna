@@ -7,7 +7,7 @@ use Filament\Tables\Table;
 use Filament\View\{PanelsRenderHook};
 use App\Policies\{RolePolicy, PermissionPolicy};
 use Spatie\Permission\Models\{Role, Permission};
-use App\Core\Components\Layouts\Navbar\PanelNavigation;
+use App\Core\Components\{Layouts\Navbar\PanelNavigation, Buttons\LandingPage as BackButton};
 use Illuminate\Support\{ServiceProvider, Facades\Gate};
 use Filament\Support\Facades\{FilamentIcon, FilamentView,};
 
@@ -22,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_START,
             fn() => \Livewire\Livewire::mount(PanelNavigation::class)
+        );
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
+            fn() => \Livewire\Livewire::mount(BackButton::class)
         );
     }
     public function boot(): void

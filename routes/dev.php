@@ -21,6 +21,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('optimize', [AutomationController::class, 'command'])
                     ->defaults('command', 'optimize')
                     ->name('dev.optimizer');
+                Route::get('panel/optimize', [AutomationController::class, 'command'])
+                    ->defaults('command', 'filament:optimize')
+                    ->name('dev.panel.optimizer');
                 Route::get('queue', [AutomationController::class, 'command'])
                     ->defaults('command', 'queue:work')
                     ->name('dev.queue');

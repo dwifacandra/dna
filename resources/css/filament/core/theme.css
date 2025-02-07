@@ -130,10 +130,14 @@
 
 /* Simple Page */
 .fi-simple-layout {
-    @apply bg-primary-200 px-4;
+    @apply px-4 bg-repeat bg-contain max-h-screen;
+    background-image: url("/img/grid.svg");
+}
+.fi-simple-layout .fi-simple-main {
+    @apply bg-gray-200/80 w-4/12;
 }
 .fi-simple-layout .fi-simple-main .fi-logo {
-    @apply text-4xl;
+    @apply hidden;
 }
 
 /* Subnavigation Top */

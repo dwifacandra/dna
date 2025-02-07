@@ -25,11 +25,11 @@ trait Navigations
     public static function getGroups(): array
     {
         return [
-            self::pagesNavigationGroup(),
             Products::NavigationItems(),
             Finances::NavigationItems(),
             Peoples::NavigationItems(),
             Resumes::NavigationItems(),
+            self::pagesNavigationGroup(),
             Developments::NavigationItems(),
             Settings::NavigationItems(),
         ];
@@ -46,12 +46,10 @@ trait Navigations
             ->items([
                 NavigationItem::make('Landing Page')
                     ->icon('core.outline.home')
-                    ->group('Pages')
-                    ->url(route('landing-page')),
+                    ->url('landing-page'),
                 NavigationItem::make('Sitemap')
                     ->icon('core.outline.travel_explore')
-                    ->group('Pages')
-                    ->url(route('dev.sitemap')),
+                    ->url('dev.sitemap'),
             ]);
     }
 }

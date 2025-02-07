@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/dev.php';
-
 use App\Core\Pages\{
     LandingPage,
     About\WhoAmI as WhoAmI,
@@ -60,3 +58,5 @@ Route::get('/sitemap', [AutomationController::class, 'sitemap'])->name('dev.site
 Route::middleware('signed')->group(function () {
     Route::get('media/{media}/{filename}', ServePrivateStorage::class)->name('media');
 });
+
+require __DIR__ . '/dev.php';
