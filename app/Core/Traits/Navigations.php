@@ -46,10 +46,10 @@ trait Navigations
             ->items([
                 NavigationItem::make('Landing Page')
                     ->icon('core.outline.home')
-                    ->url('landing-page'),
+                    ->url(route('landing-page')),
                 NavigationItem::make('Sitemap')
                     ->icon('core.outline.travel_explore')
-                    ->url('dev.sitemap'),
+                    ->url(route('dev.sitemap')),
             ]);
     }
 }
