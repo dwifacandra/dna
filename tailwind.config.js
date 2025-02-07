@@ -21,6 +21,9 @@ export default {
             mono: ['Roboto Mono', 'monospace'],
         },
         extend: {
+            fontSize: {
+                'xxs': '0.625rem'
+            },
             colors: {
                 primary: {
                     DEFAULT: '#E6130C',

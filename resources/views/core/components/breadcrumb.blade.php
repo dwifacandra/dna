@@ -1,15 +1,15 @@
 <div class="sticky bg-white dark:bg-neutral-900 shadow-md top-8 z-[5]">
     <ol
-        class="flex overflow-y-auto scrollbar-hide items-center px-6 py-1.5 mx-auto max-w-screen-2xl whitespace-nowrap font-medium">
+        class="flex items-center max-w-screen-xl px-4 py-2 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
         @foreach ($items as $item)
-        <li class="inline-flex items-center">
+        <li wire:key="breadcrumb-{{ $item['label'] }}" class="inline-flex items-center">
             @if (!$loop->last)
             @if ($item['url'] === route('landing-page'))
-            <a class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
+            <a class="flex items-center text-xs" href="{{ $item['url'] ?? '#' }}">
                 <x-icon name="core.fill.home" class="size-4 core-icon" />
             </a>
             @else
-            <a class="flex items-center text-sm" href="{{ $item['url'] ?? '#' }}">
+            <a class="flex items-center text-xs" href="{{ $item['url'] ?? '#' }}">
                 {{ $item['label'] }}
             </a>
             @endif
@@ -19,7 +19,7 @@
                 <path d="m9 18 6-6-6-6"></path>
             </svg>
             @else
-            <span class="text-sm" aria-current="page">
+            <span class="text-xs" aria-current="page">
                 {{ $item['label'] }}
             </span>
             @endif

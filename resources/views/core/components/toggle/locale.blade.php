@@ -8,7 +8,7 @@
         <div
             class="absolute left-0 flex flex-col justify-center bg-white border shadow-md md:left-auto top-full md:-right-10 dark:bg-secondary-700">
             @foreach (config('app.locales') as $locale => $language)
-            <button wire:click.prevent="switch('{{ $locale }}')"
+            <button wire:key="locale-top-{{ $locale }}" wire:click.prevent="switch('{{ $locale }}')"
                 class="{{ config('app.locale') === $locale ? 'bg-secondary-100 dark:bg-secondary-800' : 'bg-transparent' }} inline-flex items-center px-4 py-1.5 gap-x-2 hover:bg-secondary-200 dark:hover:bg-secondary-900">
                 <x-icon name="flags.4x3.{{ $locale }}" class="size-5" />
                 {{ $language }}

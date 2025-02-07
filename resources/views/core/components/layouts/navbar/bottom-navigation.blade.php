@@ -1,4 +1,4 @@
-<footer class="text-sm">
+<footer class="text-xs">
     <div class="bg-secondary-100 dark:bg-secondary-950">
         <div class="grid max-w-screen-xl grid-cols-2 gap-4 px-6 py-8 mx-auto border-b md:grid-cols-4 lg:grid-cols-6">
             <div class="space-y-4">
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="bg-secondary-200 dark:bg-secondary-950">
-        <div class="flex items-center justify-between max-w-screen-xl px-4 py-2 mx-auto">
+        <div class="flex items-center justify-between max-w-screen-xl px-4 py-1 mx-auto">
             &copy; {{ \Carbon\Carbon::now()->year }} {{ config('app.name') }}. All rights reserved.
             <livewire:components.toggle.locale-dropdown />
         </div>

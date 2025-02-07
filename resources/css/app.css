@@ -78,18 +78,18 @@
 }
 /* Border */
 .core-b-secondary {
-    @apply py-0.5 hover:border-b-2 border-secondary-500 dark:border-secondary-200;
+    @apply hover:border-b-2 border-secondary-500 dark:border-secondary-200;
 }
 
 /* Page */
 .page-title {
-    @apply px-6 py-1 font-semibold w-fit;
+    @apply px-4 font-semibold w-fit select-none cursor-default;
 }
 .page-title-primary {
-    @apply page-title text-xl text-white bg-primary;
+    @apply page-title text-white bg-primary;
 }
 .page-title-secondary {
-    @apply page-title text-lg text-white bg-neutral-900;
+    @apply page-title text-white bg-neutral-900;
 }
 .page-subtitle {
     @apply font-semibold uppercase w-fit;
@@ -108,7 +108,7 @@
     bg-secondary-100 dark:bg-transparent;
 }
 .jumbotron .content {
-    @apply mx-auto px-16
+    @apply mx-auto px-12 md:px-16
     flex flex-col
     justify-center
     h-screen max-w-screen-xl;
@@ -131,7 +131,7 @@
     text-primary;
 }
 .jumbotron-personal .btn {
-    @apply px-5 py-2 mt-4
+    @apply px-5 py-1 mt-4
     w-fit gap-x-2
     text-base font-medium text-center text-white
     bg-primary shadow-sm

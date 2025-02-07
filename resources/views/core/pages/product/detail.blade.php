@@ -1,6 +1,6 @@
 <div class="w-full">
     <livewire:components.breadcrumb :items="$breadcrumbItems" />
-    <div class="grid max-w-screen-xl grid-cols-1 gap-2 px-4 py-6 mx-auto md:grid-cols-4">
+    <div class="grid max-w-screen-xl grid-cols-1 px-4 py-6 mx-auto gap-x-2 gap-y-4 md:grid-cols-4">
         <div class="flex flex-col gap-2 md:flex-row hs-carousel md:max-h-[80vh] md:col-span-3"
             data-hs-carousel='{"isDraggable": true,"isAutoPlay": true}'>
             <div

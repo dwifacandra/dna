@@ -1,7 +1,7 @@
 <div class="w-full">
     <livewire:components.jumbotron.personal />
     <livewire:components.breadcrumb :items="$breadcrumbItems" />
-    <div class="container flex flex-col px-4 py-8 mx-auto max-w-screen-2xl gap-y-6" id="thisme">
+    <div class="flex flex-col max-w-screen-xl px-4 py-6 mx-auto gap-y-4" id="thisme">
         <h1 class="page-title-primary">Who Am I</h1>
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
             <div class="flex flex-col gap-4">
