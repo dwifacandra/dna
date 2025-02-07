@@ -23,10 +23,6 @@ class AppServiceProvider extends ServiceProvider
             PanelsRenderHook::TOPBAR_START,
             fn() => \Livewire\Livewire::mount(PanelNavigation::class)
         );
-        // FilamentView::registerRenderHook(
-        //     PanelsRenderHook::SIDEBAR_NAV_END,
-        //     fn() => \Livewire\Livewire::mount(PanelNavigation::class)
-        // );
     }
     public function boot(): void
     {

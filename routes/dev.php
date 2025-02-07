@@ -24,6 +24,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('queue', [AutomationController::class, 'command'])
                     ->defaults('command', 'queue:work')
                     ->name('dev.queue');
+                Route::get('permission', [AutomationController::class, 'command'])
+                    ->defaults('command', 'permissions:sync')
+                    ->name('dev.permission');
             });
         });
     });

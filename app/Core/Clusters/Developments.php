@@ -2,6 +2,7 @@
 
 namespace App\Core\Clusters;
 
+use Filament\Navigation\NavigationItem;
 use App\Core\Clusters\Developments\Resources\{IconResource};
 use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 
@@ -17,6 +18,26 @@ class Developments extends Cluster
             ->collapsed()
             ->items([
                 ...IconResource::getNavigationItems(),
+                NavigationItem::make('Optimizer')
+                    ->icon('core.outline.deployed_code')
+                    ->url(route('dev.optimizer')),
+                NavigationItem::make('Queue')
+                    ->icon('core.outline.query_stats')
+                    ->url(route('dev.queue')),
+                NavigationItem::make('Migration')
+                    ->icon('core.outline.cached')
+                    ->url(route('dev.migrate')),
+                NavigationItem::make('Permission')
+                    ->icon('core.outline.lock_clock')
+                    ->url(route('dev.permission')),
+                NavigationItem::make('Storage Link')
+                    ->group('Storage')
+                    ->icon('core.outline.cloud')
+                    ->url(route('dev.storage.link')),
+                NavigationItem::make('Storage Unlink')
+                    ->group('Storage')
+                    ->icon('core.outline.cloud_off')
+                    ->url(route('dev.storage.unlink')),
             ]);
     }
 }

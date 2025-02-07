@@ -5,7 +5,7 @@ namespace App\Core\Clusters\Peoples\Resources\UserResource\Forms;
 use App\Core\Enums\Gender;
 use Illuminate\Support\Facades\Hash;
 use Filament\Support\Enums\Alignment;
-use Filament\Forms\Components\{TextInput, DateTimePicker, Repeater, Tabs, Tabs\tab, Actions\Action, Section, SpatieMediaLibraryFileUpload, Split, ToggleButtons, DatePicker, Select};
+use Filament\Forms\Components\{TextInput, DateTimePicker, Repeater, Tabs, Tabs\Tab, Actions\Action, Section, SpatieMediaLibraryFileUpload, Split, ToggleButtons, DatePicker, Select};
 
 class UserFormSchemes
 {

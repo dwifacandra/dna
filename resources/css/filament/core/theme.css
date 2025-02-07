@@ -6,14 +6,6 @@
     scrollbar-width: thin;
     @apply antialiased;
 }
-body {
-    zoom: 100%;
-}
-@media (min-width: 1024px) {
-    body {
-        zoom: 80%;
-    }
-}
 .fi-main {
     @apply px-4;
 }
@@ -89,12 +81,6 @@ body {
 }
 .fi-sidebar-header {
     @apply bg-slate-950 text-white h-[45px];
-}
-.fi-sidebar-header .fi-logo::before {
-    content: "<";
-}
-.fi-sidebar-header .fi-logo::after {
-    content: "/>";
 }
 .fi-sidebar-header .fi-icon-btn-icon {
     @apply text-white -ml-4 hover:text-white/95;

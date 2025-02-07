@@ -14,7 +14,7 @@ class AutomationController extends Controller
     {
         $command = $request->route('command');
         $exitCode = Artisan::call($command);
-        $output = Artisan::output();
+        $output = Str::limit(Str::of(Artisan::output())->trim(), 100);
         $recipient = auth()->user();
         if ($recipient) {
             if ($exitCode === 0) {
@@ -31,7 +31,7 @@ class AutomationController extends Controller
                     ->sendToDatabase($recipient);
             }
         }
-        return redirect()->route('filament.core.home');
+        return redirect()->back();
     }
     public function link()
     {
@@ -59,7 +59,7 @@ class AutomationController extends Controller
                 ->danger()
                 ->sendToDatabase($recipient);
         }
-        return redirect()->route('filament.core.home');
+        return redirect()->back();
     }
     public function unlink()
     {
@@ -79,7 +79,7 @@ class AutomationController extends Controller
                 ->danger()
                 ->sendToDatabase($recipient);
         }
-        return redirect()->route('filament.core.home');
+        return redirect()->back();
     }
     public function sitemap()
     {
