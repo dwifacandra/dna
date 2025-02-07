@@ -1,7 +1,7 @@
 <div class="container flex flex-col px-4 mx-auto gap-y-6">
     <div class="flex items-center justify-between">
         <h1 class="page-title-primary">Products</h1>
-        <a href="/products" class="py-1">All Products</a>
+        <a href="/products" class="core-b-secondary">All Products</a>
     </div>
     @if ($projects->isEmpty())
     <livewire:components.cards.empty-state />
@@ -9,7 +9,7 @@
     <div class="grid grid-cols-1 gap-y-6 gap-x-4 md:grid-cols-2 lg:grid-cols-5">
         @foreach ($projects as $project)
         <a href="{{ route('product.detail', $project->slug) }}">
-            <div class="relative overflow-hidden bg-white border rounded-sm shadow-lg dark:bg-white/80 border-neutral-300 dark:border-neutral-950 group hover:shadow-2xl"
+            <div class="relative overflow-hidden bg-white border rounded-sm shadow-md dark:bg-white/80 border-neutral-300 dark:border-neutral-950 group hover:shadow-lg"
                 wire:key="projects-{{ $project->id }}">
                 <img class="w-full h-[250px] object-cover group-hover:scale-x-105 transition-transform duration-500 ease-in-out"
                     src="{{ $project->getFirstMediaUrl('projects') }}" alt="{{ $project->name }}" />
@@ -17,8 +17,11 @@
                 <span
                     class="absolute top-0 left-0 px-4 py-1 shadow-md bg-rose-600 text-rose-50 bg-opacity-90">Featured</span>
                 @endif
-                <div class="px-4 py-2">
-                    <h2 class="text-lg font-semibold text-gray-800 line-clamp-1">{{ $project->name }}</h2>
+                <div class="h-24 px-4 py-2">
+                    <h2 :class="hasDescription ? 'line-clamp-1' : 'line-clamp-3'"
+                        class="text-lg font-semibold text-gray-800 ">
+                        {{ $project->name }}
+                    </h2>
                     <p class="text-sm text-gray-600 text-pretty line-clamp-2">{{ $project->description }}</p>
                 </div>
                 <div

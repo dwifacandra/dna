@@ -1,7 +1,7 @@
 <header
     class="sticky top-0 z-10 uppercase bg-white text-neutral-950 dark:text-white dark:bg-neutral-800 md:border-b-4 md:border-b-primary"
     style="background-image: url('{{config('app.url')}}/img/grid-2.svg')">
-    <nav class="flex flex-col justify-between md:items-center md:flex-row md:px-4">
+    <nav class="flex flex-col justify-between mx-auto max-w-screen-2xl md:items-center md:flex-row md:px-4">
         <div class="flex flex-row items-center justify-between flex-1 md:flex-shrink-0">
             <a href="{{route('landing-page')}}" aria-label="Brand">
                 <h1
@@ -29,9 +29,9 @@
             <div class="flex flex-col-reverse justify-between gap-4 md:items-center md:flex-row">
                 <div
                     class="flex flex-col gap-4 text-sm font-semibold md:items-center md:flex-row md:justify-center md:px-4">
-                    <a href="{{ route('about') }}">About</a>
-                    <a href="{{ route('blog') }}">Blog</a>
-                    <a href="{{ route('product') }}">Products</a>
+                    <a href="{{ route('about.whoami') }}" class="core-b-secondary">About</a>
+                    <a href="{{ route('blog') }}" class="core-b-secondary">Blog</a>
+                    <a href="{{ route('product') }}" class="core-b-secondary">Products</a>
                 </div>
                 <div class="flex flex-row items-center md:justify-center gap-x-2">
                     <a href="/core">

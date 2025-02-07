@@ -2,8 +2,8 @@
 
 namespace App\Core\Clusters;
 
-use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 use App\Core\Clusters\Developments\Resources\{IconResource};
+use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 
 class Developments extends Cluster
 {

@@ -1,11 +1,13 @@
 <?php
 
+require __DIR__ . '/dev.php';
+
 use App\Core\Pages\{
     LandingPage,
     About\WhoAmI as WhoAmI,
     Product\Detail as ProductDetail,
 };
-use Illuminate\Support\Facades\{Route, Artisan, Response};
+use Illuminate\Support\Facades\{Route, Response};
 use App\Http\Middleware\SetLocale;
 use App\Http\Controllers\{ServePrivateStorage, Dev\AutomationController};
 
@@ -51,31 +53,6 @@ Route::get('/svg/{svgname}', function ($svgname) {
     return Response::make($svgContent, 200, [
         'Content-Type' => 'image/svg+xml',
     ]);
-});
-// Shared Hosting Tools
-Route::middleware(['auth'])->group(function () {
-    // Route Only for Adminstrator
-    Route::group(['middleware' => ['role:Adminstrator']], function () {
-        Route::prefix('core/dev')->group(function () {
-            // Storage
-            Route::prefix('storage')->group(function () {
-                Route::get('link', [AutomationController::class, 'link'])->name('dev.storage.link');
-                Route::get('unlink', [AutomationController::class, 'unlink'])->name('dev.storage.unlink');
-            });
-            // Automation
-            Route::prefix('auto')->group(function () {
-                Route::get('migrate', [AutomationController::class, 'command'])
-                    ->defaults('command', 'migrate')
-                    ->name('dev.migrate');
-                Route::get('optimize', [AutomationController::class, 'command'])
-                    ->defaults('command', 'optimize')
-                    ->name('dev.optimizer');
-                Route::get('queue', [AutomationController::class, 'command'])
-                    ->defaults('command', 'queue:work')
-                    ->name('dev.queue');
-            });
-        });
-    });
 });
 // Sitemap Generator
 Route::get('/sitemap', [AutomationController::class, 'sitemap'])->name('dev.sitemap');

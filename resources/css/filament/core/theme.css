@@ -1,13 +1,24 @@
-@import '/vendor/filament/filament/resources/css/theme.css';
+@import "/vendor/filament/filament/resources/css/theme.css";
 @config 'tailwind.config.js';
 
 /* General */
-* {scrollbar-width: thin; @apply antialiased;}
-.fi-main {@apply px-4;}
-.fi-sidebar *,.fi-ta *,.fi-page *,.fi-simple-layout *,
-.fi-wi-widget *,.fi-dropdown *,.fi-btn,.fi-tabs,
+* {
+    scrollbar-width: thin;
+    @apply antialiased;
+}
+.fi-main {
+    @apply px-4;
+}
+.fi-sidebar *,
+.fi-ta *,
+.fi-page *,
+.fi-simple-layout *,
+.fi-wi-widget *,
+.fi-dropdown *,
+.fi-btn,
+.fi-tabs,
 .fi-input-wrp {
-	@apply rounded-sm
+    @apply rounded-sm
     [&:nth-child(1_of_.fi-btn)]:rounded-none
     [&:nth-last-child(1_of_.fi-btn)]:rounded-none;
 }
@@ -16,133 +27,275 @@
 .fi-sidebar-nav,
 .fi-breadcrumbs,
 .fi-wi-stats-overview-stat,
-.fi-ta, .fi-tabs,
+.fi-ta,
+.fi-tabs,
 .fi-page-sub-navigation-sidebar,
-.fi-page-sub-navigation-tabs {@apply shadow-md;}
+.fi-page-sub-navigation-tabs {
+    @apply shadow-md;
+}
 
 /* Topbar */
-.fi-topbar > nav {@apply bg-slate-800 text-white h-[45px] leading-[45px] md:pl-0 px-4;}
-.fi-topbar > nav .fi-icon-btn {@apply text-white;}
-.fi-topbar > nav a {@apply text-white relative;}
-.fi-topbar > nav a .tooltip {@apply invisible bg-white fixed top-11 text-black shadow-xl font-light text-sm px-4 py-1.5 rounded-sm;}
-.fi-topbar > nav a:hover .tooltip {@apply visible;}
-.fi-topbar > nav [x-persist="topbar.end"] {@apply gap-x-2;}
-.fi-topbar > nav .fi-user-avatar {@apply rounded-full;}
-.fi-topbar > nav .fi-topbar-item {@apply cursor-pointer hover:bg-slate-600 leading-[45px];}
+.fi-topbar > nav {
+    @apply bg-slate-800 text-white h-[45px] leading-[45px] md:pl-0 px-4;
+}
+.fi-topbar > nav .fi-icon-btn {
+    @apply text-white;
+}
+.fi-topbar > nav a {
+    @apply text-white relative;
+}
+.fi-topbar > nav a .tooltip {
+    @apply invisible bg-white fixed top-11 text-black shadow-xl font-light text-sm px-4 py-1.5 rounded-sm;
+}
+.fi-topbar > nav a:hover .tooltip {
+    @apply visible;
+}
+.fi-topbar > nav [x-persist="topbar.end"] {
+    @apply gap-x-2;
+}
+.fi-topbar > nav .fi-user-avatar {
+    @apply rounded-full;
+}
+.fi-topbar > nav .fi-topbar-item {
+    @apply cursor-pointer hover:bg-slate-600 leading-[45px];
+}
 .fi-topbar > nav .fi-topbar-item-label {
-    @apply
-    text-sm font-medium
+    @apply text-sm font-medium
     flex justify-between items-center
     gap-x-3 px-3 py-3
     capitalize;
 }
-.fi-topbar > nav .fi-topbar-item-label-icon {@apply size-5 text-white/95;}
-.fi-topbar > nav .fi-topbar-item-label-icon path {@apply fill-current;}
-.fi-topbar > nav .fi-topbar-item-active {@apply bg-slate-700;}
+.fi-topbar > nav .fi-topbar-item-label-icon {
+    @apply size-5 text-white/95;
+}
+.fi-topbar > nav .fi-topbar-item-label-icon path {
+    @apply fill-current;
+}
+.fi-topbar > nav .fi-topbar-item-active {
+    @apply bg-slate-700;
+}
 
 /* Sidebar */
-.fi-sidebar-nav {@apply bg-white;}
-.fi-sidebar-header {@apply bg-slate-950 text-white h-[45px];}
-.fi-sidebar-header .fi-logo::before {content: "<";}
-.fi-sidebar-header .fi-logo::after {content: "/>";}
-.fi-sidebar-header .fi-icon-btn-icon {@apply text-white -ml-4 hover:text-white/95;}
-.fi-sidebar-header .fi-icon-btn-icon path { @apply fill-current;}
-.fi-sidebar-open .fi-sidebar-header .fi-icon-btn-icon {@apply -mr-12;}
-.fi-sidebar-header a,.fi-sidebar-header .fi-logo {@apply text-white;}
+.fi-sidebar-nav {
+    @apply bg-white;
+}
+.fi-sidebar-header {
+    @apply bg-slate-950 text-white h-[45px];
+}
+.fi-sidebar-header .fi-logo::before {
+    content: "<";
+}
+.fi-sidebar-header .fi-logo::after {
+    content: "/>";
+}
+.fi-sidebar-header .fi-icon-btn-icon {
+    @apply text-white -ml-4 hover:text-white/95;
+}
+.fi-sidebar-header .fi-icon-btn-icon path {
+    @apply fill-current;
+}
+.fi-sidebar-open .fi-sidebar-header .fi-icon-btn-icon {
+    @apply -mr-12;
+}
+.fi-sidebar-header a,
+.fi-sidebar-header .fi-logo {
+    @apply text-white;
+}
 
 /* Header */
-.fi-header {@apply p-0 sm:-mb-6 flex-row justify-between;}
-.fi-header div + div .fi-ac {@apply gap-2 flex-row-reverse;}
+.fi-header {
+    @apply p-0 sm:-mb-6 flex-row justify-between;
+}
+.fi-header div + div .fi-ac {
+    @apply gap-2 flex-row-reverse;
+}
 
 /* Breadcrumb */
-.fi-breadcrumbs { @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-10;}
-.fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item *{ @apply text-black;}
+.fi-breadcrumbs {
+    @apply bg-white -ml-4 px-4 py-2 w-full fixed top-11 z-10;
+}
+.fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item * {
+    @apply text-black;
+}
 
 /* Heading */
-.fi-header-heading {@apply sm:mt-8 sm:py-2 text-2xl uppercase text-pretty;}
+.fi-header-heading {
+    @apply sm:mt-8 sm:py-2 text-2xl uppercase text-pretty;
+}
 
 /* Page */
-.fi-page section {@apply pt-4;}
-.fi-page section > div {@apply gap-4;}
-.fi-page section > div > div {@apply gap-4 relative;}
+.fi-page section {
+    @apply pt-4;
+}
+.fi-page section > div {
+    @apply gap-4;
+}
+.fi-page section > div > div {
+    @apply gap-4 relative;
+}
+
+/* Simple Page */
+.fi-simple-layout {
+    @apply bg-primary-200 px-4;
+}
+.fi-simple-layout .fi-simple-main .fi-logo {
+    @apply text-4xl;
+}
 
 /* Subnavigation Top */
-.fi-page-sub-navigation-tabs,.fi-tabs {@apply mx-0 p-0 gap-x-0;}
+.fi-page-sub-navigation-tabs,
+.fi-tabs {
+    @apply mx-0 p-0 gap-x-0;
+}
 
 /* Subnavigation Sidebar*/
-.fi-page-sub-navigation-sidebar-ctn * {@apply gap-y-0;}
-.fi-page-sub-navigation-sidebar {@apply w-full h-[75.5vh] bg-white rounded-sm dark:bg-gray-950 ring-1 ring-gray-950/5;}
-.fi-page-sub-navigation-sidebar .fi-sidebar-item-button {@apply px-4;}
+.fi-page-sub-navigation-sidebar-ctn * {
+    @apply gap-y-0;
+}
+.fi-page-sub-navigation-sidebar {
+    @apply w-full h-[75.5vh] bg-white rounded-sm dark:bg-gray-950 ring-1 ring-gray-950/5;
+}
+.fi-page-sub-navigation-sidebar .fi-sidebar-item-button {
+    @apply px-4;
+}
 
 /* Content */
-.fi-page-sub-navigation-sidebar-ctn + div { @apply max-h-max;}
+.fi-page-sub-navigation-sidebar-ctn + div {
+    @apply max-h-max;
+}
 
 /* Table */
-.fi-ta thead {@apply sticky top-0 z-[5];}
-.fi-ta-table thead tr {@apply bg-slate-800 shadow-md;}
-.fi-ta-header {@apply gap-2;}
-.fi-ta-header-toolbar {@apply py-2 px-4;}
-.fi-ta-header-cell {@apply !px-0 !py-2 hover:bg-slate-700;}
-.fi-ta-header-cell button {@apply justify-between px-4}
-.fi-ta-header-cell-label {@apply text-white flex-1;}
-.fi-ta-header-cell-sort-icon {@apply group-hover:text-white/90 group-focus-visible:text-white/90 text-white;}
-.fi-ta-cell {@apply border-l first-of-type:border-l-0 first-of-type:ps-0 last-of-type:pe-0}
-.fi-ta-group-header {@apply shadow-md bg-gray-100 py-1}
-.fi-ta-group-selection-cell {@apply border-l-0 bg-gray-100}
-.fi-ta-selection-cell {@apply border-l-0}
-.fi-ta-selection-cell > div {@apply py-0}
-.fi-ta-selection-indicator {@apply bg-white py-1 rounded-sm}
-.fi-table-header-group-cell div {@apply justify-center;}
-.fi-ta-content {@apply relative h-[70vh];}
-.fi-ta-content .fi-badge {@apply py-1 px-3 gap-x-2 justify-between text-sm text-left}
-.fi-pagination {@apply p-2;}
-.fi-ta-image .rounded-full {border-radius: 100%;}
+.fi-ta thead {
+    @apply sticky top-0 z-[5];
+}
+.fi-ta-table thead tr {
+    @apply bg-slate-800 shadow-md;
+}
+.fi-ta-header {
+    @apply gap-2;
+}
+.fi-ta-header-toolbar {
+    @apply py-2 px-4;
+}
+.fi-ta-header-cell {
+    @apply !px-0 !py-2 hover:bg-slate-700;
+}
+.fi-ta-header-cell button {
+    @apply justify-between px-4;
+}
+.fi-ta-header-cell-label {
+    @apply text-white flex-1;
+}
+.fi-ta-header-cell-sort-icon {
+    @apply group-hover:text-white/90 group-focus-visible:text-white/90 text-white;
+}
+.fi-ta-cell {
+    @apply border-l first-of-type:border-l-0 first-of-type:ps-0 last-of-type:pe-0;
+}
+.fi-ta-group-header {
+    @apply shadow-md bg-gray-100 py-1;
+}
+.fi-ta-group-selection-cell {
+    @apply border-l-0 bg-gray-100;
+}
+.fi-ta-selection-cell {
+    @apply border-l-0;
+}
+.fi-ta-selection-cell > div {
+    @apply py-0;
+}
+.fi-ta-selection-indicator {
+    @apply bg-white py-1 rounded-sm;
+}
+.fi-table-header-group-cell div {
+    @apply justify-center;
+}
+.fi-ta-content {
+    @apply relative h-[70vh];
+}
+.fi-ta-content .fi-badge {
+    @apply py-1 px-3 gap-x-2 justify-between text-sm text-left;
+}
+.fi-pagination {
+    @apply p-2;
+}
+.fi-ta-image .rounded-full {
+    border-radius: 100%;
+}
 
 /* Modal */
-.fi-modal-footer-actions .fi-btn-color-secondary {@apply bg-success-700 hover:bg-success-600;}
+.fi-modal-footer-actions .fi-btn-color-secondary {
+    @apply bg-success-700 hover:bg-success-600;
+}
 
 /* Widgets */
-.fi-wi-stats-overview-stats-ctn {@apply grid-cols-2 md:grid-cols-4;}
+.fi-wi-stats-overview-stats-ctn {
+    @apply grid-cols-2 md:grid-cols-4;
+}
 .fi-resource-projects .fi-wi-stats-overview-stats-ctn,
-.fi-wi-stats-overview-stats-ctn {@apply grid-cols-2 md:grid-cols-6 cursor-default select-none;}
+.fi-wi-stats-overview-stats-ctn {
+    @apply grid-cols-2 md:grid-cols-6 cursor-default select-none;
+}
 
 /* Slider */
 .slider {
-	@apply
-    w-full h-8
+    @apply w-full h-8
     border-2 border-gray-200
     rounded-sm outline-none
     appearance-none
     active:border-slate-500;
 }
 .slider::-webkit-slider-thumb {
-	@apply
-    w-8 h-8
+    @apply w-8 h-8
     rounded-sm
     appearance-none
     cursor-pointer
     bg-[var(--thumb-color)];
 }
-.fi-resource-icons .fi-wi-table .fi-ta-content { @apply h-fit; }
+.fi-resource-icons .fi-wi-table .fi-ta-content {
+    @apply h-fit;
+}
 
 /* Media >768px */
 @media (min-width: 768px) {
-	.fi-sidebar {@apply w-10 z-10;}
-	.fi-sidebar-open {@apply !w-1/6;}
+    .fi-sidebar {
+        @apply w-10 z-10;
+    }
+    .fi-sidebar-open {
+        @apply !w-1/6;
+    }
     .fi-sidebar-nav {
-		@apply !gap-y-1 p-0;
-		scrollbar-gutter: unset;
-		overflow-y: scroll;
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-	.fi-sidebar-open .fi-sidebar-nav {@apply p-6;}
-	.fi-sidebar-open .fi-sidebar-nav-groups {@apply !gap-y-2;}
-	.fi-sidebar .fi-dropdown-panel {offset-position: 0;}
-	.fi-sidebar-nav-groups {@apply !gap-y-0;}
-	.fi-sidebar-item {@apply px-0 gap-y-0;}
-    .fi-page-sub-navigation-sidebar-ctn {@apply w-2/12 bg-white rounded-sm;}
-	.fi-page-sub-navigation-sidebar-ctn * {@apply gap-y-0;}
-	.fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {@apply px-4;}
-	.fi-dropdown-panel {@apply z-[11]}
+        @apply !gap-y-1 p-0;
+        scrollbar-gutter: unset;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .fi-sidebar-open .fi-sidebar-nav {
+        @apply p-6;
+    }
+    .fi-sidebar-open .fi-sidebar-nav-groups {
+        @apply !gap-y-2;
+    }
+    .fi-sidebar .fi-dropdown-panel {
+        offset-position: 0;
+    }
+    .fi-sidebar-nav-groups {
+        @apply !gap-y-0;
+    }
+    .fi-sidebar-item {
+        @apply px-0 gap-y-0;
+    }
+    .fi-page-sub-navigation-sidebar-ctn {
+        @apply w-2/12 bg-white rounded-sm;
+    }
+    .fi-page-sub-navigation-sidebar-ctn * {
+        @apply gap-y-0;
+    }
+    .fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {
+        @apply px-4;
+    }
+    .fi-dropdown-panel {
+        @apply z-[11];
+    }
 }

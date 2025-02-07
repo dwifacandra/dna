@@ -3,6 +3,7 @@
 namespace App\Core\Components\Layouts\Navbar;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Route;
 
 class TopNavigation extends Component
 {

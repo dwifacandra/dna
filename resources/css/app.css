@@ -76,6 +76,10 @@
 .dark .core-bg-grid-2 {
     background-image: url("/img/grid-dark.svg");
 }
+/* Border */
+.core-b-secondary {
+    @apply py-0.5 hover:border-b-2 border-secondary-500 dark:border-secondary-200;
+}
 
 /* Page */
 .page-title {
@@ -102,7 +106,7 @@
     @apply select-none
     -mt-[40px] px-10
     core-bg-grid
-    bg-neutral-200 dark:bg-transparent;
+    bg-secondary-100 dark:bg-transparent;
 }
 .jumbotron .content {
     @apply mx-auto

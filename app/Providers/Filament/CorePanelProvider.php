@@ -50,7 +50,7 @@ class CorePanelProvider extends PanelProvider
             ->favicon(asset('img/favicon.png'))
             ->darkMode(false)
             ->colors([
-                'primary' => Color::Slate,
+                'primary' => '#292929',
                 'danger' => Color::Rose,
                 'info' => Color::Blue,
                 'success' => Color::Emerald,

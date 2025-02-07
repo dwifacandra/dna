@@ -69,5 +69,6 @@ export default {
     plugins: [
         require('tailwindcss-animated'),
         require('preline/plugin'),
+        require('tailwind-scrollbar-hide')
     ],
 };
