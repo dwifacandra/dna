@@ -14,10 +14,11 @@ class MediaPathGeneratorService implements PathGenerator
     }
     public function getPath(Media $media): string
     {
-        if (is_null($media->custom_properties)) {
+        if (is_null($media->custom_properties) || !is_array($media->custom_properties) || empty($media->custom_properties)) {
             return "{$media->collection_name}/{$media->id}/";
         } else {
-            return "{$media->collection_name}/" . array_values($media->custom_properties)[0] . "/{$media->id}/";
+            $customProperties = array_values($media->custom_properties);
+            return "{$media->collection_name}/{$customProperties[0]}/{$media->id}/";
         }
     }
     public function getPathForConversions(Media $media): string
