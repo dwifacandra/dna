@@ -1,41 +1,40 @@
-<div class="container flex flex-col px-4 mx-auto gap-y-6">
+<div class="container flex flex-col px-4 mx-auto gap-y-4">
     <div class="flex items-center justify-between">
         <h1 class="page-title-primary">Articles</h1>
         <a href="/products" class="core-b-secondary">All Articles</a>
     </div>
-    @if ($projects->isEmpty())
+    @if ($categories->isEmpty())
     <livewire:components.cards.empty-state />
     @endif
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        @foreach ($projects as $project)
-        <a class="block overflow-hidden bg-white border rounded-sm shadow-md dark:bg-white/80 border-neutral-300 dark:border-neutral-950 hover:shadow-lg group focus:outline-none"
-            href="{{ route('blog.post.detail', $project->slug) }}">
-            <div class="grid justify-between grid-cols-2 gap-4">
-                <div
-                    class="relative w-full overflow-hidden border-r border-neutral-200 dark:border-neutral-950 shrink-0 size-40">
-                    <img class="absolute top-0 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 group-focus:scale-105 size-full start-0"
-                        src="{{ $project->getFirstMediaUrl('projects') }}" alt="{{ $project->name }}">
-                </div>
-                <div class="flex flex-col justify-center h-40">
-                    <h2 :class="hasDescription ? 'line-clamp-1' : 'line-clamp-3'"
-                        class="text-xl font-semibold text-neutral-950">
+    <nav class="flex flex-wrap gap-2" aria-label="Tabs" role="tablist">
+        @foreach ($categories as $index => $category)
+        <button aria-selected="{{ $index === 0 ? 'true' : 'false' }}" data-hs-tab="#tab-content-{{ $index }}"
+            aria-controls="tab-content-{{ $index }}" role="tab" type="button" id="tab-{{ $index }}"
+            class="{{ $index === 0 ? 'active' : '' }} text-sm inline-flex justify-center">
+            <span class="px-1 min-w-5 bg-secondary-950 text-secondary-50">{{ $category->projects_count }}</span>
+            <span class="px-2 border bg-secondary-100 dark:bg-secondary-800">{{ $category->name }}</span>
+        </button>
+        @endforeach
+    </nav>
+    @foreach ($categories as $index => $category)
+    <div id="tab-content-{{ $index }}" role="tabpanel" aria-labelledby="tab-{{ $index }}"
+        class="{{ $index === 0 ? 'active' : 'hidden' }} grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+        @foreach ($category->projects as $project)
+        <a href="{{ route('blog.post.detail', $project->slug) }}">
+            <div class="flex bg-white border dark:bg-secondary group">
+                <img src="{{ $project->getFirstMediaUrl('projects') }}" alt="{{ $project->name }}"
+                    class="object-cover transition-transform duration-500 ease-in-out size-20 shrink-0 group-hover:scale-105 group-focus:scale-105">
+                <div class="flex flex-col justify-start px-2 py-1.5 h-20">
+                    <h2 class="text-sm font-semibold">
                         {{ $project->name }}
                     </h2>
-                    <p class="pr-1 mt-3 text-sm text-neutral-800 line-clamp-3 text-balance">
+                    <p class="text-xs line-clamp-2">
                         {{ $project->description }}
-                    </p>
-                    <p
-                        class="inline-flex items-center mt-4 text-sm font-medium gap-x-1 decoration-2 group-hover:underline group-focus:underline text-neutral-950">
-                        Read more
-                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="m9 18 6-6-6-6" />
-                        </svg>
                     </p>
                 </div>
             </div>
         </a>
         @endforeach
     </div>
+    @endforeach
 </div>

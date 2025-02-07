@@ -1,12 +1,12 @@
-<div class="pr-2 border-e border-neutral-300 dark:border-neutral-600">
+<div class="flex justify-center pr-1 border-e border-secondary-300 dark:border-secondary-800">
     <button type="button"
-        class="inline-flex items-center px-4 py-1 text-sm bg-white border border-neutral-300 hs-dark-mode hs-dark-mode-active:hidden gap-x-2"
+        class="inline-flex items-center justify-center px-2 py-1 text-xs border border-secondary-300 hs-dark-mode hs-dark-mode-active:hidden gap-x-1"
         data-hs-theme-click-value="dark">
         <x-icon-core.fill.light_mode class="shrink-0 size-4 core-icon" />
         Light
     </button>
     <button type="button"
-        class="items-center hidden px-4 py-1 text-sm border bg-neutral-800 border-neutral-600 hs-dark-mode hs-dark-mode-active:inline-flex gap-x-2"
+        class="items-center justify-center hidden px-2 py-1 text-xs border border-secondary-950 hs-dark-mode hs-dark-mode-active:inline-flex gap-x-1"
         data-hs-theme-click-value="light">
         <x-icon-core.fill.dark_mode class="shrink-0 size-4 core-icon" />
         Dark

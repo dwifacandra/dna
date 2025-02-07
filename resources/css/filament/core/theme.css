@@ -6,6 +6,14 @@
     scrollbar-width: thin;
     @apply antialiased;
 }
+body {
+    zoom: 100%;
+}
+@media (min-width: 1024px) {
+    body {
+        zoom: 80%;
+    }
+}
 .fi-main {
     @apply px-4;
 }

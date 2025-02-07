@@ -104,12 +104,11 @@
 /* Jumbotron */
 .jumbotron {
     @apply select-none
-    -mt-[40px] px-10
     core-bg-grid
     bg-secondary-100 dark:bg-transparent;
 }
 .jumbotron .content {
-    @apply mx-auto
+    @apply mx-auto px-16
     flex flex-col
     justify-center
     h-screen max-w-screen-xl;
