@@ -19,10 +19,10 @@ class AppServiceProvider extends ServiceProvider
             'panels::sidebar.expand-button' => 'icon-core.color.dnadeveloper',
             'panels::sidebar.collapse-button' => 'icon-fa.solid.chevron-left',
         ]);
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_START,
-            fn() => \Livewire\Livewire::mount(PanelNavigation::class)
-        );
+        // FilamentView::registerRenderHook(
+        //     PanelsRenderHook::TOPBAR_START,
+        //     fn() => \Livewire\Livewire::mount(PanelNavigation::class)
+        // );
         FilamentView::registerRenderHook(
             PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
             fn() => \Livewire\Livewire::mount(BackButton::class)
