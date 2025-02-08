@@ -1,4 +1,4 @@
-<div class="sticky bg-white dark:bg-neutral-900 shadow-md top-8 z-[5]">
+<div class="sticky bg-white dark:bg-neutral-900 shadow-md top-10 md:top-8 z-[5]">
     <ol
         class="flex items-center max-w-screen-xl px-4 py-2 mx-auto overflow-y-auto font-medium scrollbar-hide whitespace-nowrap">
         @foreach ($items as $item)

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         FilamentIcon::register([
-            'panels::sidebar.expand-button' => 'icon-core.color.dnadeveloper',
+            'panels::sidebar.expand-button' => 'icon-core.fill.grid_view',
             'panels::sidebar.collapse-button' => 'icon-fa.solid.chevron-left',
         ]);
         // FilamentView::registerRenderHook(

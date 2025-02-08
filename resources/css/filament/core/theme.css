@@ -14,8 +14,8 @@
     @apply bg-repeat bg-fixed;
     background-image: url("/img/grid-2.svg");
 }
-.fi-main {
-    @apply px-4;
+.icon path {
+    @apply fill-current transform-gpu;
 }
 .fi-sidebar *,
 .fi-ta *,
@@ -44,15 +44,23 @@
 
 /* Topbar */
 .fi-topbar > nav {
-    @apply h-10 md:h-8 leading-10 md:leading-8 bg-grid-2 border-b border-gray-300 shadow-none ring-0 px-2 md:px-2 lg:px-2 py-0 gap-x-2;
+    @apply h-12 md:h-8 leading-10 md:leading-8 bg-grid-2 border-b border-gray-300 shadow-none ring-0 px-2 md:px-2 lg:px-2 py-0 gap-x-2;
 }
 .fi-topbar > nav > div[x-persist="topbar.end"] {
     @apply gap-x-1;
 }
 
+/* Mobile Navigation */
+.fi-topbar > nav > .fi-icon-btn {
+    @apply h-full border-r px-6 border-gray-300 text-gray-500 rounded-none -ml-2;
+}
+.fi-topbar > nav > .fi-icon-btn .fi-icon-btn-icon {
+    @apply size-6 shrink-0 icon;
+}
+
 /* Global Search */
 .fi-topbar .fi-global-search-field .fi-input-wrp {
-    @apply h-full border border-gray-300 ring-0 shadow-none [&:not(:has(.fi-ac-action:focus))]:focus-within:ring-1;
+    @apply h-full border border-gray-300 ring-0 bg-transparent shadow-none [&:not(:has(.fi-ac-action:focus))]:focus-within:ring-1;
 }
 .fi-topbar .fi-global-search-field .fi-input-wrp-prefix {
     @apply ps-1 pe-1;
@@ -61,7 +69,7 @@
     @apply justify-center;
 }
 .fi-topbar .fi-global-search-field .fi-input-wrp-input .fi-input {
-    @apply p-0;
+    @apply p-1 md:p-0;
 }
 
 /* Notification */
@@ -69,7 +77,7 @@
     @apply m-0 border border-gray-300 focus-visible:ring-1 h-full w-full rounded-none;
 }
 .fi-topbar .fi-topbar-database-notifications-btn .fi-icon-btn-icon {
-    @apply shrink-0 size-6;
+    @apply shrink-0 size-8 p-1 md:p-0 md:size-6;
 }
 
 /* User Avatar */
@@ -77,7 +85,7 @@
     @apply h-full rounded-none border border-gray-300;
 }
 .fi-topbar .fi-user-menu .fi-user-avatar {
-    @apply size-6 shrink-0 p-0.5;
+    @apply size-8 md:size-6 shrink-0 p-0.5;
 }
 .fi-topbar .fi-user-menu .fi-dropdown-panel {
     @apply rounded-none shadow-md w-32;
@@ -90,19 +98,22 @@
     .fi-dropdown-panel
     .fi-dropdown-list
     .fi-dropdown-list-item {
-    @apply px-2 py-1 text-xs;
+    @apply px-2 py-1.5 md:py-1 md:text-xs text-sm;
 }
 .fi-topbar
     .fi-user-menu
     .fi-dropdown-panel
     .fi-dropdown-list
     .fi-dropdown-list-item-icon {
-    @apply size-5 shrink-0;
+    @apply size-6 md:size-5 shrink-0;
 }
 
 /* Sidebar */
 .fi-sidebar {
-    @apply bg-white;
+    @apply bg-white md:w-8;
+}
+.fi-sidebar-open {
+    @apply md:!w-1/6;
 }
 
 /* Sidebar Header */
@@ -113,16 +124,16 @@
     @apply flex-1;
 }
 .fi-sidebar .fi-sidebar-header .fi-logo {
-    @apply text-base place-content-center font-medium uppercase text-white;
+    @apply text-lg md:text-base place-content-center font-medium uppercase text-white;
 }
 .fi-sidebar .fi-sidebar-header .fi-icon-btn {
-    @apply size-full border-r shrink-0 rounded-none m-0;
+    @apply size-full shrink-0 rounded-none m-0;
 }
 .fi-sidebar-open .fi-sidebar-header .fi-icon-btn {
-    @apply h-full w-9 border-r shrink-0 rounded-none m-0;
+    @apply h-full w-9 shrink-0 rounded-none m-0;
 }
 .fi-sidebar .fi-sidebar-header .fi-icon-btn .fi-icon-btn-icon {
-    @apply size-6  text-white;
+    @apply size-5 text-white icon;
 }
 .fi-sidebar-open .fi-sidebar-header .fi-icon-btn .fi-icon-btn-icon {
     @apply size-4;
@@ -130,7 +141,14 @@
 
 /* Sidebar Navigation (Collapsed) */
 .fi-sidebar .fi-sidebar-nav {
-    @apply w-full border-r gap-y-0 px-0 py-0 shadow-none;
+    @apply w-full border-r !gap-y-1 px-0 py-0 shadow-none;
+    scrollbar-gutter: unset;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.fi-sidebar .fi-sidebar-nav-groups {
+    @apply gap-y-0;
 }
 .fi-sidebar .fi-dropdown-trigger button {
     @apply gap-x-0 rounded-none px-0 py-0 size-8;
@@ -138,13 +156,16 @@
 .fi-sidebar .fi-dropdown-trigger svg {
     @apply size-5 shrink-0;
 }
+.fi-sidebar .fi-dropdown-panel {
+    @apply rounded-none -ml-3;
+}
 
 /* Sidebar Navigation (Open) */
 .fi-sidebar-open .fi-sidebar-nav {
-    @apply gap-y-0 px-4 py-4 md:px-0 md:py-0 border-r w-full;
+    @apply gap-y-0 px-6 py-6 md:px-4 md:py-4 border-r w-full;
 }
 .fi-sidebar-open .fi-sidebar-nav .fi-sidebar-nav-groups {
-    @apply -m-2 gap-y-0 space-y-4 md:space-y-1;
+    @apply m-0 gap-y-2 md:gap-y-4 space-y-4 md:space-y-0;
 }
 .fi-sidebar-open .fi-sidebar-nav .fi-sidebar-nav-groups .fi-sidebar-group {
     @apply gap-y-2;
@@ -162,7 +183,7 @@
     .fi-sidebar-group
     .fi-sidebar-group-button
     .fi-sidebar-group-icon {
-    @apply size-5 shrink-0;
+    @apply size-6 md:size-5 shrink-0;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -170,7 +191,7 @@
     .fi-sidebar-group
     .fi-sidebar-group-button
     .fi-sidebar-group-label {
-    @apply text-xs text-inherit font-normal leading-none;
+    @apply text-sm md:text-xs text-inherit font-normal leading-none;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -209,7 +230,7 @@
     .fi-sidebar-item
     .fi-sidebar-item-button
     .fi-sidebar-item-grouped-border {
-    @apply shrink-0 size-5;
+    @apply shrink-0 size-6 md:size-5;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -218,7 +239,7 @@
     .fi-sidebar-item
     .fi-sidebar-item-button
     .fi-sidebar-item-label {
-    @apply text-xs text-inherit font-normal;
+    @apply text-sm md:text-xs text-inherit font-normal;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -232,10 +253,34 @@
 
 /* Breadcrumb */
 .fi-breadcrumbs {
-    @apply bg-white -ml-4 px-4 py-1 w-full fixed top-8 z-10;
+    @apply bg-white -ml-2 shadow-none border-gray-300 border-b px-4 py-1 w-full fixed top-8 z-10;
 }
 .fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item * {
     @apply text-inherit text-xs;
+}
+
+/* Page */
+.fi-main {
+    @apply px-2;
+}
+.fi-page section {
+    @apply pt-4;
+}
+.fi-page section > div {
+    @apply gap-4;
+}
+.fi-page section > div > div {
+    @apply gap-4 relative;
+}
+/* Simple Page */
+.fi-simple-layout {
+    @apply px-4 bg-grid;
+}
+.fi-simple-layout .fi-simple-main {
+    @apply bg-white/20 md:w-4/12;
+}
+.fi-simple-layout .fi-simple-main .fi-logo {
+    @apply hidden;
 }
 
 /* Page Header */
@@ -248,29 +293,7 @@
 
 /* Heading */
 .fi-header-heading {
-    @apply sm:mt-8 sm:py-2 text-base uppercase text-pretty;
-}
-
-/* Page */
-.fi-page section {
-    @apply pt-4;
-}
-.fi-page section > div {
-    @apply gap-4;
-}
-.fi-page section > div > div {
-    @apply gap-4 relative;
-}
-
-/* Simple Page */
-.fi-simple-layout {
-    @apply px-4 bg-grid;
-}
-.fi-simple-layout .fi-simple-main {
-    @apply bg-white/20 md:w-4/12;
-}
-.fi-simple-layout .fi-simple-main .fi-logo {
-    @apply hidden;
+    @apply sm:mt-2 sm:py-4 text-base uppercase text-pretty;
 }
 
 /* Subnavigation Top */
@@ -361,7 +384,7 @@
 
 /* Widgets */
 .fi-wi-stats-overview-stats-ctn {
-    @apply grid-cols-2 md:grid-cols-4;
+    @apply grid-cols-2 md:grid-cols-4 gap-2;
 }
 .fi-resource-projects .fi-wi-stats-overview-stats-ctn,
 .fi-wi-stats-overview-stats-ctn {
@@ -389,34 +412,6 @@
 
 /* Media >768px */
 @media (min-width: 768px) {
-    .fi-sidebar {
-        @apply w-10 z-10;
-    }
-    .fi-sidebar-open {
-        @apply !w-1/6;
-    }
-    .fi-sidebar-nav {
-        @apply !gap-y-1 p-0;
-        scrollbar-gutter: unset;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .fi-sidebar-open .fi-sidebar-nav {
-        @apply p-6;
-    }
-    .fi-sidebar-open .fi-sidebar-nav-groups {
-        @apply !gap-y-2;
-    }
-    .fi-sidebar .fi-dropdown-panel {
-        offset-position: 0;
-    }
-    .fi-sidebar-nav-groups {
-        @apply !gap-y-0;
-    }
-    .fi-sidebar-item {
-        @apply px-0 gap-y-0;
-    }
     .fi-page-sub-navigation-sidebar-ctn {
         @apply w-2/12 bg-white rounded-sm;
     }
