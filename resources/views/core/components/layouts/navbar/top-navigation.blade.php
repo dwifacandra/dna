@@ -6,7 +6,7 @@
             class="flex flex-row items-center justify-between flex-1 border-b md:border-b-0 md:flex-shrink-0 border-secondary-300 ">
             <button id="hs-header-base-collapse" aria-expanded="false" aria-controls="hs-header-base"
                 aria-label="Toggle navigation" data-hs-collapse="#hs-header-base"
-                class="h-8 px-1 text-white md:hidden place-items-center hs-collapse-toggle bg-primary-700">
+                class="h-10 px-1 text-white md:h-8 md:hidden place-items-center hs-collapse-toggle bg-primary-700">
                 <x-icon name="core.fill.grid_view" class="core-icon hs-collapse-open:hidden shrink-0 size-6" />
                 <svg class="hidden hs-collapse-open:block shrink-0 size-6" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -18,7 +18,7 @@
             </button>
             <a href="{{route('landing-page')}}" aria-label="Brand">
                 <h1
-                    class="h-8 px-2 overflow-hidden font-sans text-lg font-bold leading-8 tracking-tighter text-center text-white md:px-4 bg-primary">
+                    class="h-10 px-2 overflow-hidden font-sans text-lg font-bold leading-10 tracking-tighter text-center text-white md:h-8 md:leading-8 md:px-4 bg-primary">
                     {{
                     config('app.name')
                     }}
@@ -26,7 +26,7 @@
             </a>
             <div class="flex justify-end flex-1 md:hidden">
                 <a href="{{ route('filament.core.auth.login') }}"
-                    class="inline-flex items-center h-8 p-2 border-l border-secondary-300 gap-x-2">
+                    class="inline-flex items-center h-10 p-2 border-l md:h-8 border-secondary-300 gap-x-2">
                     <x-icon name="core.fill.lock" class="shrink-0 size-4 core-icon" />
                 </a>
             </div>
