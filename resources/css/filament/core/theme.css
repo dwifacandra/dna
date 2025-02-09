@@ -53,13 +53,13 @@
     @apply p-2 gap-1 justify-center;
 }
 .fi-no .fi-no-notification .fi-no-notification-icon {
-    @apply size-5 shrink-0;
+    @apply size-4 shrink-0 mt-1;
 }
 .fi-no .fi-no-notification .fi-no-notification-title {
-    @apply text-xs text-balance line-clamp-1;
+    @apply text-sm text-balance line-clamp-1;
 }
 .fi-no .fi-no-notification .fi-no-notification-body {
-    @apply text-xs text-balance line-clamp-2;
+    @apply text-sm text-balance line-clamp-2;
 }
 
 /* Topbar */
@@ -118,7 +118,7 @@
     .fi-dropdown-panel
     .fi-dropdown-list
     .fi-dropdown-list-item {
-    @apply px-2 py-1.5 md:py-1 md:text-xs text-sm;
+    @apply px-2 py-1.5 md:py-1 text-sm;
 }
 .fi-topbar
     .fi-user-menu
@@ -144,7 +144,7 @@
     @apply flex-1;
 }
 .fi-sidebar .fi-sidebar-header .fi-logo {
-    @apply text-xl  md:text-base px-6 md:px-0 md:place-content-center font-medium uppercase text-white;
+    @apply text-xl px-6 md:px-0 md:place-content-center font-medium uppercase text-white;
 }
 .fi-sidebar .fi-sidebar-header .fi-icon-btn {
     @apply size-full shrink-0 rounded-none m-0;
@@ -211,7 +211,7 @@
     .fi-sidebar-group
     .fi-sidebar-group-button
     .fi-sidebar-group-label {
-    @apply text-sm md:text-xs text-inherit font-normal leading-none;
+    @apply text-sm text-inherit font-normal leading-none;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -259,7 +259,7 @@
     .fi-sidebar-item
     .fi-sidebar-item-button
     .fi-sidebar-item-label {
-    @apply text-sm md:text-xs text-inherit font-normal;
+    @apply text-sm  text-inherit font-normal;
 }
 .fi-sidebar-open
     .fi-sidebar-nav
@@ -276,7 +276,7 @@
     @apply bg-white -ml-2 shadow-none border-gray-300 border-b px-4 py-1 w-full fixed top-8 z-10;
 }
 .fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item * {
-    @apply text-inherit text-xs;
+    @apply text-inherit text-sm;
 }
 
 /* Page */
@@ -346,7 +346,7 @@
     @apply flex flex-col gap-4 p-2 bg-white shadow-md overflow-hidden select-none cursor-default border justify-between;
 }
 .card-title {
-    @apply text-xs font-medium border-b py-1;
+    @apply text-sm font-medium border-b py-1;
 }
 .card-title-icon {
     @apply card-title inline-flex items-center gap-x-1;
@@ -355,10 +355,10 @@
     @apply size-4 shrink-0;
 }
 .card-content {
-    @apply text-xs text-pretty h-full;
+    @apply text-sm text-pretty h-full;
 }
 .card-btn {
-    @apply px-2 py-1 w-full font-medium text-xs inline-flex justify-center transition duration-200 border text-white bg-danger-500 border-danger-600;
+    @apply px-2 py-1 w-full font-medium text-sm inline-flex justify-center transition duration-200 border text-white bg-danger-500 border-danger-600;
 }
 .card-btn .card-btn-icon {
     @apply flex flex-row items-center gap-x-1;

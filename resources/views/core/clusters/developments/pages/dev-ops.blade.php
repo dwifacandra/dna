@@ -2,21 +2,21 @@
     <div class="cards">
         <div class="card">
             <h2 class="card-title-icon">
-                <x-icon name="core.outline.cached" class="animate-pulse" />
+                <x-icon name="core.outline.query_stats" class="animate-pulse" />
                 Optimize
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Cache framework bootstrap, configuration, and metadata to increase performance.
             </p>
             {{ $this->optimize }}
         </div>
         <div class="card">
             <h2 class="card-title-icon">
-                <x-icon name="core.outline.cached" class="animate-pulse" />
+                <x-icon name="core.outline.query_stats" class="animate-pulse" />
                 Optimize CleanUp
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Remove the cached bootstrap files.
             </p>
             {{ $this->optimizeClear }}
         </div>
@@ -26,19 +26,9 @@
                 Run Migration
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Run the database migrations and Seeder.
             </p>
             {{ $this->runMigrate }}
-        </div>
-        <div class="card">
-            <h2 class="card-title-icon">
-                <x-icon name="core.outline.query_stats" class="animate-pulse" />
-                Run Queue
-            </h2>
-            <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
-            </p>
-            {{ $this->runQueue }}
         </div>
         <div class="card">
             <h2 class="card-title-icon">
@@ -46,7 +36,7 @@
                 Storage Link
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Create the symbolic links configured for the application.
             </p>
             {{ $this->storageLink }}
         </div>
@@ -56,7 +46,7 @@
                 Storage Unlink
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Delete existing symbolic links configured for the application.
             </p>
             {{ $this->storageUnlink }}
         </div>
@@ -66,7 +56,7 @@
                 Permission Sync
             </h2>
             <p class="card-content">
-                Digunakan untuk mengoptimalkan kinerja Sistem secara keseluruhan.
+                Generates permissions through Models or Filament Resources and custom permissions.
             </p>
             {{ $this->permissionSync }}
         </div>

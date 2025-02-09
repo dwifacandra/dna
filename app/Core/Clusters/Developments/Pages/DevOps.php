@@ -29,7 +29,7 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('dna:optimize'));
     }
     public function optimizeClear(): Action
@@ -38,17 +38,8 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('dna:optimize --clear'));
-    }
-    public function runQueue(): Action
-    {
-        return Action::make('runQueue')
-            ->label('Process')
-            ->requiresConfirmation()
-            ->color('danger')
-            ->size(ActionSize::ExtraSmall)
-            ->action(fn() => $this->automation->callCommand('queue:work'));
     }
     public function runMigrate(): Action
     {
@@ -56,7 +47,7 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('migrate'));
     }
     public function storageLink(): Action
@@ -65,7 +56,7 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('storage:link'));
     }
     public function storageUnlink(): Action
@@ -74,7 +65,7 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('storage:unlink'));
     }
     public function permissionSync(): Action
@@ -83,7 +74,7 @@ class DevOps extends Page implements HasActions
             ->label('Process')
             ->requiresConfirmation()
             ->color('danger')
-            ->size(ActionSize::ExtraSmall)
+            ->size(ActionSize::Small)
             ->action(fn() => $this->automation->callCommand('permissions:sync --yes-to-all'));
     }
 }

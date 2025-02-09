@@ -8,6 +8,6 @@ class UserTableActions
 {
     public static function getOptions(): array
     {
-        return DefaultOptions::getActionGroups();
+        return DefaultOptions::getActionGroups(true);
     }
 }

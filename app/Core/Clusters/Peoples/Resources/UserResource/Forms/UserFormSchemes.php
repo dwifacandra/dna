@@ -16,30 +16,15 @@ class UserFormSchemes
                 ->tabs([
                     Tab::make('Personal Info')
                         ->schema([
-                            Split::make([
-                                Section::make([
-                                    SpatieMediaLibraryFileUpload::make('avatar')
-                                        ->collection('users_avatar')
-                                        ->visibility('private')
-                                        ->image()
-                                        ->imageEditor()
-                                        ->circleCropper()
-                                        ->avatar()
-                                        ->nullable()
-                                        ->alignCenter(),
-                                ]),
-                                Section::make([
-                                    TextInput::make('name')
-                                        ->required(),
-                                    DatePicker::make('birthday')
-                                        ->format('Y-m-d'),
-                                    ToggleButtons::make('gender')
-                                        ->options(Gender::class)
-                                        ->nullable()
-                                        ->inline()
-                                        ->grouped(),
-                                ]),
-                            ]),
+                            TextInput::make('name')
+                                ->required(),
+                            DatePicker::make('birthday')
+                                ->format('Y-m-d'),
+                            ToggleButtons::make('gender')
+                                ->options(Gender::class)
+                                ->nullable()
+                                ->inline()
+                                ->grouped(),
                         ]),
                     Tab::make('Contact')
                         ->schema([
@@ -69,7 +54,10 @@ class UserFormSchemes
                         ]),
                     Tab::make('Security')
                         ->schema([
-                            Select::make('roles')->multiple()->relationship('roles', 'name'),
+                            Select::make('roles')
+                                ->preload()
+                                ->native(false)
+                                ->relationship('roles', 'name'),
                             TextInput::make('password')
                                 ->password()
                                 ->revealable()
@@ -77,6 +65,18 @@ class UserFormSchemes
                                 ->dehydrateStateUsing(fn(string $state): string => Hash::make($state))
                                 ->dehydrated(fn(?string $state): bool => filled($state))
                                 ->required(fn(string $operation): bool => $operation === 'create'),
+                        ]),
+                    Tab::make('Photo')
+                        ->schema([
+                            SpatieMediaLibraryFileUpload::make('avatar')
+                                ->collection('users_avatar')
+                                ->visibility('private')
+                                ->image()
+                                ->imageEditor()
+                                ->circleCropper()
+                                ->avatar()
+                                ->nullable()
+                                ->alignCenter(),
                         ]),
                 ])
                 ->columnSpanFull()

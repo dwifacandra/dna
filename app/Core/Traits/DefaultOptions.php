@@ -32,7 +32,8 @@ trait DefaultOptions
                 ->slideOver($slideOver)
                 ->stickyModalHeader()
                 ->stickyModalFooter()
-                ->createAnother(false),
+                ->createAnother(false)
+                ->modalAutofocus(false),
             ...$moreActions,
         ];
     }
@@ -42,7 +43,8 @@ trait DefaultOptions
             EditAction::make()
                 ->slideOver($slideOver)
                 ->stickyModalHeader()
-                ->stickyModalFooter(),
+                ->stickyModalFooter()
+                ->modalAutofocus(false),
             DeleteAction::make(),
         ];
     }
@@ -53,7 +55,8 @@ trait DefaultOptions
                 EditAction::make()
                     ->slideOver($slideOver)
                     ->stickyModalHeader()
-                    ->stickyModalFooter(),
+                    ->stickyModalFooter()
+                    ->modalAutofocus(false),
                 ...$moreActions,
                 DeleteAction::make(),
             ])->icon('heroicon-o-list-bullet')
