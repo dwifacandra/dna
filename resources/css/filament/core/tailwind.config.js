@@ -12,12 +12,13 @@ export default {
         fontSize: {
             xs: '0.5rem',
             sm: '0.75rem',
-            base: '0.875rem',
-            xl: '1rem',
-            '2xl': '1.25rem',
-            '3xl': '1.5rem',
-            '4xl': '1.875rem',
-            '5xl': '2.25rem',
+            base: '1rem',
+            lg: '1.25rem',
+            'xl': '1.5rem',
+            '2xl': '1.75rem',
+            '3xl': '2rem',
+            '4xl': '2.25rem',
+            '5xl': '2.5rem',
         }
     }
 }
