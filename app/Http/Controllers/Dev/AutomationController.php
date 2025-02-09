@@ -2,84 +2,51 @@
 
 namespace App\Http\Controllers\Dev;
 
+use App\Core\Events\DevEvent;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Filament\Notifications\Notification;
 use Illuminate\Support\{Str, Facades\Artisan};
 
 class AutomationController extends Controller
 {
-    public function command(Request $request)
+    public function callCommand($command): void
     {
-        $command = $request->route('command');
+        $recipient = auth()->user();
         $exitCode = Artisan::call($command);
         $output = Str::limit(Str::of(Artisan::output())->trim(), 100);
-        $recipient = auth()->user();
         if ($recipient) {
-            if ($exitCode === 0) {
-                Notification::make()
-                    ->title(ucfirst($command) . ' Successful')
-                    ->body(trim($output))
-                    ->success()
-                    ->sendToDatabase($recipient);
-            } else {
-                Notification::make()
-                    ->title(ucfirst($command) . ' Failed')
-                    ->body('There was an error executing the command "' . $command . '": ' . trim($output))
-                    ->danger()
-                    ->sendToDatabase($recipient);
+            $success = $exitCode === 0;
+            $containsWarning = strpos($output, 'WARNING') !== false;
+            $containsInfo = strpos($output, 'INFO') !== false;
+            $containsError = strpos($output, 'ERROR') !== false;
+            if ($containsError) {
+                $success = false;
             }
-        }
-        return redirect()->back();
-    }
-    public function link()
-    {
-        $exitCode = Artisan::call('storage:link');
-        $output = Artisan::output();
-        $recipient = auth()->user();
-        if ($exitCode === 0 && $recipient) {
-            if (strpos($output, 'ERROR') === false) {
-                Notification::make()
-                    ->title('Storage: Link')
-                    ->body('Storage has been successfully linked.')
-                    ->success()
-                    ->sendToDatabase($recipient);
-            } else {
-                Notification::make()
-                    ->title('Storage: Link')
-                    ->body('Warning: ' . Str::replace('ERROR', '', trim($output)))
-                    ->warning()
-                    ->sendToDatabase($recipient);
+            $notificationType = 'success';
+            if ($containsError) {
+                $notificationType = 'danger';
+            } elseif ($containsWarning) {
+                $notificationType = 'warning';
+            } elseif ($containsInfo) {
+                $notificationType = 'info';
             }
-        } elseif ($recipient) {
+            event(new DevEvent($recipient, $command, trim($output), $success));
             Notification::make()
-                ->title('Storage: Link')
-                ->body('There was an error linking the storage: ' . trim($output))
+                ->title(ucfirst($command) . ($success ? ' Successful' : ' Failed'))
+                ->body($success ? trim($output) : 'There was an error executing the command "' . $command . '": ' . trim($output))
+                ->{$notificationType}()
+                ->sendToDatabase($recipient)
+                ->broadcast($recipient)
+                ->send();
+        } else {
+            Notification::make()
+                ->title('There was an error executing the command')
                 ->danger()
-                ->sendToDatabase($recipient);
+                ->sendToDatabase($recipient)
+                ->broadcast($recipient)
+                ->send();
         }
-        return redirect()->back();
-    }
-    public function unlink()
-    {
-        $exitCode = Artisan::call('storage:unlink');
-        $output = Artisan::output();
-        $recipient = auth()->user();
-        if ($exitCode === 0 && $recipient) {
-            Notification::make()
-                ->title('Storage: Unlink')
-                ->body($output)
-                ->success()
-                ->sendToDatabase($recipient);
-        } elseif ($recipient) {
-            Notification::make()
-                ->title('Storage: Unlink')
-                ->body('There was an error unlinking the storage: ' . trim($output))
-                ->danger()
-                ->sendToDatabase($recipient);
-        }
-        return redirect()->back();
     }
     public function sitemap()
     {
@@ -96,13 +63,17 @@ class AutomationController extends Controller
                     ->title('Sitemap: Generate by ' . $recipient->name)
                     ->body(trim($output))
                     ->success()
-                    ->sendToDatabase($recipient);
+                    ->sendToDatabase($recipient)
+                    ->broadcast($recipient)
+                    ->send();
             } else {
                 Notification::make()
                     ->title('Sitemap: Generate by ' . $recipient->name)
                     ->body('There was an error executing the command ' . trim($output))
                     ->danger()
-                    ->sendToDatabase($recipient);
+                    ->sendToDatabase($recipient)
+                    ->broadcast($recipient)
+                    ->send();
             }
         }
         return redirect('/sitemap.xml');

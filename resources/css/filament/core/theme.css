@@ -42,6 +42,26 @@
     @apply shadow-md;
 }
 
+/* Notification */
+.fi-no {
+    @apply pointer-events-none fixed inset-0 z-50 mx-auto flex gap-0 items-end flex-col-reverse justify-end top-12 md:top-8;
+}
+.fi-no .fi-no-notification {
+    @apply rounded-none shadow-md max-w-xs;
+}
+.fi-no .fi-no-notification > div {
+    @apply p-2 gap-1 justify-center;
+}
+.fi-no .fi-no-notification .fi-no-notification-icon {
+    @apply size-5 shrink-0;
+}
+.fi-no .fi-no-notification .fi-no-notification-title {
+    @apply text-xs text-balance line-clamp-1;
+}
+.fi-no .fi-no-notification .fi-no-notification-body {
+    @apply text-xs text-balance line-clamp-2;
+}
+
 /* Topbar */
 .fi-topbar > nav {
     @apply h-12 md:h-8 leading-10 md:leading-8 bg-grid-2 border-b border-gray-300 shadow-none ring-0 px-2 md:px-2 lg:px-2 py-0 gap-x-2;
@@ -118,13 +138,13 @@
 
 /* Sidebar Header */
 .fi-sidebar .fi-sidebar-header {
-    @apply h-10 md:h-8 flex justify-between p-0 bg-[#E6130C];
+    @apply h-12 md:h-8 flex justify-between p-0 bg-[#E6130C];
 }
 .fi-sidebar .fi-sidebar-header > div {
     @apply flex-1;
 }
 .fi-sidebar .fi-sidebar-header .fi-logo {
-    @apply text-lg md:text-base place-content-center font-medium uppercase text-white;
+    @apply text-xl  md:text-base px-6 md:px-0 md:place-content-center font-medium uppercase text-white;
 }
 .fi-sidebar .fi-sidebar-header .fi-icon-btn {
     @apply size-full shrink-0 rounded-none m-0;
@@ -157,7 +177,7 @@
     @apply size-5 shrink-0;
 }
 .fi-sidebar .fi-dropdown-panel {
-    @apply rounded-none -ml-3;
+    @apply rounded-none -ml-3 z-20;
 }
 
 /* Sidebar Navigation (Open) */
@@ -318,9 +338,38 @@
     @apply max-h-max;
 }
 
+/* Cards */
+.cards {
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 justify-start;
+}
+.card {
+    @apply flex flex-col gap-4 p-2 bg-white shadow-md overflow-hidden select-none cursor-default border justify-between;
+}
+.card-title {
+    @apply text-xs font-medium border-b py-1;
+}
+.card-title-icon {
+    @apply card-title inline-flex items-center gap-x-1;
+}
+.card-title-icon svg {
+    @apply size-4 shrink-0;
+}
+.card-content {
+    @apply text-xs text-pretty h-full;
+}
+.card-btn {
+    @apply px-2 py-1 w-full font-medium text-xs inline-flex justify-center transition duration-200 border text-white bg-danger-500 border-danger-600;
+}
+.card-btn .card-btn-icon {
+    @apply flex flex-row items-center gap-x-1;
+}
+.card-btn .card-btn-icon svg {
+    @apply size-4 animate-spin;
+}
+
 /* Table */
 .fi-ta thead {
-    @apply sticky top-0 z-[5];
+    /* @apply sticky top-0 z-[5]; */
 }
 .fi-ta-table thead tr {
     @apply bg-slate-800 shadow-md;
@@ -420,8 +469,5 @@
     }
     .fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {
         @apply px-4;
-    }
-    .fi-dropdown-panel {
-        @apply z-[11];
     }
 }

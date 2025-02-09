@@ -26,15 +26,12 @@ class DatabaseSeeder extends Seeder
         if (config('app.env') === 'local') {
             User::factory(10)->create();
             $this->call([
-                NavigationSeeder::class,
                 CategorySeeder::class,
                 ResumeSeeder::class,
                 ProjectsSeeder::class,
             ]);
         } else {
-            $this->call([
-                NavigationSeeder::class,
-            ]);
+            $this->call([]);
         }
     }
 }

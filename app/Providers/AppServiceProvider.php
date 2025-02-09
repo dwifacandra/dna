@@ -9,7 +9,7 @@ use App\Policies\{RolePolicy, PermissionPolicy};
 use Spatie\Permission\Models\{Role, Permission};
 use App\Core\Components\{Layouts\Navbar\PanelNavigation, Buttons\LandingPage as BackButton};
 use Illuminate\Support\{ServiceProvider, Facades\Gate};
-use Filament\Support\Facades\{FilamentIcon, FilamentView,};
+use Filament\Support\Facades\{FilamentIcon, FilamentView, FilamentAsset};
 
 class AppServiceProvider extends ServiceProvider
 {

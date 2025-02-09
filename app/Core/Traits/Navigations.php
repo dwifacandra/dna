@@ -2,18 +2,12 @@
 
 namespace App\Core\Traits;
 
-use App\Models\{Navigation,};
-use Illuminate\Support\Collection;
 use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\{NavigationBuilder, NavigationItem,};
 use App\Core\Clusters\{Products, Peoples, Resumes, Developments, Finances, Settings};
 
 trait Navigations
 {
-    public static function getTopNavigations(): Collection
-    {
-        return Navigation::TopNavigations()->get();
-    }
     public static function getNavigations()
     {
         return function (NavigationBuilder $builder): NavigationBuilder {
