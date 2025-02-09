@@ -84,6 +84,6 @@ class DevOps extends Page implements HasActions
             ->requiresConfirmation()
             ->color('danger')
             ->size(ActionSize::ExtraSmall)
-            ->action(fn() => $this->automation->callCommand('permissions:sync'));
+            ->action(fn() => $this->automation->callCommand('permissions:sync --yes-to-all'));
     }
 }
