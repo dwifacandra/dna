@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // server: {
+    //     host: process.env.APP_URL ? new URL(process.env.APP_URL).hostname : 'localhost',
+    //     port: 3000, // Anda bisa mengganti port sesuai kebutuhan
+    // },
 });

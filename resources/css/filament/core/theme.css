@@ -31,7 +31,6 @@
 
 /* Shadow */
 .fi-sidebar-nav,
-.fi-breadcrumbs,
 .fi-wi-stats-overview-stat,
 .fi-ta,
 .fi-tabs,
@@ -70,13 +69,13 @@
 
 /* Cards */
 .cards {
-    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 justify-start px-2;
+    @apply grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2 justify-start px-0;
 }
 .card {
-    @apply flex flex-col gap-4 p-2 bg-white shadow-md overflow-hidden select-none cursor-default border justify-between;
+    @apply flex flex-col gap-4 p-2 bg-white shadow-none overflow-hidden select-none cursor-default border border-gray-300 justify-between;
 }
 .card-title {
-    @apply text-sm font-medium border-b py-1;
+    @apply text-sm font-medium border-b border-gray-300 py-1;
 }
 .card-title-icon {
     @apply card-title inline-flex items-center gap-x-1;
@@ -87,22 +86,16 @@
 .card-content {
     @apply text-sm text-pretty h-full;
 }
-.card-btn {
-    @apply px-2 py-1 w-full font-medium text-sm inline-flex justify-center transition duration-200 border text-white bg-danger-500 border-danger-600;
-}
-.card-btn .card-btn-icon {
-    @apply flex flex-row items-center gap-x-1;
-}
-.card-btn .card-btn-icon svg {
-    @apply size-4 animate-spin;
+.cards .card .fi-btn {
+    @apply rounded-none px-2 py-1;
 }
 
 /* Topbar */
 .fi-topbar > nav {
-    @apply h-12 md:h-8 leading-10 md:leading-8 bg-grid-2 border-b border-gray-300 shadow-none ring-0 px-2 md:px-2 lg:px-2 py-0 gap-x-2;
+    @apply h-12 md:h-8 bg-grid-2 border-b border-gray-300 shadow-none ring-0 px-2 md:px-2 lg:px-2 py-0 md:py-4 gap-x-2;
 }
 .fi-topbar > nav > div[x-persist="topbar.end"] {
-    @apply gap-x-1;
+    @apply gap-x-1 -mr-1 md:mr-0;
 }
 
 /* Mobile Navigation */
@@ -124,7 +117,7 @@
     @apply justify-center;
 }
 .fi-topbar .fi-global-search-field .fi-input-wrp-input .fi-input {
-    @apply p-1 md:p-0;
+    @apply p-1 md:p-0 text-sm;
 }
 
 /* Notification */
@@ -179,7 +172,7 @@
     @apply flex-1;
 }
 .fi-sidebar .fi-sidebar-header .fi-logo {
-    @apply text-lg px-6 md:px-0 md:place-content-center font-medium uppercase text-white;
+    @apply text-lg md:text-base px-6 md:px-4 font-medium uppercase text-white;
 }
 .fi-sidebar .fi-sidebar-header .fi-icon-btn {
     @apply size-full shrink-0 rounded-none m-0;
@@ -308,7 +301,7 @@
 
 /* Breadcrumb */
 .fi-breadcrumbs {
-    @apply bg-white shadow-none border-gray-300 border-b px-4 py-1 w-full flex fixed top-12 md:top-8 z-10;
+    @apply bg-white shadow-md md:shadow-none border-gray-300 border-b px-2 py-1 w-full flex fixed top-12 md:top-8 z-10;
 }
 .fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item * {
     @apply text-inherit text-sm;
@@ -353,7 +346,7 @@
     @apply hidden md:flex px-0 py-0 w-full overflow-x-auto bg-white shadow-none gap-x-0 m-0 rounded-none ring-1 ring-gray-300;
 }
 .fi-page .fi-page-sub-navigation-tabs .fi-tabs-item {
-    @apply py-0 px-2 gap-2 border-e border-gray-300 rounded-none;
+    @apply py-1 px-2 gap-2 border-e border-gray-300 rounded-none;
 }
 .fi-page .fi-page-sub-navigation-tabs .fi-tabs-item-active {
     @apply border-b-primary-500 border-b bg-white;
@@ -373,7 +366,7 @@
     @apply mx-2 flex rounded-none shadow-none ring-1  bg-white ring-gray-300 md:hidden;
 }
 .fi-page .fi-page-sub-navigation-select .fi-select-input {
-    @apply px-2 py-0 text-sm;
+    @apply px-2 py-0.5 text-sm;
 }
 
 /* Content */
@@ -449,7 +442,8 @@
 
 /* Table Toolbar */
 .fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar {
-    @apply flex items-center justify-between px-0 py-1 gap-x-0 sm:px-2;
+    @apply flex items-center justify-between px-1 py-1 gap-x-1 overflow-x-auto;
+    scrollbar-width: none;
 }
 .fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar > div {
     @apply flex items-center shrink-0 gap-x-1;
@@ -457,31 +451,154 @@
 .fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar > div + div {
     @apply flex items-center ms-auto gap-x-1;
 }
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown {
+    @apply sm:hidden;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger {
+    @apply flex cursor-pointer;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger
+    .fi-ac-icon-btn-action {
+    @apply border border-gray-300 w-7 h-full m-0;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > .fi-dropdown
+    .fi-dropdown-trigger
+    .fi-ac-icon-btn-action
+    .fi-icon-btn-icon {
+    @apply size-6 shrink-0 p-1 text-gray-900;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div {
+    @apply gap-x-1;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div
+    .fi-input-wrp {
+    @apply flex shadow-none ring-0 rounded-none border border-gray-300 min-w-24;
+}
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    > div
+    > div
+    > div
+    + div
+    .fi-input-wrp
+    .fi-input-wrp-input {
+    @apply min-w-0 flex-1;
+}
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar .fi-select-input {
+    @apply p-0 px-2;
+}
 
-/* Table Action */
-.fi-ta .fi-ta-actions {
+/* Table Toolbar Action */
+.fi-ta .fi-ta-ctn .fi-ta-header-ctn .fi-ta-header-toolbar .fi-ta-actions {
     @apply flex items-center justify-between gap-0 m-0 p-0 shrink-0;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-trigger {
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger {
     @apply gap-1;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-trigger .fi-icon-btn {
-    @apply relative flex items-center justify-center gap-0 border border-gray-300 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit sm:hidden;
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-icon-btn {
+    @apply relative flex items-center justify-center gap-0 border border-gray-300 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit md:hidden;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-trigger .fi-btn {
-    @apply relative flex items-center justify-center gap-0 pr-2 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit;
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-btn {
+    @apply relative md:flex items-center justify-center gap-0 pr-2 px-0 py-0 m-0 text-gray-900 font-medium rounded-none h-full w-fit hidden;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-trigger .fi-icon-btn .fi-icon-btn-icon,
-.fi-ta .fi-ta-actions .fi-dropdown-trigger .fi-btn .fi-btn-icon {
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-icon-btn
+    .fi-icon-btn-icon,
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-trigger
+    .fi-btn
+    .fi-btn-icon {
     @apply shrink-0 size-6 p-1 text-gray-950;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-panel {
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-panel {
     @apply absolute z-[5] w-screen divide-y divide-gray-300 rounded-none bg-white shadow-md ring-1 ring-gray-300 !max-w-fit;
 }
-.fi-ta .fi-ta-actions .fi-dropdown-panel .fi-dropdown-list {
+.fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
+    .fi-ta-actions
+    .fi-dropdown-panel
+    .fi-dropdown-list {
     @apply p-0;
 }
 .fi-ta
+    .fi-ta-ctn
+    .fi-ta-header-ctn
+    .fi-ta-header-toolbar
     .fi-ta-actions
     .fi-dropdown-panel
     .fi-dropdown-list
@@ -508,7 +625,7 @@
     @apply justify-center;
 }
 .fi-ta .fi-ta-search-field .fi-input-wrp-input .fi-input {
-    @apply p-1 md:p-0;
+    @apply p-0 text-sm;
 }
 
 /* Table Filter */
@@ -529,4 +646,87 @@
 }
 .fi-ta .fi-ta-col-toggle .fi-dropdown-trigger .fi-ac-action .fi-icon-btn-icon {
     @apply shrink-0 size-6 p-1;
+}
+
+/* Table Content */
+.fi-ta .fi-ta-content {
+    @apply relative divide-y divide-gray-300 overflow-x-auto h-[70vh];
+}
+.fi-ta .fi-ta-content .fi-ta-table {
+    @apply w-full table-auto divide-y divide-gray-300 text-start;
+}
+
+/* Table Content Header */
+.fi-ta .fi-ta-content .fi-ta-table > thead {
+    @apply divide-y divide-gray-300 bg-transparent;
+}
+.fi-ta .fi-ta-content .fi-ta-table > thead > tr {
+    @apply bg-gray-50;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell,
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-selection-cell {
+    @apply py-0 px-0 bg-gray-50 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0 w-1;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell > div,
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-group-selection-cell
+    > div {
+    @apply px-4 py-0;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell > div > label {
+    @apply flex;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-selection-cell .fi-checkbox-input {
+    @apply rounded-none size-4 ring-gray-300 ring-1;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell {
+    @apply px-4 py-1 sm:first-of-type:ps-4 sm:last-of-type:pe-4 border-r border-r-gray-300 last-of-type:border-r-0 bg-white;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell > button {
+    @apply flex w-full items-center gap-x-1 whitespace-nowrap justify-between;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-header-cell .fi-ta-header-cell-label {
+    @apply text-sm font-medium text-gray-800;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-header-cell
+    .fi-ta-header-cell-sort-icon {
+    @apply size-4 shrink-0 transition duration-75 text-gray-500 group-hover:text-gray-600 group-focus-visible:text-gray-600;
+}
+
+/* Table Content Body */
+.fi-ta .fi-ta-content .fi-ta-table > tbody {
+    @apply divide-y divide-gray-300 whitespace-nowrap;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row {
+    @apply hover:bg-gray-50;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header {
+    @apply flex w-full items-center gap-x-2 bg-gray-50 px-2 py-0.5 cursor-pointer;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header > div > h4 {
+    @apply text-sm font-normal text-gray-800;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-group-header .fi-icon-btn {
+    @apply size-4 shrink-0 text-gray-800;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-cell {
+    @apply p-0 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0 border-r border-r-gray-300 last-of-type:border-r-0;
+}
+.fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-actions-cell {
+    @apply border-r-0 p-0 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0 bg-gray-50;
+}
+
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-actions-cell
+    .fi-ta-actions {
+    @apply flex shrink-0 items-center gap-1 justify-end;
 }
