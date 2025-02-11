@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'name' => env('APP_AUTHOR', 'Laravel'),
+    'author' => env('APP_AUTHOR', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
