@@ -59,6 +59,15 @@ class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia,
             return $avatar;
         }
     }
+    public function getShortNameAttribute(): string
+    {
+        $fullName = $this->name;
+        $nameParts = explode(' ', $fullName);
+        $firstName = $nameParts[0];
+        $middleInitial = isset($nameParts[2]) ? strtoupper(substr($nameParts[1], 0, 1)) : '';
+        $lastInitial = strtoupper(substr($nameParts[count($nameParts) - 1], 0, 1));
+        return trim($firstName . ' ' . $middleInitial . '.' . $lastInitial);
+    }
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->hasRole('Adminstrator');

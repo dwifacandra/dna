@@ -49,9 +49,8 @@ class CreateResumeTables extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('name', 50);
+            $table->integer('rating')->nullable();
             $table->string('icon', 20)->nullable();
-            $table->string('icon_color', 8)->nullable();
-            $table->integer('rate')->nullable();
             $table->timestamps();
         });
     }

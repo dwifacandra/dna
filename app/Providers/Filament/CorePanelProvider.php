@@ -84,7 +84,7 @@ class CorePanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Core/Pages'), for: 'App\\Core\\Pages')
             ->discoverWidgets(in: app_path('Core/Widgets'), for: 'App\\Core\\Widgets')
             ->plugin(
-                FilamentSpatieRolesPermissionsPlugin::make()
+                FilamentSpatieRolesPermissionsPlugin::make(),
             )
             ->middleware([
                 EncryptCookies::class,

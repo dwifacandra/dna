@@ -1,11 +1,19 @@
 {
+  "public/img/grid-2.svg": {
+    "file": "assets/grid-2-DH0XArgp.svg",
+    "src": "public/img/grid-2.svg"
+  },
+  "public/img/grid.svg": {
+    "file": "assets/grid-D-L7HBpr.svg",
+    "src": "public/img/grid.svg"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-CWx9oHU_.css",
+    "file": "assets/app-VV4IP0AQ.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/css/filament/core/theme.css": {
-    "file": "assets/theme-C5rUnjdY.css",
+    "file": "assets/theme-DpdBSt7z.css",
     "src": "resources/css/filament/core/theme.css",
     "isEntry": true
   },

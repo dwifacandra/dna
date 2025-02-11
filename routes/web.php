@@ -51,7 +51,7 @@ Route::get('/svg/{svgname}', function ($svgname) {
     return Response::make($svgContent, 200, [
         'Content-Type' => 'image/svg+xml',
     ]);
-});
+})->name('svg');
 // Sitemap Generator
 Route::get('/sitemap', [AutomationController::class, 'sitemap'])->name('dev.sitemap');
 // Signed Media

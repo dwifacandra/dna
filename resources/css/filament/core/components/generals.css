@@ -1,0 +1,157 @@
+:root {
+    @apply antialiased;
+}
+
+/* Reset Default Style */
+* {
+    scrollbar-width: thin;
+}
+.fi-sidebar *,
+.fi-ta *,
+.fi-simple-layout *,
+.fi-wi-widget *,
+.fi-dropdown *,
+.fi-input-wrp {
+    @apply rounded-none
+    [&:nth-child(1_of_.fi-btn)]:rounded-none
+    [&:nth-last-child(1_of_.fi-btn)]:rounded-none;
+}
+.fi-sidebar-nav,
+.fi-wi-stats-overview-stat,
+.fi-ta,
+.fi-tabs,
+.fi-page-sub-navigation-sidebar,
+.fi-page-sub-navigation-tabs {
+    @apply shadow-none;
+}
+
+/* Body {fi-panel-core} */
+.fi-body {
+    @apply min-h-screen
+        antialiased
+        font-normal
+        bg-secondary-50
+        text-secondary-950
+        dark:bg-secondary-950
+        dark:text-white;
+}
+
+/* Background */
+.bg-grid {
+    @apply max-h-screen
+    bg-repeat bg-fixed;
+    background-image: url("../../../../../public/img/grid.svg");
+}
+.bg-grid-2 {
+    @apply bg-repeat bg-fixed;
+    background-image: url("../../../../../public/img/grid-2.svg");
+}
+
+/* Loading */
+.fi-loading-section .fi-section {
+    @apply rounded-none
+    border border-secondary-200;
+}
+
+/* Icon */
+.icon path {
+    @apply fill-current transform-gpu;
+}
+
+/* Notification */
+.fi-no {
+    @apply pointer-events-none
+    fixed inset-0 z-50
+    mx-auto  gap-0 top-12 md:top-8
+    flex flex-col-reverse items-end justify-end;
+}
+.fi-no .fi-no-notification {
+    @apply max-w-xs rounded-none shadow-md;
+}
+.fi-no .fi-no-notification > div {
+    @apply p-2 gap-1 justify-center;
+}
+.fi-no .fi-no-notification .fi-no-notification-icon {
+    @apply size-4 shrink-0 mt-1;
+}
+.fi-no .fi-no-notification .fi-no-notification-title,
+.fi-no .fi-no-notification .fi-no-notification-body {
+    @apply text-sm text-balance line-clamp-1;
+}
+
+/* Cards */
+.cards {
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 justify-start px-0;
+}
+.card {
+    @apply flex flex-col gap-4 p-2 bg-white shadow-none overflow-hidden select-none cursor-default border border-gray-300 justify-between;
+}
+.card-title {
+    @apply text-sm font-medium border-b border-gray-300 py-1;
+}
+.card-title-icon {
+    @apply card-title inline-flex items-center gap-x-1;
+}
+.card-title-icon svg {
+    @apply size-4 shrink-0;
+}
+.card-content {
+    @apply text-sm text-pretty h-full;
+}
+.cards .card .fi-btn {
+    @apply rounded-none px-2 py-1;
+}
+
+/* Breadcrumb */
+.fi-breadcrumbs {
+    @apply bg-white
+    shadow-md md:shadow-none
+    border-gray-300 border-b
+    px-2 py-1 select-none
+    w-full flex fixed top-12 md:top-8 z-10;
+}
+.fi-breadcrumbs .fi-breadcrumbs-list {
+    @apply flex flex-wrap items-center gap-x-1;
+}
+.fi-breadcrumbs .fi-breadcrumbs-list .fi-breadcrumbs-item {
+    @apply flex items-center gap-x-1;
+}
+.fi-breadcrumbs
+    .fi-breadcrumbs-list
+    .fi-breadcrumbs-item
+    .fi-breadcrumbs-item-label {
+    @apply text-sm font-medium text-gray-800 dark:text-gray-400 transition duration-75 hover:text-gray-700 dark:hover:text-gray-200;
+}
+.fi-breadcrumbs
+    .fi-breadcrumbs-list
+    .fi-breadcrumbs-item
+    .fi-breadcrumbs-item-separator {
+    @apply size-5 text-gray-500 dark:text-gray-500;
+}
+
+/* Tabs {fi-page-sub-navigation-tabs} */
+.fi-tabs {
+    @apply px-0 py-0 w-full overflow-x-auto bg-white shadow-none gap-x-0 m-0 rounded-none ring-1 ring-gray-300;
+}
+.fi-tabs .fi-tabs-item {
+    @apply flex items-center justify-center
+    py-1 px-2 gap-2 whitespace-nowrap
+    border-e border-gray-300 rounded-none outline-none
+    text-sm font-medium transition duration-75
+    hover:bg-gray-50
+    focus-visible:bg-gray-50
+    dark:hover:bg-white/5
+    dark:focus-visible:bg-white/5;
+}
+.fi-tabs .fi-tabs-item-active {
+    @apply border-b-primary-500 border-b-2 bg-white;
+}
+.fi-tabs .fi-tabs-item .fi-tabs-item-icon {
+    @apply size-4 text-gray-800;
+}
+.fi-tabs .fi-tabs-item .fi-tabs-item-label {
+    @apply p-0 text-gray-800;
+}
+.fi-tabs .fi-tabs-item .fi-badge {
+    @apply rounded-none leading-3;
+}

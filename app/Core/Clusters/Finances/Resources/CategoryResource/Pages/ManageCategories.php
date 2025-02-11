@@ -24,8 +24,7 @@ class ManageCategories extends ManageRecords
     {
         return DefaultOptions::getDefaultHeaderActions(false, [
             Action::make('Subcategory')
-                ->icon('core.fill.category')
-                ->iconSize('sm')
+                ->icon('core.outline.category')
                 ->color('gray')
                 ->url(SubcategoryResource::getUrl())
         ]);

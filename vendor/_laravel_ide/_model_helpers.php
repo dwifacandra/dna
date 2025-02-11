@@ -1565,13 +1565,12 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property varchar|null $icon_color
      * @property varchar|null $icon
+     * @property \App\Core\Enums\Rate|null $rating
      * @property varchar $name
      * @property int $category_id
      * @property int $user_id
      * @property int $id
-     * @property-read mixed|null $rate
      * @property-read mixed $rate_int
      * @property-read mixed $percentage
      * @property-read \App\Models\User $user
@@ -1580,8 +1579,8 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereUserId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereCategoryId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereRating($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereIcon($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereIconColor($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|ResumeSkill newModelQuery()
@@ -2095,6 +2094,7 @@ namespace App\Models {
      * @property date|null $birthday
      * @property string $name
      * @property int $id
+     * @property-read mixed $short_name
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserAccount> $accounts
      * @property-read int|null $accounts_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ResumeSkill> $skills
@@ -2615,20 +2615,25 @@ namespace App\Models {
     /**
      * App\Models\Visitor
      *
-     * @property varchar|null $locale
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property varchar $page_visited
+     * @property array $page_visited
      * @property varchar $user_agent
      * @property varchar $ip_address
+     * @property \App\Core\Enums\Locale|null $locale
      * @property int $id
+     * @property-read mixed $browser
+     * @property-read mixed $o_s
+     * @property-read mixed $page_url
+     * @property-read mixed $route_name
+     * @property-read mixed $route_query
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereLocale($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereIpAddress($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereUserAgent($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor wherePageVisited($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereLocale($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor query()

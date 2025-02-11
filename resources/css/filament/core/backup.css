@@ -1,0 +1,163 @@
+/* Page */
+.fi-main {
+    @apply px-2;
+}
+.fi-page section {
+    @apply pt-4;
+}
+.fi-page section > div {
+    @apply gap-4;
+}
+.fi-page section > div > div {
+    @apply gap-4 relative;
+}
+/* Simple Page */
+.fi-simple-layout {
+    @apply px-4 bg-grid;
+}
+.fi-simple-layout .fi-simple-main {
+    @apply bg-white/20 md:w-4/12;
+}
+.fi-simple-layout .fi-simple-main .fi-logo {
+    @apply hidden;
+}
+
+/* Page Header */
+.fi-header {
+    @apply p-0 sm:-mb-6 flex-row justify-between;
+}
+.fi-header div + div .fi-ac {
+    @apply gap-2 flex-row-reverse;
+}
+
+/* Heading */
+.fi-header-heading {
+    @apply sm:mt-2 sm:py-4 text-base uppercase text-pretty;
+}
+
+/* Subnavigation Top */
+.fi-page-sub-navigation-tabs,
+.fi-tabs {
+    @apply mx-0 p-0 gap-x-0;
+}
+
+/* Subnavigation Sidebar*/
+.fi-page-sub-navigation-sidebar-ctn * {
+    @apply gap-y-0;
+}
+.fi-page-sub-navigation-sidebar {
+    @apply w-full h-[75.5vh] bg-white rounded-sm dark:bg-gray-950 ring-1 ring-gray-950/5;
+}
+.fi-page-sub-navigation-sidebar .fi-sidebar-item-button {
+    @apply px-4;
+}
+
+/* Content */
+.fi-page-sub-navigation-sidebar-ctn + div {
+    @apply max-h-max;
+}
+
+/* Table */
+.fi-ta thead {
+    /* @apply sticky top-0 z-[5]; */
+}
+.fi-ta-table thead tr {
+    @apply bg-slate-800 shadow-md;
+}
+.fi-ta-header {
+    @apply gap-2;
+}
+.fi-ta-header-toolbar {
+    @apply py-2 px-4;
+}
+.fi-ta-header-cell {
+    @apply !px-0 !py-2 hover:bg-slate-700;
+}
+.fi-ta-header-cell button {
+    @apply justify-between px-4;
+}
+.fi-ta-header-cell-label {
+    @apply text-white flex-1;
+}
+.fi-ta-header-cell-sort-icon {
+    @apply group-hover:text-white/90 group-focus-visible:text-white/90 text-white;
+}
+.fi-ta-cell {
+    @apply border-l first-of-type:border-l-0 first-of-type:ps-0 last-of-type:pe-0;
+}
+.fi-ta-group-header {
+    @apply shadow-md bg-gray-100 py-1;
+}
+.fi-ta-group-selection-cell {
+    @apply border-l-0 bg-gray-100;
+}
+.fi-ta-selection-cell {
+    @apply border-l-0;
+}
+.fi-ta-selection-cell > div {
+    @apply py-0;
+}
+.fi-ta-selection-indicator {
+    @apply bg-white py-1 rounded-sm;
+}
+.fi-table-header-group-cell div {
+    @apply justify-center;
+}
+.fi-ta-content {
+    @apply relative h-[70vh];
+}
+.fi-ta-content .fi-badge {
+    @apply py-1 px-3 gap-x-2 justify-between text-sm text-left;
+}
+.fi-pagination {
+    @apply p-2;
+}
+.fi-ta-image .rounded-full {
+    border-radius: 100%;
+}
+
+/* Modal */
+.fi-modal-footer-actions .fi-btn-color-secondary {
+    @apply bg-success-700 hover:bg-success-600;
+}
+
+/* Widgets */
+.fi-wi-stats-overview-stats-ctn {
+    @apply grid-cols-2 md:grid-cols-4 gap-2;
+}
+.fi-resource-projects .fi-wi-stats-overview-stats-ctn,
+.fi-wi-stats-overview-stats-ctn {
+    @apply grid-cols-2 md:grid-cols-6 cursor-default select-none;
+}
+
+/* Slider */
+.slider {
+    @apply w-full h-8
+    border-2 border-gray-200
+    rounded-sm outline-none
+    appearance-none
+    active:border-slate-500;
+}
+.slider::-webkit-slider-thumb {
+    @apply w-8 h-8
+    rounded-sm
+    appearance-none
+    cursor-pointer
+    bg-[var(--thumb-color)];
+}
+.fi-resource-icons .fi-wi-table .fi-ta-content {
+    @apply h-fit;
+}
+
+/* Media >768px */
+@media (min-width: 768px) {
+    .fi-page-sub-navigation-sidebar-ctn {
+        @apply w-2/12 bg-white rounded-sm;
+    }
+    .fi-page-sub-navigation-sidebar-ctn * {
+        @apply gap-y-0;
+    }
+    .fi-page-sub-navigation-sidebar-ctn .fi-sidebar-item-button {
+        @apply px-4;
+    }
+}

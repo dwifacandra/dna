@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Enums\Rate;
+use App\Core\Helpers\CoreIcon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\{Factories\HasFactory, Model};
 
@@ -13,12 +14,11 @@ class ResumeSkill extends Model
         'user_id',
         'category_id',
         'name',
-        'rate',
+        'rating',
         'icon',
-        'icon_color',
     ];
     protected $casts = [
-        'rate' => Rate::class,
+        'rating' => Rate::class,
     ];
     protected static function booted()
     {

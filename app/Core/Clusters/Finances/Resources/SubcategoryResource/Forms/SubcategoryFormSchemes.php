@@ -41,31 +41,16 @@ class SubcategoryFormSchemes
                 TextInput::make('name')
                     ->required(),
             ]),
-            Grid::make([
-                'default' => 2,
-            ])->schema([
-                Select::make('icon')
-                    ->label('Select Icon')
-                    ->native(false)
-                    ->searchable()
-                    ->reactive()
-                    ->required()
-                    ->options(CoreIcon::getIcons())
-                    ->afterStateUpdated(function ($set, $state, $get) {
-                        $set('icon_preview', $state . ':' . $get('icon_color'));
-                    }),
-                ColorPicker::make('icon_color')
-                    ->reactive()
-                    ->default('#171717')
-                    ->visible(fn(Get $get): bool => filled($get('icon')))
-                    ->afterStateUpdated(function ($set, $state, $get) {
-                        $set('icon_preview', $get('icon') . ':' . $state);
-                    }),
-                PreviewIcon::make('icon_preview')
-                    ->label('Preview Icon')
-                    ->columnSpanFull()
-                    ->visible(fn(Get $get): bool => filled($get('icon'))),
-            ]),
+            Select::make('icon')
+                ->label('Select Icon')
+                ->native(false)
+                ->searchable()
+                ->reactive()
+                ->default('core.outline.category')
+                ->options(CoreIcon::getIcons())
+                ->prefixIcon(function (Get $get): string {
+                    return $get('icon') ?: 'core.outline.fonticons';
+                }),
             MarkdownEditor::make('description'),
         ];
     }

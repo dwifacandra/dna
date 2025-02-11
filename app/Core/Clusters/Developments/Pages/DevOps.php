@@ -18,6 +18,7 @@ class DevOps extends Page implements HasActions
     protected static string $view = 'core.clusters.developments.pages.dev-ops';
     protected static ?string $navigationIcon = 'icon-core.outline.developer_board';
     protected static ?string $activeNavigationIcon = 'icon-core.fill.developer_board';
+    protected static ?int $navigationSort = 3;
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
     public function __construct()
     {

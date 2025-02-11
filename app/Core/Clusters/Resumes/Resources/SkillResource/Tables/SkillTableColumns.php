@@ -15,12 +15,10 @@ class SkillTableColumns
             TextColumn::make('name')
                 ->alignment(Alignment::Left),
             IconColumn::make('icon')
-                ->size(IconColumn\IconColumnSize::Large)
-                ->icon(fn($record) => $record->icon)
-                ->color(fn($record) => Color::hex($record->icon_color)),
-            TextColumn::make('rate')
-                ->badge()
-                ->icon('icon-core.outline.star'),
+                ->size(IconColumn\IconColumnSize::Medium)
+                ->icon(fn($record) => $record->icon),
+            TextColumn::make('rating')
+                ->badge(),
             TextColumn::make('user.name')
                 ->alignment(Alignment::Left),
             TextColumn::make('created_at')

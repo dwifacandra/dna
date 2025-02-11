@@ -11,36 +11,24 @@ enum Rate: int implements HasLabel, HasColor
     case THREE = 3;
     case FOUR = 4;
     case FIVE = 5;
-    case SIX = 6;
-    case SEVEN = 7;
-    case EIGHT = 8;
-    case NINE = 9;
-    case TEN = 10;
     public function getLabel(): string
     {
-        return (string) $this->value;
+        return match ($this) {
+            self::ONE => 'Novice',
+            self::TWO => 'Competent',
+            self::THREE => 'Proficient',
+            self::FOUR => 'Expert',
+            self::FIVE => 'Master',
+        };
     }
     public function getColor(): string
     {
         return match ($this) {
             self::ONE => 'danger',
-            self::TWO => 'danger',
-            self::THREE => 'danger',
-            self::FOUR => 'warning',
-            self::FIVE => 'warning',
-            self::SIX => 'warning',
-            self::SEVEN => 'warning',
-            self::EIGHT => 'success',
-            self::NINE => 'success',
-            self::TEN => 'success',
-        };
-    }
-    public function getColorHex(): string
-    {
-        return match ($this) {
-            self::ONE, self::TWO, self::THREE => '#dc2626',
-            self::FOUR, self::FIVE, self::SIX, self::SEVEN => '#ea580c',
-            self::EIGHT, self::NINE, self::TEN => '#16a34a',
+            self::TWO => 'warning',
+            self::THREE => 'warning',
+            self::FOUR => 'success',
+            self::FIVE => 'success',
         };
     }
 }

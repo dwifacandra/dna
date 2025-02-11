@@ -10,9 +10,10 @@ return new class extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
+            $table->string('locale')->nullable()->after('ip_address');
             $table->string('ip_address');
             $table->string('user_agent');
-            $table->string('page_visited');
+            $table->json('page_visited');
             $table->timestamps();
         });
     }

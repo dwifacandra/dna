@@ -41,10 +41,17 @@
                     <a href="{{ route('product') }}" class="core-b-secondary">Products</a>
                 </div>
                 <div class="flex flex-row items-center md:justify-center gap-x-1">
+                    @if (Auth::check())
+                    <a href="{{ route('filament.core.home') }}" class="inline-flex items-center gap-x-1">
+                        <img src="{{ Auth::user()->getFilamentAvatarUrl() }}" alt="{{ Auth::user()->name }}"
+                            class="shrink-0 size-6" />
+                    </a>
+                    @else
                     <a href="{{ route('filament.core.auth.login') }}"
                         class="inline-flex items-center p-1 border border-secondary-300 gap-x-2">
                         <x-icon name="core.fill.lock" class="shrink-0 size-4 core-icon" />
                     </a>
+                    @endif
                     <livewire:components.toggle.theme />
                     <livewire:components.toggle.locale />
                 </div>

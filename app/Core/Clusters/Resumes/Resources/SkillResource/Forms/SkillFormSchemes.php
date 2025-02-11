@@ -6,8 +6,7 @@ use Filament\Forms\Get;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Core\{Enums\Rate, Helpers\CoreIcon, Traits\Categories};
-use App\Core\Components\Forms\{PreviewIcon, RangeSlider};
-use Filament\Forms\Components\{TextInput, Hidden, Select, ColorPicker,  Grid};
+use Filament\Forms\Components\{TextInput, Hidden, Select,  ToggleButtons};
 
 class SkillFormSchemes
 {
@@ -27,37 +26,19 @@ class SkillFormSchemes
                 ->searchable()
                 ->required()
                 ->preload(),
-            RangeSlider::make('rate')
-                ->default(5)
-                ->afterStateUpdated(function ($state, $set) {
-                    $rateEnum = Rate::from($state);
-                    $set('rate_color', $rateEnum->getColorHex());
-                }),
-            Grid::make([
-                'default' => 2,
-            ])->schema([
-                Select::make('icon')
-                    ->label('Select Icon')
-                    ->native(false)
-                    ->searchable()
-                    ->reactive()
-                    ->required()
-                    ->options(CoreIcon::getIcons())
-                    ->afterStateUpdated(function ($set, $state, $get) {
-                        $set('icon_preview', $state . ':' . $get('icon_color'));
-                    }),
-                ColorPicker::make('icon_color')
-                    ->reactive()
-                    ->default('#171717')
-                    ->visible(fn(Get $get): bool => filled($get('icon')))
-                    ->afterStateUpdated(function ($set, $state, $get) {
-                        $set('icon_preview', $get('icon') . ':' . $state);
-                    }),
-                PreviewIcon::make('icon_preview')
-                    ->label('Preview Icon')
-                    ->columnSpanFull()
-                    ->visible(fn(Get $get): bool => filled($get('icon'))),
-            ]),
+            ToggleButtons::make('rating')
+                ->inline()
+                ->options(Rate::class),
+            Select::make('icon')
+                ->label('Select Icon')
+                ->native(false)
+                ->searchable()
+                ->reactive()
+                ->required()
+                ->options(CoreIcon::getIcons())
+                ->prefixIcon(function (Get $get): string {
+                    return $get('icon') ?: 'core.outline.fonticons';
+                })
         ];
     }
 }

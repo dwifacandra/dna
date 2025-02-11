@@ -2,8 +2,7 @@
 
 namespace App\Core\Clusters;
 
-use Filament\Navigation\NavigationItem;
-use App\Core\Clusters\Developments\{Pages\DevOps, Resources\IconResource};
+use App\Core\Clusters\Developments\{Pages\DevOps, Resources\IconResource, Resources\VisitorResource};
 use Filament\{Clusters\Cluster, Navigation\NavigationGroup};
 
 class Developments extends Cluster
@@ -17,8 +16,9 @@ class Developments extends Cluster
             ->icon(self::$navigationIcon)
             ->collapsed()
             ->items([
-                ...DevOps::getNavigationItems(),
+                ...VisitorResource::getNavigationItems(),
                 ...IconResource::getNavigationItems(),
+                ...DevOps::getNavigationItems(),
             ]);
     }
 }
