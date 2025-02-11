@@ -16,7 +16,7 @@ class VisitorTableColumns
                 ->badge(),
             TextColumn::make('ip_address')
                 ->label('IP Address'),
-            TextColumn::make('page_url')
+            TextColumn::make('page_visited')
                 ->label('Page')
                 ->alignLeft()
                 ->wrap()
