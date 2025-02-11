@@ -3,8 +3,9 @@
 namespace App\Core\Clusters\Developments\Resources;
 
 use App\Models\Visitor;
-use Filament\{Resources\Resource, Pages\SubNavigationPosition, Tables\Table};
+use Illuminate\Database\Eloquent\Builder;
 use App\Core\{Traits\DefaultOptions, Clusters\Developments};
+use Filament\{Resources\Resource, Pages\SubNavigationPosition, Tables\Table};
 use App\Core\Clusters\Developments\Resources\VisitorResource\{Pages, Tables, Widgets};
 
 class VisitorResource extends Resource
@@ -20,6 +21,9 @@ class VisitorResource extends Resource
     {
         DefaultOptions::getColumnConfigs(['alignment' => 'center']);
         return $table
+            ->modifyQueryUsing(function (Builder $query) {
+                return $query->orderBy('created_at', 'desc');
+            })
             ->deferLoading()
             ->deferFilters()
             ->extremePaginationLinks()
