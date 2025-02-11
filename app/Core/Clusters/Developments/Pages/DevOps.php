@@ -49,7 +49,7 @@ class DevOps extends Page implements HasActions
             ->requiresConfirmation()
             ->color('danger')
             ->size(ActionSize::Small)
-            ->action(fn() => $this->automation->callCommand('migrate'));
+            ->action(fn() => $this->automation->callCommand('migrate --force'));
     }
     public function storageLink(): Action
     {
