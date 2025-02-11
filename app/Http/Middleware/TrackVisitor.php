@@ -38,7 +38,7 @@ class TrackVisitor
     }
     protected function isIgnoredRoute(Request $request): bool
     {
-        $ignoredPrefixes = ['svg', 'core', 'livewire'];
+        $ignoredPrefixes = ['svg', 'core', 'livewire', 'media'];
         foreach ($ignoredPrefixes as $prefix) {
             if (str_starts_with($request->path(), $prefix)) {
                 return true;
