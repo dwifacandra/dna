@@ -19,7 +19,7 @@ class Visitor extends Model
         'locale' => Locale::class,
         'page_visited' => JsonCast::class,
     ];
-    public function getBrowserAttribute()
+    public function getBrowserAttribute(): ?string
     {
         $userAgent = $this->user_agent;
         if (Str::contains($userAgent, 'Chrome')) {
@@ -32,7 +32,7 @@ class Visitor extends Model
             return 'Unknown';
         }
     }
-    public function getOSAttribute()
+    public function getOSAttribute(): ?string
     {
         $userAgent = $this->user_agent;
 
@@ -46,27 +46,27 @@ class Visitor extends Model
             return 'Unknown';
         }
     }
-    public function getPageUrlAttribute(): string
+    public function getPageUrlAttribute(): ?string
     {
         return $this->page_visited['page_url'] ?? null;
     }
-    public function getPagePathAttribute(): string
+    public function getPagePathAttribute(): ?string
     {
         return $this->page_visited['page_path'] ?? null;
     }
-    public function getPageRefererAttribute(): string
+    public function getPageRefererAttribute(): ?string
     {
         return $this->page_visited['page_referer'] ?? null;
     }
-    public function getRouteNameAttribute(): string
+    public function getRouteNameAttribute(): ?string
     {
         return $this->page_visited['route_name'] ?? null;
     }
-    public function getRouteQueryAttribute(): array
+    public function getRouteQueryAttribute(): ?array
     {
         return $this->page_visited['route_query'] ?? null;
     }
-    public function getUserNameAttribute(): string
+    public function getUserNameAttribute(): ?string
     {
         return $this->page_visited['user_name'] ?? null;
     }
