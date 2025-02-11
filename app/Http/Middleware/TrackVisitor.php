@@ -20,14 +20,16 @@ class TrackVisitor
         ) {
             return $next($request);
         }
+        $pageVisitedData = [
+            'page_url' => $request->fullUrl(),
+            'route_name' => $request->route()->getName(),
+            'route_query' => $request->query(),
+        ];
+        $pageVisitedJson = json_encode($pageVisitedData);
         Visitor::create([
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
-            'page_visited' => json_encode([
-                'page_url' => $request->fullUrl(),
-                'route_name' => $request->route()->getName(),
-                'route_query' => $request->query(),
-            ]),
+            'page_visited' => $pageVisitedJson,
             'locale' => Session::get('locale', $request->get('locale', 'en')),
         ]);
         return $next($request);
