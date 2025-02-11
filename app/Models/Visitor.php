@@ -49,6 +49,13 @@ class Visitor extends Model
     {
         return $this->page_visited['page_url'] ?? null;
     }
+    public function getRouteInfoAttribute()
+    {
+        return [
+            'route_name' => $this->page_visited['route_name'] ?? null,
+            'route_query' => $this->page_visited['route_query'] ?? [],
+        ];
+    }
     public function getRouteNameAttribute()
     {
         return $this->page_visited['route_name'] ?? null;

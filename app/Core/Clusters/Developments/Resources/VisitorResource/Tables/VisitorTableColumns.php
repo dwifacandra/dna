@@ -2,7 +2,7 @@
 
 namespace App\Core\Clusters\Developments\Resources\VisitorResource\Tables;
 
-use Filament\Tables\Columns\{IconColumn, TextColumn, Layout\Stack};
+use Filament\Tables\Columns\{TextColumn,};
 
 class VisitorTableColumns
 {
@@ -16,9 +16,11 @@ class VisitorTableColumns
                 ->badge(),
             TextColumn::make('ip_address')
                 ->label('IP Address'),
-            TextColumn::make('page_url')
+            TextColumn::make('route_info')
                 ->label('Page')
                 ->alignLeft()
+                ->separator(',')
+                ->listWithLineBreaks()
                 ->url(fn($record) => $record->page_url)
                 ->openUrlInNewTab(),
             TextColumn::make('browser'),

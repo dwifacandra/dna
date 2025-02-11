@@ -2625,6 +2625,7 @@ namespace App\Models {
      * @property-read mixed $browser
      * @property-read mixed $o_s
      * @property-read mixed $page_url
+     * @property-read mixed $route_info
      * @property-read mixed $route_name
      * @property-read mixed $route_query
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereId($value)
