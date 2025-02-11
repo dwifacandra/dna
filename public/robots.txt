@@ -4,3 +4,5 @@ Disallow: /build/
 Disallow: /img/
 Disallow: /css/
 Disallow: /js/
+Disallow: /svg/
+Disallow: /media/

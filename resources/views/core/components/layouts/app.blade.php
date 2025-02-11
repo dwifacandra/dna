@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="{{ config('app.author') }}">
+    <meta name="description" content="A Personal Web by Aditya Dwifacandra.">
     <link rel="icon" href="{{asset('img/favicon.png')}}" />
     <title>{{ isset($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])

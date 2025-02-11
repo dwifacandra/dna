@@ -624,6 +624,15 @@
 .fi-ta .fi-ta-content .fi-ta-table .fi-ta-row .fi-ta-actions-cell {
     @apply border-r-0 p-0 first-of-type:ps-0 last-of-type:pe-0 sm:first-of-type:ps-0 sm:last-of-type:pe-0;
 }
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text {
+    @apply grid w-full gap-y-1 px-2 py-2;
+}
 
 .fi-ta
     .fi-ta-content

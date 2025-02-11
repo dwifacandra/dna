@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Core\Casts\JsonCast;
 use App\Core\Enums\Locale;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class Visitor extends Model
     ];
     protected $casts = [
         'locale' => Locale::class,
-        'page_visited' => 'array',
+        'page_visited' => JsonCast::class,
     ];
     public function getBrowserAttribute()
     {
@@ -45,23 +46,28 @@ class Visitor extends Model
             return 'Unknown';
         }
     }
-    public function getPageUrlAttribute()
+    public function getPageUrlAttribute(): string
     {
         return $this->page_visited['page_url'] ?? null;
     }
-    public function getRouteInfoAttribute()
+    public function getPagePathAttribute(): string
     {
-        return [
-            'route_name' => $this->page_visited['route_name'] ?? null,
-            'route_query' => $this->page_visited['route_query'] ?? [],
-        ];
+        return $this->page_visited['page_path'] ?? null;
     }
-    public function getRouteNameAttribute()
+    public function getPageRefererAttribute(): string
+    {
+        return $this->page_visited['page_referer'] ?? null;
+    }
+    public function getRouteNameAttribute(): string
     {
         return $this->page_visited['route_name'] ?? null;
     }
-    public function getRouteQueryAttribute()
+    public function getRouteQueryAttribute(): array
     {
-        return $this->page_visited['route_query'] ?? [];
+        return $this->page_visited['route_query'] ?? null;
+    }
+    public function getUserNameAttribute(): string
+    {
+        return $this->page_visited['user_name'] ?? null;
     }
 }

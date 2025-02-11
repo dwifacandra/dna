@@ -2617,7 +2617,7 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property array $page_visited
+     * @property \App\Core\Casts\JsonCast $page_visited
      * @property varchar $user_agent
      * @property varchar $ip_address
      * @property \App\Core\Enums\Locale|null $locale
@@ -2625,9 +2625,11 @@ namespace App\Models {
      * @property-read mixed $browser
      * @property-read mixed $o_s
      * @property-read mixed $page_url
-     * @property-read mixed $route_info
+     * @property-read mixed $page_path
+     * @property-read mixed $page_referer
      * @property-read mixed $route_name
      * @property-read mixed $route_query
+     * @property-read mixed $user_name
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereLocale($value)
      * @method static \Illuminate\Database\Eloquent\Builder|Visitor whereIpAddress($value)

@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\Visitor;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class TrackVisitor
@@ -20,16 +21,17 @@ class TrackVisitor
         ) {
             return $next($request);
         }
-        $pageVisitedData = [
-            'page_url' => $request->fullUrl(),
-            'route_name' => $request->route()->getName(),
-            'route_query' => $request->query(),
-        ];
-        $pageVisitedJson = json_encode($pageVisitedData);
         Visitor::create([
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
-            'page_visited' => $pageVisitedJson,
+            'page_visited' => [
+                'page_url' => $request->fullUrl(),
+                'page_path' => $request->getRequestUri(),
+                'page_referer' => $request->headers->get('referer'),
+                'route_name' => $request->route()->getName(),
+                'route_query' => $request->query(),
+                'user_name' => Auth::user()->name ?? null,
+            ],
             'locale' => Session::get('locale', $request->get('locale', 'en')),
         ]);
         return $next($request);
