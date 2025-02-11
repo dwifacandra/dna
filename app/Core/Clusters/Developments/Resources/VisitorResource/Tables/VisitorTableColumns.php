@@ -26,30 +26,30 @@ class VisitorTableColumns
                 ->openUrlInNewTab(),
             TextColumn::make('page_url')
                 ->label('URL')
-                ->wrap()
+                ->words(25)
                 ->alignLeft()
                 ->url(fn($record) => $record->page_url)
                 ->openUrlInNewTab(),
             TextColumn::make('page_referer')
                 ->label('Referer')
-                ->wrap()
+                ->words(25)
                 ->alignLeft()
                 ->url(fn($record) => $record->page_referer)
                 ->openUrlInNewTab(),
             TextColumn::make('page_path')
                 ->label('Path')
-                ->wrap()
+                ->words(25)
                 ->alignLeft(),
             TextColumn::make('route_name')
                 ->label('Route Name')
                 ->alignLeft(),
             TextColumn::make('route_query')
                 ->label('Route Query')
-                ->wrap()
+                ->words(25)
                 ->alignLeft(),
             TextColumn::make('user_agent')
                 ->label('User Agent')
-                ->wrap()
+                ->words(25)
                 ->alignLeft(),
         ];
     }
