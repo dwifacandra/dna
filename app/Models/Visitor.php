@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Core\Casts\JsonCast;
 use App\Core\Enums\Locale;
 use Illuminate\Support\Str;
+use App\Core\Casts\JsonCast;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Visitor extends Model
@@ -69,5 +70,12 @@ class Visitor extends Model
     public function getUserNameAttribute(): ?string
     {
         return $this->page_visited['user_name'] ?? null;
+    }
+    public function scopeTotalByLocale($query, $months = 1)
+    {
+        return $query->select('locale', DB::raw('count(*) as total'))
+            ->where('created_at', '>=', now()->subMonths($months))
+            ->groupBy('locale')
+            ->orderBy('locale');
     }
 }

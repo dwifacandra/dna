@@ -13,6 +13,7 @@ class VisitorTableColumns
                 ->label('Datetime')
                 ->dateTime('d/m/Y H:i:s'),
             TextColumn::make('user_name')
+                ->label('User / Guest')
                 ->badge(),
             TextColumn::make('locale')
                 ->badge(),

@@ -2,38 +2,74 @@
 
 namespace App\Core\Clusters\Developments\Resources\VisitorResource\Widgets;
 
+use Carbon\Carbon;
 use App\Models\Visitor;
+use Flowframe\Trend\Trend;
+use Illuminate\Support\Str;
+use Flowframe\Trend\TrendValue;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Facades\DB;
 
 class TrafficChart extends ChartWidget
 {
     protected static ?string $maxHeight = '15rem';
-
+    public ?string $filter = 'week';
     protected function getData(): array
     {
-        $visitors = Visitor::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as total'))
-            ->where('created_at', '>=', now()->subMonth())
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
-        $labels = $visitors->pluck('date')->toArray();
-        $data = $visitors->pluck('total')->toArray();
+        $activeFilter = $this->filter;
+        $data = Trend::model(Visitor::class);
+        switch ($activeFilter) {
+            case 'week':
+                $data = $data->between(
+                    start: now()->startOfWeek(),
+                    end: now()->endOfWeek(),
+                )
+                    ->perDay()
+                    ->count();
+                $formatLabel = 'd-M';
+                break;
+            case 'month':
+                $data = $data->between(
+                    start: now()->startOfYear(),
+                    end: now()->endOfYear(),
+                )
+                    ->perMonth()
+                    ->count();
+                $formatLabel = 'M';
+                break;
+            case 'year':
+                $data = $data->between(
+                    start: now()->startOfDecade(),
+                    end: now()->endOfDecade(),
+                )
+                    ->perYear()
+                    ->count();
+                $formatLabel = 'Y';
+                break;
+        }
         return [
-            'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'Total Visitors',
-                    'data' => $data,
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
+                    'label' => 'Visitors',
+                    'data' => $data->map(fn(TrendValue $value) => $value->aggregate),
+                    'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
+                    'borderColor' => 'rgba(255, 99, 132, 0.4)',
                     'borderWidth' => 1,
                 ],
             ],
+            'labels' => $data->map(fn(TrendValue $value) => Carbon::parse($value->date)->format($formatLabel)),
         ];
     }
     protected function getType(): string
     {
-        return 'line';
+        return 'bar';
+    }
+    protected function getFilters(): ?array
+    {
+        return [
+            'week' => 'Weekly',
+            'month' => 'Monthly',
+            'year' => 'Yearly',
+        ];
     }
 }

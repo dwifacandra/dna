@@ -2,9 +2,9 @@
 
 namespace App\Core\Enums;
 
-use Filament\Support\Contracts\{HasLabel, HasIcon};
+use Filament\Support\Contracts\{HasColor, HasLabel, HasIcon};
 
-enum Locale: string implements HasLabel, HasIcon
+enum Locale: string implements HasLabel, HasIcon, HasColor
 {
     case EN = 'en';
     case ID = 'id';
@@ -20,6 +20,13 @@ enum Locale: string implements HasLabel, HasIcon
         return match ($this) {
             self::EN => 'flags.4x3.en',
             self::ID => 'flags.4x3.id',
+        };
+    }
+    public function getColor(): string
+    {
+        return match ($this) {
+            self::EN => 'emerald',
+            self::ID => 'rose',
         };
     }
 }

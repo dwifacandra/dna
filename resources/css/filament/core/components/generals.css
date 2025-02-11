@@ -6,6 +6,9 @@
 * {
     scrollbar-width: thin;
 }
+.fi-page * {
+    @apply gap-y-0;
+}
 .fi-sidebar *,
 .fi-ta *,
 .fi-simple-layout *,
@@ -154,4 +157,12 @@
 }
 .fi-tabs .fi-tabs-item .fi-badge {
     @apply rounded-none leading-3;
+}
+
+/* Input */
+.fi-input-wrp {
+    @apply flex rounded-none shadow-sm ring-secondary-200 ring-1 transition duration-75 bg-white;
+}
+.fi-select-input {
+    @apply py-0 text-sm;
 }

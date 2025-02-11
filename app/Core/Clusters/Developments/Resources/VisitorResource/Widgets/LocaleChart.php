@@ -10,14 +10,10 @@ use Illuminate\Support\Facades\DB;
 class LocaleChart extends ChartWidget
 {
     protected static ?string $maxHeight = '15rem';
-
+    public ?string $filter = 'week';
     protected function getData(): array
     {
-        $visitors = Visitor::select('locale', DB::raw('count(*) as total'))
-            ->where('created_at', '>=', now()->subMonth())
-            ->groupBy('locale')
-            ->orderBy('locale')
-            ->get();
+        $visitors = Visitor::totalByLocale()->get();
         $labels = $visitors->pluck('locale')->map(fn($locale) => $locale->getLabel())->toArray();
         $data = $visitors->pluck('total')->toArray();
         $backgroundColors = [
@@ -46,5 +42,13 @@ class LocaleChart extends ChartWidget
     protected function getType(): string
     {
         return 'pie';
+    }
+    protected function getFilters(): ?array
+    {
+        return [
+            'week' => 'Weekly',
+            'month' => 'Monthly',
+            'year' => 'Yearly',
+        ];
     }
 }

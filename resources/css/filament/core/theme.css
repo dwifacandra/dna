@@ -74,7 +74,7 @@
 
 /* Sidebar */
 .fi-sidebar {
-    @apply bg-white md:w-8 z-10;
+    @apply bg-white md:w-8 md:z-10;
 }
 .fi-sidebar-open {
     @apply md:!w-1/6;
@@ -223,9 +223,6 @@
 /* Main Page */
 .fi-main {
     @apply mx-auto h-full w-full px-0 md:px-0 lg:px-0 max-w-full;
-}
-.fi-page * {
-    @apply gap-y-0;
 }
 .fi-page > section {
     @apply flex flex-col py-0 gap-y-2;

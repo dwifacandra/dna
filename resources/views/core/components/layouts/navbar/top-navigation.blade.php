@@ -25,10 +25,18 @@
                 </h1>
             </a>
             <div class="flex justify-end flex-1 md:hidden">
+                @if (Auth::check())
+                <a href="{{ route('filament.core.home') }}"
+                    class="inline-flex items-center h-10 p-2 border-l md:h-8 border-secondary-300 gap-x-2">
+                    <img src="{{ Auth::user()->getFilamentAvatarUrl() }}" alt="{{ Auth::user()->name }}"
+                        class="shrink-0 size-6 core-icon" />
+                </a>
+                @else
                 <a href="{{ route('filament.core.auth.login') }}"
                     class="inline-flex items-center h-10 p-2 border-l md:h-8 border-secondary-300 gap-x-2">
                     <x-icon name="core.fill.lock" class="shrink-0 size-4 core-icon" />
                 </a>
+                @endif
             </div>
         </div>
         <div id="hs-header-base" aria-labelledby="hs-header-base-collapse"
@@ -42,7 +50,8 @@
                 </div>
                 <div class="flex flex-row items-center md:justify-center gap-x-1">
                     @if (Auth::check())
-                    <a href="{{ route('filament.core.home') }}" class="inline-flex items-center border border-secondary-300 gap-x-1">
+                    <a href="{{ route('filament.core.home') }}"
+                        class="inline-flex items-center border border-secondary-300 gap-x-1">
                         <img src="{{ Auth::user()->getFilamentAvatarUrl() }}" alt="{{ Auth::user()->name }}"
                             class="p-0.5 shrink-0 size-6" />
                     </a>
