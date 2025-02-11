@@ -16,11 +16,10 @@ class VisitorTableColumns
                 ->badge(),
             TextColumn::make('ip_address')
                 ->label('IP Address'),
-            TextColumn::make('route_info')
+            TextColumn::make('page_url')
                 ->label('Page')
                 ->alignLeft()
-                ->separator(',')
-                ->listWithLineBreaks()
+                ->wrap()
                 ->url(fn($record) => $record->page_url)
                 ->openUrlInNewTab(),
             TextColumn::make('browser'),
