@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Pages\Design;
+namespace App\Core\Pages\Collection;
 
 use App\Core\Enums\CollectionStatus;
 use App\Models\{Collection, Category};
