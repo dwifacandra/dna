@@ -17,7 +17,7 @@
             @endif
         </div>
         <div
-            class="flex flex-col justify-start col-span-2 row-start-2 p-4 bg-white border shadow-sm dark:bg-secondary gap-y-4">
+            class="flex flex-col justify-start p-4 bg-white border shadow-sm md:row-start-2 md:col-span-2 col-span-full dark:bg-secondary gap-y-4">
             <h1 class="px-4 py-2 -mx-4 -mt-4 text-base font-semibold border-b">{{ $collection->title }}
             </h1>
             <div class="flex gap-x-2">
@@ -36,7 +36,8 @@
                 {!! $collection->description !!}
             </div>
         </div>
-        <div class="flex flex-col justify-start row-start-2 p-4 bg-white border shadow-sm dark:bg-secondary gap-y-4">
+        <div
+            class="flex flex-col justify-start p-4 bg-white border shadow-sm md:row-start-2 md:col-span-2 col-span-full dark:bg-secondary gap-y-4">
             <h1 class="px-4 py-2 -mx-4 -mt-4 text-base font-medium border-b">Latest Collections</h1>
         </div>
     </div>

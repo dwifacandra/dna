@@ -24,7 +24,9 @@
         @foreach ($category->collections as $collection)
         <div wire:key="collection-{{ $collection->id }}"
             class="overflow-hidden transition duration-200 ease-in delay-75 border shadow-md hover:shadow-lg border-neutral-200 dark:border-neutral-950">
-            <a href="{{ route('collection.detail', $collection->slug) }}" class="relative">
+            <a href="{{ route('collection.detail', 
+            ['scope' => Str::slug($collection->scope), 'category' => Str::slug($collection->category->name), 'slug' => $collection->slug]) }}"
+                class="relative">
                 <img class="object-cover transition-transform duration-500 ease-in-out cursor-zoom-in size-24 md:size-32 hover:scale-105"
                     src="{{ $collection->getFirstMediaUrl('collections','cover') }}" alt="{{ $collection->title }}" />
                 <span class="absolute text-xs top-0 px-1 py-0.5 z-[1] bg-rose-500/90 text-white">{{

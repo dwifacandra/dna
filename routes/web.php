@@ -39,7 +39,7 @@ Route::middleware([SetLocale::class])->group(function () {
         Route::get('/', function () {
             return redirect()->route('landing-page');
         })->name('collection');
-        Route::get('/{slug}', Collection\Detail::class)->name('collection.detail');
+        Route::get('/{scope}/{category}/{slug}', Collection\Detail::class)->name('collection.detail');
         Route::get('/tag/{slug}', Collection\Detail::class)->name('collection.tag');
     });
 });
