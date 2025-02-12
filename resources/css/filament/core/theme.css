@@ -253,6 +253,9 @@
 .fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-icon {
     @apply size-4;
 }
+.fi-page .fi-header > div + div .fi-ac .fi-ac-action .fi-btn-label {
+    @apply hidden md:block;
+}
 
 /* Subnavigation Select */
 .fi-page .fi-page-sub-navigation-select {
@@ -628,9 +631,28 @@
     .fi-ta-cell
     .fi-ta-col-wrp
     .fi-ta-text {
-    @apply grid w-full gap-y-1 px-2 py-2;
+    @apply grid w-full gap-y-1 gap-x-1 px-2 py-2;
 }
-
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text
+    > div {
+    @apply flex gap-0.5 flex-wrap text-left justify-start;
+}
+.fi-ta
+    .fi-ta-content
+    .fi-ta-table
+    .fi-ta-row
+    .fi-ta-cell
+    .fi-ta-col-wrp
+    .fi-ta-text
+    .fi-badge {
+    @apply flex items-center justify-center gap-x-1 rounded-none text-xs font-medium ring-1 ring-inset px-2 py-0.5;
+}
 .fi-ta
     .fi-ta-content
     .fi-ta-table

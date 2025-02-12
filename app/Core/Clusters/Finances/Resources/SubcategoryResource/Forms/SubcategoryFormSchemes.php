@@ -2,10 +2,10 @@
 
 namespace App\Core\Clusters\Finances\Resources\SubcategoryResource\Forms;
 
-use App\Core\{Enums\CashFlow, Helpers\CoreIcon, Components\Forms\PreviewIcon};
-use Filament\{Forms\Get, Support\Enums\Alignment};
+use Filament\Forms\Get;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\{TextInput, Hidden, MarkdownEditor, ToggleButtons, Select, Grid, Split, ColorPicker};
+use App\Core\{Enums\CashFlow, Helpers\CoreIcon};
+use Filament\Forms\Components\{TextInput, Hidden, RichEditor, ToggleButtons, Select,  Split,};
 
 class SubcategoryFormSchemes
 {
@@ -51,7 +51,7 @@ class SubcategoryFormSchemes
                 ->prefixIcon(function (Get $get): string {
                     return $get('icon') ?: 'core.outline.fonticons';
                 }),
-            MarkdownEditor::make('description'),
+            RichEditor::make('description'),
         ];
     }
 }

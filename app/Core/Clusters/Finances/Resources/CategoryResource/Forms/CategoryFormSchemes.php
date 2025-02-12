@@ -5,7 +5,7 @@ namespace App\Core\Clusters\Finances\Resources\CategoryResource\Forms;
 use App\Core\{Enums\CashFlow, Helpers\CoreIcon, Components\Forms\PreviewIcon};
 use Filament\{Forms\Get, Support\Enums\Alignment};
 use App\Core\Clusters\Finances\Resources\SubcategoryResource\Forms\RelationSubcategoryFormSchemes;
-use Filament\Forms\Components\{TextInput, Hidden, MarkdownEditor, ToggleButtons,  Repeater, Split, Grid, Select, ColorPicker};
+use Filament\Forms\Components\{TextInput, Hidden, RichEditor, ToggleButtons,  Repeater, Split, Grid, Select, ColorPicker};
 
 class CategoryFormSchemes
 {
@@ -35,7 +35,7 @@ class CategoryFormSchemes
                 ->prefixIcon(function (Get $get): string {
                     return $get('icon') ?: 'core.outline.fonticons';
                 }),
-            MarkdownEditor::make('description'),
+            RichEditor::make('description'),
             Repeater::make('subcategories')
                 ->label('Subcategories')
                 ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)

@@ -22,7 +22,7 @@ class ManageCategories extends ManageRecords
     }
     protected function getHeaderActions(): array
     {
-        return DefaultOptions::getDefaultHeaderActions(false, [
+        return DefaultOptions::getDefaultHeaderActions(true, [
             Action::make('Subcategory')
                 ->icon('core.outline.category')
                 ->color('gray')

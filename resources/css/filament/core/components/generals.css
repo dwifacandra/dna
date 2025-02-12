@@ -7,7 +7,7 @@
     scrollbar-width: thin;
 }
 .fi-page * {
-    @apply gap-y-0;
+    @apply gap-y-0 gap-x-0;
 }
 .fi-sidebar *,
 .fi-ta *,
@@ -159,10 +159,102 @@
     @apply rounded-none leading-3;
 }
 
+/* Modal Window {Window, Slide Over} */
+.fi-modal-slide-over-window {
+    @apply pointer-events-auto relative row-start-2 flex w-full cursor-default flex-col bg-white shadow-md ring-1 ring-secondary-300 ms-auto overflow-y-auto h-[100dvh] max-w-screen-md;
+}
+.fi-modal-window .fi-modal-header {
+    @apply flex flex-row justify-between items-center px-4 pt-1 pb-1 sticky top-0 z-10 border-b border-secondary-200 bg-grid-2 gap-x-2;
+}
+.fi-modal-window .fi-modal-header > div {
+    @apply block top-1 end-2;
+}
+.fi-modal-window .fi-modal-header > div .fi-modal-close-btn {
+    @apply relative flex items-center justify-center
+    rounded-none outline-none
+    transition duration-75
+    focus-visible:ring-2
+    m-0 size-6
+    text-secondary-400 hover:text-secondary-500 focus-visible:ring-primary-600;
+}
+.fi-modal-window .fi-modal-header > div .fi-icon-btn-icon {
+    @apply shrink-0 size-5;
+}
+.fi-modal-window .fi-modal-header > div + div .fi-modal-heading {
+    @apply text-base font-medium leading-normal text-secondary-800 me-0;
+}
+.fi-modal-window .fi-modal-content {
+    @apply flex flex-col flex-1 gap-x-2 gap-y-2 py-4 px-4;
+}
+.fi-modal-window .fi-modal-content .fi-fo-component-ctn {
+    @apply grid gap-4;
+}
+.fi-modal-window .fi-modal-footer {
+    @apply w-full px-4 py-1 sticky
+    bottom-0 border-t border-secondary-200 bg-white mt-auto;
+}
+.fi-modal-window .fi-modal-footer .fi-modal-footer-actions {
+    @apply gap-1 flex flex-wrap justify-end items-center;
+}
+.fi-modal-window .fi-modal-footer .fi-modal-footer-actions .fi-ac-btn-action {
+    @apply py-1;
+}
+
+/* Field */
+.fi-fo-field-wrp > div {
+    @apply grid gap-y-2;
+}
+.fi-fo-field-wrp .fi-fo-field-wrp-label {
+    @apply inline-flex items-center gap-x-2;
+}
+.fi-fo-field-wrp .fi-fo-field-wrp-label sup {
+    @apply text-red-600 font-semibold ml-0.5;
+}
+.fi-input-wrp-prefix {
+    @apply items-center gap-x-2 pe-2 ps-2 flex border-e;
+}
+
+/* Fieldset */
+.fi-fieldset {
+    @apply rounded-none border border-secondary-200 p-4;
+}
+
+/* Split */
+.fi-fo-split {
+    @apply gap-4;
+}
+
 /* Input */
 .fi-input-wrp {
     @apply flex rounded-none shadow-sm ring-secondary-200 ring-1 transition duration-75 bg-white;
 }
+
+/* Rich Editor */
+.fi-fo-rich-editor .fi-fo-rich-editor-toolbar {
+    @apply relative flex flex-col gap-x-2 border-b bg-grid-2 border-secondary-200 px-0 py-0;
+}
+.fi-fo-rich-editor .fi-fo-rich-editor-toolbar .fi-fo-rich-editor-toolbar-btn {
+    @apply flex border-e bg-white border-secondary-200 h-6 cursor-pointer items-center justify-center rounded-none text-sm font-semibold text-secondary-800;
+}
+.fi-fo-rich-editor
+    .fi-fo-rich-editor-toolbar
+    .fi-fo-rich-editor-toolbar-btn
+    svg {
+    @apply size-4 shrink-0;
+}
+
+/* Select */
 .fi-select-input {
     @apply py-0 text-sm;
+}
+
+/* Radio */
+.fi-fo-radio {
+    @apply gap-4 flex flex-wrap;
+}
+.fi-fo-radio > div > label {
+    @apply flex gap-x-2;
+}
+.fi-fo-radio .fi-radio-input {
+    @apply rounded-full;
 }

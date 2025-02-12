@@ -3,7 +3,8 @@
 use App\Core\Pages\{
     LandingPage,
     About\WhoAmI as WhoAmI,
-    Product\Detail as ProductDetail,
+    Product,
+    Collection
 };
 use Illuminate\Support\Facades\{Route, Response};
 use App\Http\Middleware\SetLocale;
@@ -24,21 +25,22 @@ Route::middleware([SetLocale::class])->group(function () {
         Route::get('/', function () {
             return redirect()->route('landing-page');
         })->name('blog');
-        Route::get('/post/{slug}', ProductDetail::class)->name('blog.post.detail');
+        Route::get('/post/{slug}', Product\Detail::class)->name('blog.post.detail');
     });
     // Group Route Product
     Route::prefix('product')->group(function () {
         Route::get('/', function () {
             return redirect()->route('landing-page');
         })->name('product');
-        Route::get('/{slug}', ProductDetail::class)->name('product.detail');
+        Route::get('/{slug}', Product\Detail::class)->name('product.detail');
     });
-    // Group Route Design
-    Route::prefix('design')->group(function () {
+    // Group Route Collection
+    Route::prefix('collection')->group(function () {
         Route::get('/', function () {
             return redirect()->route('landing-page');
-        })->name('design');
-        Route::get('/{slug}', ProductDetail::class)->name('design.detail');
+        })->name('collection');
+        Route::get('/{slug}', Collection\Detail::class)->name('collection.detail');
+        Route::get('/tag/{slug}', Collection\Detail::class)->name('collection.tag');
     });
 });
 // Fallback Resource

@@ -20,12 +20,10 @@ class ManageProjects extends ManageRecords
         }
         return [];
     }
-
     protected function getHeaderActions(): array
     {
         return DefaultOptions::getDefaultHeaderActions(true);
     }
-
     protected function getHeaderWidgets(): array
     {
         return [

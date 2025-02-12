@@ -9,16 +9,17 @@
     <nav class="flex flex-wrap gap-2" aria-label="Tabs" role="tablist">
         @foreach ($categories as $index => $category)
         <button wire:key="article-tab-{{ $category->id }}" aria-selected="{{ $index === 0 ? 'true' : 'false' }}"
-            data-hs-tab="#tab-content-{{ $index }}" aria-controls="tab-content-{{ $index }}" role="tab" type="button"
-            id="tab-{{ $index }}" class="{{ $index === 0 ? 'active' : '' }} text-sm inline-flex justify-center">
+            data-hs-tab="#article-tab-content-{{ $index }}" aria-controls="article-tab-content-{{ $index }}" role="tab"
+            type="button" id="article-tab-{{ $index }}"
+            class="{{ $index === 0 ? 'active' : '' }} text-sm inline-flex justify-center">
             <span class="px-1 min-w-5 bg-secondary-950 text-secondary-50">{{ $category->projects_count }}</span>
             <span class="px-2 border bg-secondary-100 dark:bg-secondary-800">{{ $category->name }}</span>
         </button>
         @endforeach
     </nav>
     @foreach ($categories as $index => $category)
-    <div wire:key="article-category-{{ $category->id }}" id="tab-content-{{ $index }}" role="tabpanel"
-        aria-labelledby="tab-{{ $index }}"
+    <div wire:key="article-category-{{ $category->id }}" id="article-tab-content-{{ $index }}" role="tabpanel"
+        aria-labelledby="article-tab-{{ $index }}"
         class="{{ $index === 0 ? 'active' : 'hidden' }} grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
         @foreach ($category->projects as $project)
         <a wire:key="article-{{ $project->id }}" href="{{ route('blog.post.detail', $project->slug) }}">

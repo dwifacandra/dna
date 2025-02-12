@@ -4,7 +4,7 @@ namespace App\Core\Traits;
 
 use Filament\Navigation\NavigationGroup;
 use Filament\Navigation\{NavigationBuilder, NavigationItem,};
-use App\Core\Clusters\{Products, Peoples, Resumes, Developments, Finances, Settings};
+use App\Core\Clusters\{Collections, Products, Peoples, Resumes, Developments, Finances, Settings};
 
 trait Navigations
 {
@@ -19,6 +19,7 @@ trait Navigations
     public static function getGroups(): array
     {
         return [
+            Collections::NavigationItems(),
             Products::NavigationItems(),
             Finances::NavigationItems(),
             Peoples::NavigationItems(),

@@ -36,6 +36,10 @@ class Category extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+    public function collections()
+    {
+        return $this->hasMany(Collection::class, 'category_id');
+    }
     public function getIsParentAttribute()
     {
         return is_null($this->parent_id) ? 'Category' : 'Subcategory';

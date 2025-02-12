@@ -3,7 +3,7 @@
 namespace App\Core\Clusters\Resumes\Resources\CompanyResource\Forms;
 
 use Illuminate\Support\Collection;
-use Filament\Forms\Components\{TextInput, SpatieMediaLibraryFileUpload, MarkdownEditor};
+use Filament\Forms\Components\{TextInput, SpatieMediaLibraryFileUpload, RichEditor};
 
 class CompanyFormSchemes
 {
@@ -26,7 +26,7 @@ class CompanyFormSchemes
                 ->openable()
                 ->downloadable()
                 ->nullable(),
-            MarkdownEditor::make('description')
+            RichEditor::make('description')
                 ->columnSpanFull(),
         ];
     }

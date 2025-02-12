@@ -6,7 +6,7 @@ namespace App\Core\Clusters\Resumes\Resources\ExperienceResource\Forms;
 use App\Models\GeoLocations\{Province, Regency};
 use App\Core\{Enums, Clusters\Resumes\Resources\CompanyResource\Forms};
 use Illuminate\Support\Facades\Auth;
-use Filament\Forms\Components\{Hidden, Select, Fieldset, TextInput, DatePicker, MarkdownEditor};
+use Filament\Forms\Components\{Hidden, Select, Fieldset, TextInput, DatePicker, RichEditor};
 
 class ExperienceFormSchemes
 {
@@ -80,7 +80,7 @@ class ExperienceFormSchemes
                         ->default(today()),
                     DatePicker::make('end_date'),
                 ]),
-            MarkdownEditor::make('description')->columnSpanFull(),
+            RichEditor::make('description')->columnSpanFull(),
         ];
     }
 }

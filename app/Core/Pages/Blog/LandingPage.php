@@ -19,7 +19,7 @@ class LandingPage extends Component
             ->withCount(['projects' => function ($query) {
                 $query->where('release', true);
             }])
-            ->get(['name', 'projects_count']);
+            ->get();
         foreach ($this->categories as $category) {
             $category->projects = Project::where('release', true)
                 ->where('category_id', $category->id)

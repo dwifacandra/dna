@@ -32,6 +32,10 @@ class CorePanelProvider extends PanelProvider
             ->id('core')
             ->path('core')
             ->spa()
+            ->spaUrlExceptions(fn(): array => [
+                url(route('landing-page')),
+                url(route('dev.sitemap')),
+            ])
             ->login()
             ->passwordReset()
             ->emailVerification()

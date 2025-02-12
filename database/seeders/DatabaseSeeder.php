@@ -30,8 +30,7 @@ class DatabaseSeeder extends Seeder
                 ResumeSeeder::class,
                 ProjectsSeeder::class,
             ]);
-        } else {
-            $this->call([]);
         }
+        $this->call([]);
     }
 }

@@ -73,8 +73,6 @@ class UserFormSchemes
                                 ->visibility('private')
                                 ->image()
                                 ->imageEditor()
-                                ->circleCropper()
-                                ->avatar()
                                 ->nullable()
                                 ->alignCenter(),
                         ]),

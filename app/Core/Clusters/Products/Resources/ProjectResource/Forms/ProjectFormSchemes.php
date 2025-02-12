@@ -7,7 +7,7 @@ use App\Core\Traits\Categories;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use App\Core\Enums\{ProjectStatus, ProjectPriority};
-use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, Toggle, MarkdownEditor, Select, SpatieMediaLibraryFileUpload};
+use Filament\Forms\Components\{TextInput, Fieldset, DatePicker, Toggle, RichEditor, Select, SpatieMediaLibraryFileUpload};
 
 class ProjectFormSchemes
 {
@@ -95,7 +95,7 @@ class ProjectFormSchemes
                         ->nullable()
                         ->multiple(),
                 ])->columns(2),
-            MarkdownEditor::make('description')->columnSpanFull(),
+            RichEditor::make('description')->columnSpanFull(),
         ];
     }
 }

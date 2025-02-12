@@ -7,7 +7,7 @@ use App\Core\Enums\CashFlow;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use App\Core\Clusters\Finances\Resources\CategoryResource\Forms\CategoryFormSchemes;
-use Filament\Forms\Components\{TextInput, DatePicker, Select, ToggleButtons, MarkdownEditor};
+use Filament\Forms\Components\{TextInput, DatePicker, Select, ToggleButtons, RichEditor};
 
 class TransactionFormSchemes
 {
@@ -78,7 +78,7 @@ class TransactionFormSchemes
                 ->downloadable()
                 ->multiple()
                 ->nullable(),
-            MarkdownEditor::make('description')->columnSpanFull(),
+            RichEditor::make('description')->columnSpanFull(),
         ];
     }
 }

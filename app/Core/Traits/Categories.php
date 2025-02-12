@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use App\Core\{Helpers\CoreIcon, Components\Forms\PreviewIcon};
 use Filament\{Forms\Get, Support\Colors\Color};
 use Filament\Tables\Columns\{Layout\Split, TextColumn, IconColumn};
-use Filament\Forms\Components\{Hidden, TextInput, MarkdownEditor, Grid, Select, ColorPicker};
+use Filament\Forms\Components\{Hidden, TextInput, RichEditor, Grid, Select, ColorPicker};
 
 trait Categories
 {
@@ -18,6 +18,7 @@ trait Categories
             Select::make('icon')
                 ->label('Select Icon')
                 ->native(false)
+                ->default('core.outline.fonticons')
                 ->searchable()
                 ->reactive()
                 ->required()
@@ -25,7 +26,7 @@ trait Categories
                 ->prefixIcon(function (Get $get): string {
                     return $get('icon') ?: 'core.outline.fonticons';
                 }),
-            MarkdownEditor::make('description'),
+            RichEditor::make('description'),
         ];
     }
     public static function getTableColumns(): array

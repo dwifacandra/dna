@@ -23,7 +23,7 @@ trait DefaultOptions
                 ->alignment($option['alignment']);
         });
     }
-    public static function getDefaultHeaderActions($slideOver = false, $moreActions = []): array
+    public static function getDefaultHeaderActions($slideOver = true, $moreActions = []): array
     {
         return [
             CreateAction::make()
@@ -37,7 +37,7 @@ trait DefaultOptions
             ...$moreActions,
         ];
     }
-    public static function getDefaultActions($slideOver = false): array
+    public static function getDefaultActions($slideOver = true): array
     {
         return [
             EditAction::make()
@@ -48,7 +48,7 @@ trait DefaultOptions
             DeleteAction::make(),
         ];
     }
-    public static function getActionGroups($slideOver = false, $moreActions = []): array
+    public static function getActionGroups($slideOver = true, $moreActions = []): array
     {
         return [
             ActionGroup::make([
