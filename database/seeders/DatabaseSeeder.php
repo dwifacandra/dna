@@ -14,9 +14,12 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        Role::create(['name' => 'Adminstrator']);
+        Role::create(['name' => 'super_admin']);
         $creatorRole = Role::create(['name' => 'Creator']);
-        Artisan::call('permissions:sync --yes-to-all');
+        Artisan::call('shield:generate', [
+            '--all' => true,
+            '--panel' => 'core'
+        ]);
         $creatorRole->givePermissionTo(Permission::all());
         $user = User::firstOrCreate(
             [
@@ -27,7 +30,7 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]
         );
-        $user->assignRole('Adminstrator');
+        $user->assignRole('super_admin');
         if (config('app.env') === 'local') {
             User::factory(10)->create();
             $this->call([

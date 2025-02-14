@@ -26,14 +26,9 @@ class AppServiceProvider extends ServiceProvider
     }
     public function boot(): void
     {
-        Gate::before(function (User $user, string $ability) {
-            return $user->isSuperAdmin() ? true : null;
-        });
         Table::$defaultNumberLocale = 'id';
         Table::$defaultCurrency = 'IDR';
         Table::$defaultDateDisplayFormat = 'd/m/o';
         Table::$defaultDateTimeDisplayFormat = 'd/m/o H:i';
-        Gate::policy(Role::class, RolePolicy::class);
-        Gate::policy(Permission::class, PermissionPolicy::class);
     }
 }

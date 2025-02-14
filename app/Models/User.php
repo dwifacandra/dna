@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Core\Enums\Gender;
 use Filament\Panel;
 use Filament\Models\Contracts\{HasAvatar, FilamentUser};
-use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 use Spatie\Permission\{Traits\HasRoles, Models\Role};
 use Illuminate\{
@@ -18,7 +17,7 @@ use Illuminate\{
 
 class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia, MustVerifyEmail
 {
-    use HasFactory, Notifiable, InteractsWithMedia, HasRoles, HasSuperAdmin;
+    use HasFactory, Notifiable, InteractsWithMedia, HasRoles;
     protected $fillable = [
         'name',
         'birthday',

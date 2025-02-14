@@ -21,7 +21,6 @@ use Illuminate\{
     Session\Middleware\StartSession,
     View\Middleware\ShareErrorsFromSession,
 };
-use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 
 class CorePanelProvider extends PanelProvider
 {
@@ -88,9 +87,6 @@ class CorePanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Core/Resources'), for: 'App\\Core\\Resources')
             ->discoverPages(in: app_path('Core/Pages'), for: 'App\\Core\\Pages')
             ->discoverWidgets(in: app_path('Core/Widgets'), for: 'App\\Core\\Widgets')
-            ->plugin(
-                FilamentSpatieRolesPermissionsPlugin::make(),
-            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -102,8 +98,22 @@ class CorePanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->authMiddleware([
-                Authenticate::class,
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                    ->gridColumns([
+                        'default' => 2,
+                        'sm' => 1
+                    ])
+                    ->sectionColumnSpan(1)
+                    ->checkboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 3,
+                    ])
+                    ->resourceCheckboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                    ]),
             ]);
     }
 }

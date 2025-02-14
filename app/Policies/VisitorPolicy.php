@@ -2,18 +2,20 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\Response;
-use App\Models\Visitor;
 use App\Models\User;
+use App\Models\Visitor;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class VisitorPolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return $user->checkPermissionTo('{{ viewAnyPermission }}');
+        return $user->can('view_any_visitor');
     }
 
     /**
@@ -21,7 +23,7 @@ class VisitorPolicy
      */
     public function view(User $user, Visitor $visitor): bool
     {
-        return $user->checkPermissionTo('{{ viewPermission }}');
+        return $user->can('view_visitor');
     }
 
     /**
@@ -29,7 +31,7 @@ class VisitorPolicy
      */
     public function create(User $user): bool
     {
-        return $user->checkPermissionTo('{{ createPermission }}');
+        return $user->can('create_visitor');
     }
 
     /**
@@ -37,7 +39,7 @@ class VisitorPolicy
      */
     public function update(User $user, Visitor $visitor): bool
     {
-        return $user->checkPermissionTo('{{ updatePermission }}');
+        return $user->can('update_visitor');
     }
 
     /**
@@ -45,62 +47,62 @@ class VisitorPolicy
      */
     public function delete(User $user, Visitor $visitor): bool
     {
-        return $user->checkPermissionTo('{{ deletePermission }}');
+        return $user->can('delete_visitor');
     }
 
     /**
-     * Determine whether the user can delete any models.
+     * Determine whether the user can bulk delete.
      */
     public function deleteAny(User $user): bool
     {
-        return $user->checkPermissionTo('{{ deleteAnyPermission }}');
+        return $user->can('delete_any_visitor');
     }
 
     /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Visitor $visitor): bool
-    {
-        return $user->checkPermissionTo('{{ restorePermission }}');
-    }
-
-    /**
-     * Determine whether the user can restore any models.
-     */
-    public function restoreAny(User $user): bool
-    {
-        return $user->checkPermissionTo('{{ restoreAnyPermission }}');
-    }
-
-    /**
-     * Determine whether the user can replicate the model.
-     */
-    public function replicate(User $user, Visitor $visitor): bool
-    {
-        return $user->checkPermissionTo('{{ replicatePermission }}');
-    }
-
-    /**
-     * Determine whether the user can reorder the models.
-     */
-    public function reorder(User $user): bool
-    {
-        return $user->checkPermissionTo('{{ reorderPermission }}');
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
+     * Determine whether the user can permanently delete.
      */
     public function forceDelete(User $user, Visitor $visitor): bool
     {
-        return $user->checkPermissionTo('{{ forceDeletePermission }}');
+        return $user->can('force_delete_visitor');
     }
 
     /**
-     * Determine whether the user can permanently delete any models.
+     * Determine whether the user can permanently bulk delete.
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->checkPermissionTo('{{ forceDeleteAnyPermission }}');
+        return $user->can('force_delete_any_visitor');
+    }
+
+    /**
+     * Determine whether the user can restore.
+     */
+    public function restore(User $user, Visitor $visitor): bool
+    {
+        return $user->can('restore_visitor');
+    }
+
+    /**
+     * Determine whether the user can bulk restore.
+     */
+    public function restoreAny(User $user): bool
+    {
+        return $user->can('restore_any_visitor');
+    }
+
+    /**
+     * Determine whether the user can replicate.
+     */
+    public function replicate(User $user, Visitor $visitor): bool
+    {
+        return $user->can('replicate_visitor');
+    }
+
+    /**
+     * Determine whether the user can reorder.
+     */
+    public function reorder(User $user): bool
+    {
+        return $user->can('reorder_visitor');
     }
 }
