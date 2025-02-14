@@ -7,7 +7,7 @@ use Filament\Panel;
 use Filament\Models\Contracts\{HasAvatar, FilamentUser};
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\{Traits\HasRoles, Models\Role};
 use Illuminate\{
     Contracts\Auth\MustVerifyEmail,
     Database\Eloquent\Factories\HasFactory,
@@ -26,6 +26,7 @@ class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia,
         'phone',
         'email',
         'password',
+        'email_verified_at',
     ];
     protected $hidden = [
         'password',
@@ -40,6 +41,13 @@ class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia,
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    protected static function booted(): void
+    {
+        static::created(function (User $user) {
+            $role = Role::firstOrCreate(['name' => 'Creator']);
+            $user->assignRole($role);
+        });
     }
     public function registerMediaCollections(): void
     {
@@ -70,7 +78,7 @@ class User extends Authenticatable implements HasAvatar, FilamentUser, HasMedia,
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasRole('Adminstrator');
+        return $this->hasRole(['Adminstrator', 'Creator']);
     }
     public function accounts()
     {

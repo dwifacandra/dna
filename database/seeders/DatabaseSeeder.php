@@ -7,12 +7,17 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
         Role::create(['name' => 'Adminstrator']);
+        $creatorRole = Role::create(['name' => 'Creator']);
+        Artisan::call('permissions:sync --yes-to-all');
+        $creatorRole->givePermissionTo(Permission::all());
         $user = User::firstOrCreate(
             [
                 'email' => 'aditya@dna.test',

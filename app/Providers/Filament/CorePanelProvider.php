@@ -36,6 +36,7 @@ class CorePanelProvider extends PanelProvider
                 url(route('landing-page')),
                 url(route('dev.sitemap')),
             ])
+            ->registration()
             ->login()
             ->passwordReset()
             ->emailVerification()
